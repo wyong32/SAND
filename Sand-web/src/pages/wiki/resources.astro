@@ -16,25 +16,6 @@ const seo = pageMetadata.resources;
       <section class="inner-shell-section">
         <div class="container">
           <div class="inner-shell-content">
-            <aside class="inner-sidebar" aria-label="SAND wiki menu">
-              <div class="inner-sidebar-head">
-                <img src={sidebarHeadIcons.resources} alt="Energy rod icon for resources navigation" />
-                <div><strong>Wiki</strong><span>Resources</span></div>
-              </div>
-              <nav class="inner-nav-group" aria-label="Wiki Categories">
-                <h2>Categories</h2>
-                <a href="/wiki"><img src={getSidebarIcon('Wiki', '/wiki')} alt="" /><span>Wiki</span><b>All</b></a>
-                <a href="/wiki/weapons"><img src={getSidebarIcon('Weapons', '/wiki/weapons')} alt="" /><span>Weapons</span><b>{weapons.length}</b></a>
-                <a href="/wiki/ammunition"><img src={getSidebarIcon('Ammunition', '/wiki/ammunition')} alt="" /><span>Ammunition</span><b>{ammunition.length}</b></a>
-                <a class="is-active" href="/wiki/resources"><img src={getSidebarIcon('Resources', '/wiki/resources')} alt="" /><span>Resources</span><b>{resources.length}</b></a>
-              </nav>
-              <nav class="inner-nav-group" aria-label="Resource Groups">
-                <h2>Groups</h2>
-                {resourceGroups.map((group) => (
-                  <a href={`#${group.id}`}><img src={getSidebarIcon(group.title, `#${group.id}`)} alt="" /><span>{group.title.replace(' Resources', '')}</span><b>{group.items.length}</b></a>
-                ))}
-              </nav>
-            </aside>
             <div class="inner-mainframe">
               <!-- Wiki资源页首屏 -->
               <section class="wiki-resources-hero-section">
@@ -44,7 +25,7 @@ const seo = pageMetadata.resources;
                       <a href="/wiki">Wiki</a>
                       <span>Resources / Loot Index</span>
                       <h1>SAND: Raiders of Sophie Wiki - Resources</h1>
-                      <p>Resource entries are grouped to match the Steam guide structure: common, uncommon, rare, noteworthy, experimental, boxes, and amplifiers.</p>
+                      <p>SAND: Raiders of Sophie Wiki - Resources groups resource entries to match the Steam guide structure: common, uncommon, rare, noteworthy, experimental, boxes, and amplifiers.</p>
                     </div>
                     <div class="wiki-resources-hero-stats">
                       {resourceStats.map(([label, value]) => (
@@ -60,7 +41,7 @@ const seo = pageMetadata.resources;
                 <div class="container">
                   <div class="wiki-resources-section-heading">
                     <span>All Resource Icons</span>
-                    <p>Inventory-style overview following the source guide order.</p>
+                    <p>Inventory-style SAND: Raiders of Sophie resources overview following the source guide order.</p>
                   </div>
                   <div class="wiki-resources-icon-grid">
                     {resources.map((resource) => (
@@ -82,7 +63,7 @@ const seo = pageMetadata.resources;
                       <section id={group.id}>
                         <div class="wiki-resources-section-heading">
                           <span>{group.title}</span>
-                          <p>{group.items.length} entries in the same order as the Steam community guide section.</p>
+                          <p>{group.items.length} SAND: Raiders of Sophie resource entries in the same order as the Steam community guide section.</p>
                         </div>
                         <div class="wiki-resources-table">
                           {group.items.map((resource) => (
@@ -114,7 +95,7 @@ const seo = pageMetadata.resources;
                     <article>
                       <span>Boxes</span>
                       <h2>Boxes and crates are the repeatable source layer.</h2>
-                      <p>The Steam guide lists most ordinary resources as specialized box or crate drops. This page keeps those entries under each item instead of flattening them into one generic note.</p>
+                      <p>The Steam guide lists most ordinary SAND: Raiders of Sophie resources as specialized box or crate drops. This page keeps those entries under each item instead of flattening them into one generic note.</p>
                     </article>
                     <div>
                       {amplifierNotes.map((amplifier) => (
@@ -129,6 +110,26 @@ const seo = pageMetadata.resources;
                 </div>
               </section>
             </div>
+
+            <aside class="inner-sidebar" aria-label="SAND wiki menu">
+              <div class="inner-sidebar-head">
+                <img src={sidebarHeadIcons.resources} alt="Energy rod icon for resources navigation" />
+                <div><strong>Wiki</strong><span>Resources</span></div>
+              </div>
+              <nav class="inner-nav-group" aria-label="Wiki Categories">
+                <h2>Categories</h2>
+                <a href="/wiki"><img src={getSidebarIcon('Wiki', '/wiki')} alt="" /><span>Wiki</span><b>All</b></a>
+                <a href="/wiki/weapons"><img src={getSidebarIcon('Weapons', '/wiki/weapons')} alt="" /><span>Weapons</span><b>{weapons.length}</b></a>
+                <a href="/wiki/ammunition"><img src={getSidebarIcon('Ammunition', '/wiki/ammunition')} alt="" /><span>Ammunition</span><b>{ammunition.length}</b></a>
+                <a class="is-active" href="/wiki/resources"><img src={getSidebarIcon('Resources', '/wiki/resources')} alt="" /><span>Resources</span><b>{resources.length}</b></a>
+              </nav>
+              <nav class="inner-nav-group" aria-label="Resource Groups">
+                <h2>Groups</h2>
+                {resourceGroups.map((group) => (
+                  <a href={`#${group.id}`}><img src={getSidebarIcon(group.title, `#${group.id}`)} alt="" /><span>{group.title.replace(' Resources', '')}</span><b>{group.items.length}</b></a>
+                ))}
+              </nav>
+            </aside>
           </div>
         </div>
       </section>

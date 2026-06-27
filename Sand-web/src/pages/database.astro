@@ -105,41 +105,6 @@ const structuredData = {
       <section class="inner-shell-section">
         <div class="container">
           <div class="inner-shell-content">
-            <aside class="inner-sidebar" aria-label="SAND database menu">
-              <div class="inner-sidebar-head">
-                <img src={sidebarHeadIcons.database} alt="Mechanical parts icon for database navigation" />
-                <div><strong>Database</strong><span>Tech Tree</span></div>
-              </div>
-              <nav class="inner-nav-group" aria-label="Database">
-                <h2>Database</h2>
-                <a class="is-active" href="/database"><img src={getSidebarIcon('Tech Tree', '/database')} alt="" /><span>Tech Tree</span><b>Board</b></a>
-                <a href="/wiki/weapons"><img src={getSidebarIcon('Weapons', '/wiki/weapons')} alt="" /><span>Weapons</span><b>{weapons.length}</b></a>
-                <a href="/wiki/resources"><img src={getSidebarIcon('Resources', '/wiki/resources')} alt="" /><span>Resources</span><b>{resources.length}</b></a>
-              </nav>
-              <nav class="inner-nav-group" aria-label="Branches">
-                <h2>Branches</h2>
-                {techBranches.map((branch) => (
-                  <a href={`#branch-${branch.id}`}>
-                    <img src={branchVisuals[branch.id]} alt="" />
-                    <span>{branch.shortLabel}</span>
-                    <b>T{techTreeMeta.tierCount}</b>
-                  </a>
-                ))}
-              </nav>
-              <nav class="inner-nav-group" aria-label="On this page">
-                <h2>On this page</h2>
-                {tocLinks.map(([href, label]) => (
-                  <a href={href}><img src={getSidebarIcon(label, href)} alt="" /><span>{label}</span><b>Jump</b></a>
-                ))}
-              </nav>
-              <nav class="inner-nav-group" aria-label="Routes">
-                <h2>Routes</h2>
-                <a href="/getting-started"><img src={getSidebarIcon('Getting Started', '/getting-started')} alt="" /><span>Getting Started</span><b>Start</b></a>
-                <a href="/wiki"><img src={getSidebarIcon('Wiki', '/wiki')} alt="" /><span>Wiki</span><b>Index</b></a>
-                <a href="/map-locations"><img src={getSidebarIcon('Map', '/map-locations')} alt="" /><span>Map</span><b>Routes</b></a>
-              </nav>
-            </aside>
-
             <div class="inner-mainframe">
               <article class="database-article">
                 <section class="db-hero-section" aria-labelledby="db-title">
@@ -151,7 +116,7 @@ const structuredData = {
                       <div class="db-hero-copy">
                         <h1 id="db-title">SAND: Raiders of Sophie Database - Trampler Tech Tree</h1>
                         <p class="db-lead">
-                          Research board for walking-mech progression. Three engineering factions, four unlock tiers, and separate <strong>unlock</strong> vs <strong>build</strong> costs — {techTreeMeta.note}
+                          SAND: Raiders of Sophie Database research board for walking-mech progression. Three engineering factions, four unlock tiers, and separate <strong>unlock</strong> vs <strong>build</strong> costs — {techTreeMeta.note}
                         </p>
                         <p class="db-meta">
                           <time datetime={lastUpdated}>Last updated: {lastUpdated}</time>
@@ -175,13 +140,13 @@ const structuredData = {
                     <h2 id="tree-title">Tech tree board</h2>
                   </div>
                   <p class="db-section-intro">
-                    Three engineering tracks mirror the orbital hangar layout: blue Godlewski (top), orange Kaiser&apos;s Friends (middle), green K.K. Landwehr (bottom). Each tier lists unlock nodes with Crown costs and required materials. Some tiers hide additional blueprint variants — pan the in-game tree to reveal them.
+                    Three SAND: Raiders of Sophie engineering tracks mirror the orbital hangar layout: blue Godlewski (top), orange Kaiser&apos;s Friends (middle), green K.K. Landwehr (bottom). Each tier lists unlock nodes with Crown costs and required materials. Some tiers hide additional blueprint variants — pan the in-game tree to reveal them.
                   </p>
 
                   <div class="db-tree-stage">
                     <div class="db-stage-toolbar">
                       <span>Hangar Research Board</span>
-                      <p>Horizontal branch layout with unlock tiers, item icons, Crown costs, and linked material routes.</p>
+                      <p>SAND: Raiders of Sophie tech tree layout with unlock tiers, item icons, Crown costs, and linked material routes.</p>
                     </div>
                     <div class="db-tree-scroll" tabindex="0" aria-label="Scrollable SAND tech tree board">
                       <div class="db-tree-board">
@@ -262,7 +227,7 @@ const structuredData = {
 
                 <section id="workflow" class="db-workflow-section">
                   <div class="db-section-head">
-                    <h2>Unlock → build → deploy workflow</h2>
+                    <h2>SAND: Raiders of Sophie unlock → build → deploy workflow</h2>
                   </div>
                   <ol class="db-workflow-list">
                     {techWorkflow.map((item) => (
@@ -330,7 +295,7 @@ const structuredData = {
                     <article>
                       <h3>Independent reference</h3>
                       <p>
-                        SAND Guide is a player-maintained database hub, not an official game site. Tech tree entries are organized for Trampler planning, branch comparison, and internal cross-linking with weapons, ammo, and resources.
+                        SAND: Raiders of Sophie Database is a player-maintained planning hub, not an official game site. Tech tree entries are organized for Trampler planning, branch comparison, and internal cross-linking with weapons, ammo, and resources.
                       </p>
                     </article>
                     <article>
@@ -357,6 +322,41 @@ const structuredData = {
                 </section>
               </article>
             </div>
+
+            <aside class="inner-sidebar" aria-label="SAND database menu">
+              <div class="inner-sidebar-head">
+                <img src={sidebarHeadIcons.database} alt="Mechanical parts icon for database navigation" />
+                <div><strong>Database</strong><span>Tech Tree</span></div>
+              </div>
+              <nav class="inner-nav-group" aria-label="Database">
+                <h2>Database</h2>
+                <a class="is-active" href="/database"><img src={getSidebarIcon('Tech Tree', '/database')} alt="" /><span>Tech Tree</span><b>Board</b></a>
+                <a href="/wiki/weapons"><img src={getSidebarIcon('Weapons', '/wiki/weapons')} alt="" /><span>Weapons</span><b>{weapons.length}</b></a>
+                <a href="/wiki/resources"><img src={getSidebarIcon('Resources', '/wiki/resources')} alt="" /><span>Resources</span><b>{resources.length}</b></a>
+              </nav>
+              <nav class="inner-nav-group" aria-label="Branches">
+                <h2>Branches</h2>
+                {techBranches.map((branch) => (
+                  <a href={`#branch-${branch.id}`}>
+                    <img src={branchVisuals[branch.id]} alt="" />
+                    <span>{branch.shortLabel}</span>
+                    <b>T{techTreeMeta.tierCount}</b>
+                  </a>
+                ))}
+              </nav>
+              <nav class="inner-nav-group" aria-label="On this page">
+                <h2>On this page</h2>
+                {tocLinks.map(([href, label]) => (
+                  <a href={href}><img src={getSidebarIcon(label, href)} alt="" /><span>{label}</span><b>Jump</b></a>
+                ))}
+              </nav>
+              <nav class="inner-nav-group" aria-label="Routes">
+                <h2>Routes</h2>
+                <a href="/getting-started"><img src={getSidebarIcon('Getting Started', '/getting-started')} alt="" /><span>Getting Started</span><b>Start</b></a>
+                <a href="/wiki"><img src={getSidebarIcon('Wiki', '/wiki')} alt="" /><span>Wiki</span><b>Index</b></a>
+                <a href="/map-locations"><img src={getSidebarIcon('Map', '/map-locations')} alt="" /><span>Map</span><b>Routes</b></a>
+              </nav>
+            </aside>
           </div>
         </div>
       </section>

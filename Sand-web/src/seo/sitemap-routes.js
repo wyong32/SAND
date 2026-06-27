@@ -59,7 +59,7 @@ const ammunitionRoutes = ammunition.map((ammo) =>
 const guideRoutes = guidesList
   .filter((guide) => guide.isPublished !== false && guide.addressBar)
   .map((guide) =>
-    route(guide.addressBar, `guide-${cleanPath(guide.addressBar).split('/').pop()}`, {
+    route(`/guides/${guide.addressBar}`, `guide-${guide.addressBar}`, {
       lastmod: guide.publishDate,
       changefreq: 'monthly',
       priority: 0.78

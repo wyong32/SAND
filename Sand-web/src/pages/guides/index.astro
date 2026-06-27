@@ -8,10 +8,12 @@ import '../../styles/pages/guides-list-page.css';
 
 const guideGroups = [...new Set(publishedGuides.map((guide) => guide.category))].map((category) => ({
   category,
-  id: publishedGuides.find((guide) => guide.category === category)?.categorySlug || category.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+  key: category.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''),
   guides: publishedGuides.filter((guide) => guide.category === category)
 }));
 const featuredGuide = publishedGuides[0];
+const guideHref = (guide) => `/guides/${guide.addressBar}`;
+const categoryHref = (group) => `/guides?category=${group.key}`;
 const guideHeroStats = [
   ['Published', String(publishedGuides.length)],
   ['Collections', String(guideGroups.length)],
@@ -26,25 +28,6 @@ const seo = pageMetadata.guidesList;
       <section class="inner-shell-section">
         <div class="container">
           <div class="inner-shell-content">
-            <aside class="inner-sidebar" aria-label="SAND guides menu">
-              <div class="inner-sidebar-head">
-                <img src={sidebarHeadIcons.guides} alt="Orbital strike pointer icon for guides navigation" />
-                <div><strong>Guides</strong><span>Strategy Board</span></div>
-              </div>
-              <nav class="inner-nav-group" aria-label="Guide Categories">
-                <h2>Categories</h2>
-                <a class="is-active" href="/guides"><img src={getSidebarIcon('All Guides', '/guides')} alt="" /><span>All Guides</span><b>{publishedGuides.length}</b></a>
-                {guideGroups.map((group) => (
-                  <a href={`#${group.id}`}><img src={getSidebarIcon(group.category, `#${group.id}`)} alt="" /><span>{group.category}</span><b>{group.guides.length}</b></a>
-                ))}
-                <a href="/getting-started"><img src={getSidebarIcon('Getting Started', '/getting-started')} alt="" /><span>Getting Started</span><b>Start</b></a>
-              </nav>
-              <nav class="inner-nav-group" aria-label="Reference">
-                <h2>Reference</h2>
-                <a href="/wiki"><img src={getSidebarIcon('Wiki', '/wiki')} alt="" /><span>Wiki</span><b>All</b></a>
-                <a href="/database"><img src={getSidebarIcon('Database', '/database')} alt="" /><span>Database</span><b>Tree</b></a>
-              </nav>
-            </aside>
             <div class="inner-mainframe">
       <!-- 攻略列表首屏 -->
       <section class="guides-list-hero-section">
@@ -53,14 +36,14 @@ const seo = pageMetadata.guidesList;
             <div class="guides-list-hero-copy">
               <span>Guides</span>
               <h1>SAND: Raiders of Sophie Guides - Survival, Extraction &amp; Strategy</h1>
-              <p>Clear, practical reads for making better decisions across Sophie.</p>
+              <p>SAND: Raiders of Sophie Guides collects clear, practical reads for making better decisions across Sophie, from first raids to extraction discipline.</p>
               <div class="guides-list-hero-strip">
                 {guideHeroStats.map(([label, value]) => (
                   <strong><span>{label}</span>{value}</strong>
                 ))}
               </div>
             </div>
-            {featuredGuide && <a class="guides-list-hero-feature" href={featuredGuide.addressBar}><img src={featuredGuide.imageUrl} alt={featuredGuide.imageAlt} /><div><small>{featuredGuide.category}</small><b>{featuredGuide.title}</b></div></a>}
+            {featuredGuide && <a class="guides-list-hero-feature" href={guideHref(featuredGuide)}><img src={featuredGuide.imageUrl} alt={featuredGuide.imageAlt} /><div><small>{featuredGuide.category}</small><b>{featuredGuide.title}</b></div></a>}
           </div>
         </div>
       </section>
@@ -70,7 +53,7 @@ const seo = pageMetadata.guidesList;
         <div class="container">
           <div class="guides-list-grid-content">
             {guideGroups.map((group, groupIndex) => (
-              <section id={group.id} class="guides-category-section">
+              <section class="guides-category-section" data-guide-category={group.key}>
                 <div class="guides-category-head">
                   <span>Collection {String(groupIndex + 1).padStart(2, '0')}</span>
                   <h2>{group.category}</h2>
@@ -79,20 +62,20 @@ const seo = pageMetadata.guidesList;
                 <div class="guides-category-grid" style={`--guide-count:${group.guides.length};`}>
                   {group.guides.map((guide, guideIndex) => (
                     <article class:list={{ 'guides-featured-entry': guideIndex === 0 }}>
-                      <a class="guides-entry-image" href={guide.addressBar} aria-label={`Read ${guide.title}`}>
+                      <a class="guides-entry-image" href={guideHref(guide)} aria-label={`Read ${guide.title}`}>
                         <img src={guide.imageUrl} alt={guide.imageAlt} />
                         <span>Read Field Guide</span>
                       </a>
                       <div class="guides-entry-copy">
                         <div class="guides-entry-meta">
-                          <small>{guide.difficulty}</small>
-                          <b>{guide.readingTime}</b>
+                          <small>{guide.category}</small>
+                          <b>{guide.publishDate}</b>
                         </div>
-                        <h3><a href={guide.addressBar}>{guide.title}</a></h3>
+                        <h3><a href={guideHref(guide)}>{guide.title}</a></h3>
                         <p>{guide.description}</p>
                         <div class="guides-entry-footer">
                           <time datetime={guide.publishDate}>{guide.publishDate}</time>
-                          <a href={guide.addressBar}>Open dispatch <span aria-hidden="true">&#8594;</span></a>
+                          <a href={guideHref(guide)}>Open dispatch <span aria-hidden="true">&#8594;</span></a>
                         </div>
                       </div>
                     </article>
@@ -104,8 +87,40 @@ const seo = pageMetadata.guidesList;
         </div>
       </section>
             </div>
+
+            <aside class="inner-sidebar" aria-label="SAND guides menu">
+              <div class="inner-sidebar-head">
+                <img src={sidebarHeadIcons.guides} alt="Orbital strike pointer icon for guides navigation" />
+                <div><strong>Guides</strong><span>Strategy Board</span></div>
+              </div>
+              <nav class="inner-nav-group" aria-label="Guide Categories">
+                <h2>Categories</h2>
+                <a class="is-active" href="/guides" data-guide-all><img src={getSidebarIcon('All Guides', '/guides')} alt="" /><span>All Guides</span><b>{publishedGuides.length}</b></a>
+                {guideGroups.map((group) => (
+                  <a href={categoryHref(group)} data-guide-filter={group.key}><img src={getSidebarIcon(group.category, categoryHref(group))} alt="" /><span>{group.category}</span><b>{group.guides.length}</b></a>
+                ))}
+                <a href="/getting-started"><img src={getSidebarIcon('Getting Started', '/getting-started')} alt="" /><span>Getting Started</span><b>Start</b></a>
+              </nav>
+              <nav class="inner-nav-group" aria-label="Reference">
+                <h2>Reference</h2>
+                <a href="/wiki"><img src={getSidebarIcon('Wiki', '/wiki')} alt="" /><span>Wiki</span><b>All</b></a>
+                <a href="/database"><img src={getSidebarIcon('Database', '/database')} alt="" /><span>Database</span><b>Tree</b></a>
+              </nav>
+            </aside>
           </div>
         </div>
       </section>
     </main>
+    <script is:inline>
+      const category = new URLSearchParams(window.location.search).get('category');
+      if (category) {
+        document.querySelectorAll('[data-guide-category]').forEach((section) => {
+          section.hidden = section.getAttribute('data-guide-category') !== category;
+        });
+        document.querySelector('[data-guide-all]')?.classList.remove('is-active');
+        document.querySelectorAll('[data-guide-filter]').forEach((link) => {
+          link.classList.toggle('is-active', link.getAttribute('data-guide-filter') === category);
+        });
+      }
+    </script>
 </BaseLayout>

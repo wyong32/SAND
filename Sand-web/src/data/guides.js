@@ -6,17 +6,14 @@ export const guidesList = [
     publishDate: '2026-06-26',
     imageUrl: '/images/guides/steam-guide-01.jpg',
     imageAlt: 'Official Steam screenshot of a Trampler near a desert loot platform in SAND: Raiders of Sophie',
-    addressBar: '/guides/guides-detail',
-    "seo": {
-      "title": "SAND: Raiders of Sophie Survival Guide - First Runs",
-      "description": "Use this SAND: Raiders of Sophie survival guide to plan first stable runs, with Trampler prep, route discipline, PvP awareness, solo choices, and extraction.",
-      "keywords": "SAND Raiders of Sophie survival guide, SAND first raid tips, SAND solo guide, SAND extraction guide, SAND Trampler guide"
+    addressBar: 'first-stable-runs-survival-guide',
+    seo: {
+      title: "SAND: Raiders of Sophie Survival Guide - First Runs",
+      description: "Use this SAND: Raiders of Sophie survival guide to plan first stable runs, with Trampler prep, route discipline, PvP awareness, solo choices, and extraction.",
+      keywords: "SAND Raiders of Sophie survival guide, SAND first raid tips, SAND solo guide, SAND extraction guide, SAND Trampler guide"
     },
     category: 'Survival',
-    categorySlug: 'survival',
     isPublished: true,
-    difficulty: 'Beginner',
-    readingTime: '14 min read',
     detailsHtml: `
       <p>SAND: Raiders of Sophie is easiest to misunderstand when you treat it like a normal extraction shooter. Your gun matters, but your Trampler, route discipline, crew communication, and willingness to leave early matter more. In the live game, the smartest first goal is not a perfect raid. It is a stable raid: spawn in, move with a plan, learn one POI, extract something useful, and avoid turning every sound into a fight.</p>
 

@@ -1,0 +1,131 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { publishedGuides } from '../../data/guides.js';
+import { getSidebarIcon } from '../../data/sidebar-icons.js';
+import '../../styles/pages/inner-page.css';
+import '../../styles/pages/guides-detail-page.css';
+
+export function getStaticPaths() {
+  return publishedGuides.map((guide) => ({
+    params: { addressBar: guide.addressBar },
+    props: { guide }
+  }));
+}
+
+const { guide } = Astro.props;
+const pageUrl = `/guides/${guide.addressBar}`;
+const categoryKey = guide.category.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: guide.title,
+  description: guide.seo.description,
+  image: guide.imageUrl,
+  datePublished: guide.publishDate,
+  dateModified: guide.publishDate,
+  author: {
+    '@type': 'Organization',
+    name: 'SAND Guide Editorial'
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'SAND Guide'
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': pageUrl
+  },
+  about: {
+    '@type': 'VideoGame',
+    name: 'SAND: Raiders of Sophie'
+  }
+};
+const guideMeta = [
+  ['Category', guide.category],
+  ['Updated', guide.publishDate],
+  ['Focus', 'First stable runs']
+];
+
+const guideReferenceLinks = [
+  ['Getting Started', '/getting-started', 'Core raid loop'],
+  ['Resources Wiki', '/wiki/resources', 'Loot and prep items'],
+  ['Weapons Wiki', '/wiki/weapons', 'Loadout reference'],
+  ['Database', '/database', 'Trampler upgrades']
+];
+---
+
+<BaseLayout title={guide.seo.title} description={guide.seo.description} keywords={guide.seo.keywords} pageUrl={pageUrl} pageType="article" lastUpdated={guide.publishDate} structuredData={structuredData}>
+<main>
+      <section class="inner-shell-section">
+        <div class="container">
+          <div class="inner-shell-content">
+            <div class="inner-mainframe">
+      <!-- 攻略详情首屏 -->
+      <section class="guides-detail-hero-section">
+        <div class="container">
+          <div class="guides-detail-hero-content">
+            <div class="guides-detail-hero-copy">
+              <div class="guides-detail-breadcrumb"><a href="/guides">Guides</a><span>{guide.category}</span></div>
+              <h1>SAND: Raiders of Sophie Guide - {guide.title}</h1>
+              <p>{guide.description} This SAND: Raiders of Sophie Guide focuses on decisions players can apply during a real run.</p>
+              <div class="guides-detail-hero-strip">
+                {guideMeta.map(([label, value]) => (
+                  <strong><span>{label}</span>{value}</strong>
+                ))}
+              </div>
+              <div class="guides-detail-hero-actions">
+                <a href="#guide-body">Read guide</a>
+                <a href="/guides">All guides</a>
+              </div>
+            </div>
+            <figure class="guides-detail-hero-visual">
+              <img src={guide.imageUrl} alt={guide.imageAlt} />
+              <figcaption>{guide.category} field note · Published {guide.publishDate}</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- 攻略详情正文 -->
+      <section id="guide-body" class="guides-detail-body-section">
+        <div class="container">
+          <div class="guides-detail-body-content">
+            <article set:html={guide.detailsHtml}></article>
+            <aside>
+              <span>Guide File</span>
+              <h2>Use this guide with live references.</h2>
+              <p>This SAND: Raiders of Sophie guide is written as a practical route planner. Pair it with the reference pages below when a route, item, weapon, or upgrade decision needs more detail.</p>
+              <div class="guides-detail-link-list">
+                {guideReferenceLinks.map(([label, href, note]) => (
+                  <a href={href}><strong>{label}</strong><small>{note}</small></a>
+                ))}
+              </div>
+              <p class="guides-detail-update">Published {guide.publishDate}. Category: {guide.category}.</p>
+            </aside>
+          </div>
+        </div>
+      </section>
+            </div>
+
+            <aside class="inner-sidebar" aria-label="SAND guide menu">
+              <div class="inner-sidebar-head">
+                <img src={guide.imageUrl} alt={guide.imageAlt} />
+                <div><strong>Guide</strong><span>Strategy File</span></div>
+              </div>
+              <nav class="inner-nav-group" aria-label="Guide Entry">
+                <h2>Entry</h2>
+                <a class="is-active" href={pageUrl}><img src={guide.imageUrl} alt="" /><span>{guide.title}</span><b>Open</b></a>
+                <a href="/guides"><img src={getSidebarIcon('All Guides', '/guides')} alt="" /><span>All Guides</span><b>Back</b></a>
+                <a href={`/guides?category=${categoryKey}`}><img src={getSidebarIcon(guide.category, `/guides?category=${categoryKey}`)} alt="" /><span>{guide.category}</span><b>Type</b></a>
+              </nav>
+              <nav class="inner-nav-group" aria-label="Reference">
+                <h2>Reference</h2>
+                <a href="/wiki"><img src={getSidebarIcon('Wiki', '/wiki')} alt="" /><span>Wiki</span><b>All</b></a>
+                <a href="/database"><img src={getSidebarIcon('Database', '/database')} alt="" /><span>Database</span><b>Tree</b></a>
+              </nav>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+</BaseLayout>

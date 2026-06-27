@@ -47,18 +47,6 @@ const noteRows = [
       <section class="inner-shell-section">
         <div class="container">
           <div class="inner-shell-content">
-            <aside class="inner-sidebar" aria-label="SAND wiki menu">
-              <div class="inner-sidebar-head">
-                <img src={entry.imageUrl} alt={entry.imageAlt} />
-                <div><strong>Entry</strong><span>Ammo File</span></div>
-              </div>
-              <nav class="inner-nav-group" aria-label="Ammunition Entry">
-                <h2>Entry</h2>
-                <a class="is-active" href={detailUrl}><img src={entry.imageUrl} alt="" /><span>{entry.title}</span><b>Open</b></a>
-                <a href="/wiki/ammunition"><img src={getSidebarIcon('Ammunition List', '/wiki/ammunition')} alt="" /><span>Ammunition List</span><b>Back</b></a>
-                <a href="/wiki/weapons"><img src={getSidebarIcon('Weapons', '/wiki/weapons')} alt="" /><span>Weapons</span><b>{weapons.length}</b></a>
-              </nav>
-            </aside>
             <div class="inner-mainframe">
               <!-- Wiki三级详情：弹药独立页面 -->
               <section class="wiki-detail-hero-section">
@@ -68,7 +56,7 @@ const noteRows = [
                       <a href="/wiki/ammunition">Ammunition</a>
                       <span>{entry.family} / {entry.type}</span>
                       <h1>SAND: Raiders of Sophie Wiki - {entry.title}</h1>
-                      <p>{entry.intro}</p>
+                      <p>{entry.intro} Use this SAND: Raiders of Sophie Wiki ammunition entry to compare family data, damage fields, linked weapons, and related ammo options.</p>
                     </div>
                     <img src={entry.imageUrl} alt={entry.imageAlt} />
                   </div>
@@ -149,6 +137,19 @@ const noteRows = [
                 </div>
               </section>
             </div>
+
+            <aside class="inner-sidebar" aria-label="SAND wiki menu">
+              <div class="inner-sidebar-head">
+                <img src={entry.imageUrl} alt={entry.imageAlt} />
+                <div><strong>Entry</strong><span>Ammo File</span></div>
+              </div>
+              <nav class="inner-nav-group" aria-label="Ammunition Entry">
+                <h2>Entry</h2>
+                <a class="is-active" href={detailUrl}><img src={entry.imageUrl} alt="" /><span>{entry.title}</span><b>Open</b></a>
+                <a href="/wiki/ammunition"><img src={getSidebarIcon('Ammunition List', '/wiki/ammunition')} alt="" /><span>Ammunition List</span><b>Back</b></a>
+                <a href="/wiki/weapons"><img src={getSidebarIcon('Weapons', '/wiki/weapons')} alt="" /><span>Weapons</span><b>{weapons.length}</b></a>
+              </nav>
+            </aside>
           </div>
         </div>
       </section>

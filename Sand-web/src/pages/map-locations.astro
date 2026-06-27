@@ -5,6 +5,8 @@ import { getSidebarIcon, sidebarHeadIcons } from '../data/sidebar-icons.js';
 import '../styles/pages/inner-page.css';
 import '../styles/pages/map-locations-page.css';
 
+const firstGuidePath = '/guides/first-stable-runs-survival-guide';
+
 const pageUrl = '/map-locations';
 const lastUpdated = '2026-06-26';
 const seo = pageMetadata.mapLocations;
@@ -154,31 +156,6 @@ const structuredData = {
       <section class="inner-shell-section">
         <div class="container">
           <div class="inner-shell-content">
-            <aside class="inner-sidebar" aria-label="SAND map menu">
-              <div class="inner-sidebar-head">
-                <img src={sidebarHeadIcons.map} alt="Sophie regional field map icon" />
-                <div><strong>Map</strong><span>Route Manual</span></div>
-              </div>
-              <nav class="inner-nav-group" aria-label="Map sections">
-                <h2>Map</h2>
-                <a class="is-active" href="/map-locations"><img src={getSidebarIcon('Map & Locations', '/map-locations')} alt="" /><span>Map & Locations</span><b>{locationTypes.length}</b></a>
-                <a href="#interactive-map"><img src={getSidebarIcon('Regional Map', '#interactive-map')} alt="" /><span>Regional Map</span><b>Open</b></a>
-                <a href="#route-plans"><img src={getSidebarIcon('Route Plans', '#route-plans')} alt="" /><span>Route Plans</span><b>{routePlans.length}</b></a>
-                <a href="#sources"><img src={getSidebarIcon('Sources', '#sources')} alt="" /><span>Sources</span><b>Refs</b></a>
-              </nav>
-              <nav class="inner-nav-group" aria-label="Location types">
-                <h2>Location Types</h2>
-                {locationTypes.map((location) => (
-                  <a href={`#${location.id}`}><img src={getSidebarIcon(location.title, `#${location.id}`)} alt="" /><span>{location.title}</span><b>{location.marker}</b></a>
-                ))}
-              </nav>
-              <nav class="inner-nav-group" aria-label="Reference">
-                <h2>Reference</h2>
-                <a href="/guides/guides-detail"><img src={getSidebarIcon('Survival Guide', '/guides/guides-detail')} alt="" /><span>Survival Guide</span><b>Guide</b></a>
-                <a href="/wiki/resources"><img src={getSidebarIcon('Resources', '/wiki/resources')} alt="" /><span>Resources</span><b>Loot</b></a>
-                <a href="/database"><img src={getSidebarIcon('Database', '/database')} alt="" /><span>Database</span><b>Tree</b></a>
-              </nav>
-            </aside>
             <div class="inner-mainframe">
               <!-- 地图页首屏 -->
               <section class="map-hero-section">
@@ -188,7 +165,7 @@ const structuredData = {
                       <span>Map & Locations</span>
                       <h1>SAND: Raiders of Sophie Map - Locations &amp; Routes</h1>
                       <p>
-                        A visual field map for SAND: Raiders of Sophie: identify the terrain, landmark types, extraction pressure, and places that change how a run feels.
+                        SAND: Raiders of Sophie Map & Locations is a visual field reference for identifying terrain, landmark types, extraction pressure, and places that change how a run feels.
                       </p>
                       <small>Last updated: {lastUpdated}. This is a regional navigation illustration, not a claim of fixed coordinates in SAND's procedural desert.</small>
                       <div class="map-hero-strip">
@@ -209,7 +186,7 @@ const structuredData = {
                 <div class="container">
                   <div class="map-section-head">
                     <h2 id="map-board-title">Sophie regional field map</h2>
-                    <p>Explore a visual overview of the landmark types reported in current guides. Select a marker for its field brief; positions show terrain context, not fixed spawn coordinates.</p>
+                    <p>Explore a SAND: Raiders of Sophie map overview of landmark types reported in current guides. Select a marker for its field brief; positions show terrain context, not fixed spawn coordinates.</p>
                   </div>
                   <div class="map-board-content">
                     <div class="map-board-shell">
@@ -334,6 +311,32 @@ const structuredData = {
                 </div>
               </section>
             </div>
+
+            <aside class="inner-sidebar" aria-label="SAND map menu">
+              <div class="inner-sidebar-head">
+                <img src={sidebarHeadIcons.map} alt="Sophie regional field map icon" />
+                <div><strong>Map</strong><span>Route Manual</span></div>
+              </div>
+              <nav class="inner-nav-group" aria-label="Map sections">
+                <h2>Map</h2>
+                <a class="is-active" href="/map-locations"><img src={getSidebarIcon('Map & Locations', '/map-locations')} alt="" /><span>Map & Locations</span><b>{locationTypes.length}</b></a>
+                <a href="#interactive-map"><img src={getSidebarIcon('Regional Map', '#interactive-map')} alt="" /><span>Regional Map</span><b>Open</b></a>
+                <a href="#route-plans"><img src={getSidebarIcon('Route Plans', '#route-plans')} alt="" /><span>Route Plans</span><b>{routePlans.length}</b></a>
+                <a href="#sources"><img src={getSidebarIcon('Sources', '#sources')} alt="" /><span>Sources</span><b>Refs</b></a>
+              </nav>
+              <nav class="inner-nav-group" aria-label="Location types">
+                <h2>Location Types</h2>
+                {locationTypes.map((location) => (
+                  <a href={`#${location.id}`}><img src={getSidebarIcon(location.title, `#${location.id}`)} alt="" /><span>{location.title}</span><b>{location.marker}</b></a>
+                ))}
+              </nav>
+              <nav class="inner-nav-group" aria-label="Reference">
+                <h2>Reference</h2>
+                <a href={firstGuidePath}><img src={getSidebarIcon('Survival Guide', firstGuidePath)} alt="" /><span>Survival Guide</span><b>Guide</b></a>
+                <a href="/wiki/resources"><img src={getSidebarIcon('Resources', '/wiki/resources')} alt="" /><span>Resources</span><b>Loot</b></a>
+                <a href="/database"><img src={getSidebarIcon('Database', '/database')} alt="" /><span>Database</span><b>Tree</b></a>
+              </nav>
+            </aside>
           </div>
         </div>
       </section>

@@ -11,9 +11,10 @@ import '../styles/pages/home-page.css';
 const seo = pageMetadata.home;
 const reviewDate = '2026-06-26';
 const totalEntries = weapons.length + ammunition.length + resources.length;
+const firstGuidePath = publishedGuides[0] ? `/guides/${publishedGuides[0].addressBar}` : '/guides';
 
 const sidebarGroups = [
-  { title: 'Start Here', links: [['Getting Started', '/getting-started', '01'], ['First Stable Run', '/guides/guides-detail', 'Guide'], ['Map & Locations', '/map-locations', 'Field']] },
+  { title: 'Start Here', links: [['Getting Started', '/getting-started', '01'], ['First Stable Run', firstGuidePath, 'Guide'], ['Map & Locations', '/map-locations', 'Field']] },
   { title: 'Reference', links: [['Weapons', '/wiki/weapons', String(weapons.length)], ['Ammunition', '/wiki/ammunition', String(ammunition.length)], ['Resources', '/wiki/resources', String(resources.length)]] },
   { title: 'Planning', links: [['Trampler Tech Tree', '/database', 'Tree'], ['All Wiki Categories', '/wiki', 'Index'], ['All Guides', '/guides', String(publishedGuides.length)]] }
 ];
@@ -21,7 +22,7 @@ const sidebarGroups = [
 const firstRunLinks = [
   ['01', 'Prepare the Trampler', 'Fuel, cargo, and a basic loadout.', '/getting-started'],
   ['02', 'Choose a short route', 'POI type, cover, and a known exit.', '/map-locations'],
-  ['03', 'Extract on purpose', 'Keep the run stable before getting greedy.', '/guides/guides-detail']
+  ['03', 'Extract on purpose', 'Keep the run stable before getting greedy.', firstGuidePath]
 ];
 
 const referenceAreas = [
@@ -63,20 +64,13 @@ const structuredData = {
     <section class="home-shell-section">
       <div class="container">
         <div class="home-shell-content">
-          <!-- 资料站的主目录 -->
-          <aside class="home-sidebar" aria-label="SAND Guide navigation">
-            <div class="home-sidebar-head"><img src={sidebarHeadIcons.home} alt="SAND Trampler field icon" /><div><strong>SAND Guide</strong><span>Raid Manual</span></div></div>
-            {sidebarGroups.map((group) => <nav class="home-nav-group" aria-label={group.title}><h2>{group.title}</h2>{group.links.map(([label, href, count]) => <a href={href}><img src={getSidebarIcon(label, href)} alt="" /><span>{label}</span><b>{count}</b></a>)}</nav>)}
-            <div class="home-sidebar-status"><span>Reference status</span><b>Live Game</b><small>Reviewed {reviewDate}</small></div>
-          </aside>
-
           <div class="home-mainframe">
             <!-- 紧凑主控台：游戏概述和首局行动并列 -->
             <section class="home-hero-section">
               <div class="home-hero-copy">
                 <span>Independent Player Reference</span>
                 <h1>SAND: Raiders of Sophie Wiki, Database, Guides &amp; Map</h1>
-                <p>Raid planning, Trampler systems, loot reference, and field decisions for live-game players. Use it before you spend resources in the hangar, when you identify something in the desert, or when a route needs an exit plan.</p>
+                <p>SAND: Raiders of Sophie Guide brings raid planning, Trampler systems, loot reference, and field decisions into one player-focused hub. Use it before you spend resources in the hangar, when you identify something in the desert, or when a route needs an exit plan.</p>
                 <div class="home-hero-actions"><a href="/getting-started">Start here <span aria-hidden="true">&#8594;</span></a><a href="/wiki">Open wiki</a></div>
                 <small>Reviewed {reviewDate} · {totalEntries} item entries · Community reference</small>
               </div>
@@ -100,12 +94,12 @@ const structuredData = {
                 <!-- 玩家在一局中如何使用不同资料 -->
                 <section class="home-expedition-section" aria-labelledby="expedition-title">
                   <div class="home-section-head"><div><span>Expedition Briefing</span><h2 id="expedition-title">One run, four connected decisions.</h2></div></div>
-                  <p class="home-expedition-lead">A good raid is usually decided before the best loot appears. This is the order in which the guide is designed to help: make the Trampler functional, limit the first objective, read the signals around you, and leave while the run is still recoverable.</p>
+                  <p class="home-expedition-lead">A good SAND: Raiders of Sophie raid is usually decided before the best loot appears. This is the order in which the guide is designed to help: make the Trampler functional, limit the first objective, read the signals around you, and leave while the run is still recoverable.</p>
                   <div class="home-expedition-content">
                     <article><b>01 / Prepare</b><h3>Give the Trampler a job.</h3><p>Pack power, cargo space, a personal fallback, and any mounted gear that supports the specific route. A larger loadout is not automatically a better loadout if it delays departure or makes loss harder to accept.</p><a href="/getting-started">Preparation checklist &#8594;</a></article>
                     <article><b>02 / Navigate</b><h3>Spend distance on purpose.</h3><p>Named POIs, wrecks, open dunes, and radio towers change the balance between value, cover, noise, and exit options. The map page uses location types and terrain context instead of invented static coordinates.</p><a href="/map-locations">Read the field map &#8594;</a></article>
                     <article><b>03 / Commit</b><h3>Know what the cargo is worth.</h3><p>Weapon and resource reference becomes useful when it changes a decision: whether to continue, return to the Trampler, install an upgrade later, or call extraction now.</p><a href="/wiki/resources">Check resources &#8594;</a></article>
-                    <article><b>04 / Extract</b><h3>Treat the last minute as a fight.</h3><p>Extraction creates sound, timing, and an obvious objective. Arrive with a route out, enough mobility to reposition, and a reason to leave rather than simply one more container to open.</p><a href="/guides/guides-detail">Read extraction discipline &#8594;</a></article>
+                    <article><b>04 / Extract</b><h3>Treat the last minute as a fight.</h3><p>Extraction creates sound, timing, and an obvious objective. Arrive with a route out, enough mobility to reposition, and a reason to leave rather than simply one more container to open.</p><a href={firstGuidePath}>Read extraction discipline &#8594;</a></article>
                   </div>
                 </section>
 
@@ -119,7 +113,7 @@ const structuredData = {
                 </section>
 
                 <!-- 首页直接复用指南列表数据 -->
-                {publishedGuides.length > 0 && <section class="home-guides-section" aria-labelledby="guides-title"><div class="home-section-head"><div><span>Latest Guides</span><h2 id="guides-title">Field notes for the next run.</h2></div><a href="/guides">All guides &#8594;</a></div><div class="home-guides-content">{publishedGuides.slice(0, 3).map((guide) => <article><a class="home-guide-image" href={guide.addressBar} aria-label={`Read ${guide.title}`}><img src={guide.imageUrl} alt={guide.imageAlt} /><span>Read guide</span></a><div><small>{guide.category} · {guide.difficulty}</small><h3><a href={guide.addressBar}>{guide.title}</a></h3><p>{guide.description}</p><footer><time datetime={guide.publishDate}>{guide.publishDate}</time><b>{guide.readingTime}</b></footer></div></article>)}</div></section>}
+                {publishedGuides.length > 0 && <section class="home-guides-section" aria-labelledby="guides-title"><div class="home-section-head"><div><span>Latest Guides</span><h2 id="guides-title">Field notes for the next run.</h2></div><a href="/guides">All guides &#8594;</a></div><div class="home-guides-content">{publishedGuides.slice(0, 3).map((guide) => <article><a class="home-guide-image" href={`/guides/${guide.addressBar}`} aria-label={`Read ${guide.title}`}><img src={guide.imageUrl} alt={guide.imageAlt} /><span>Read guide</span></a><div><small>{guide.category}</small><h3><a href={`/guides/${guide.addressBar}`}>{guide.title}</a></h3><p>{guide.description}</p><footer><time datetime={guide.publishDate}>{guide.publishDate}</time><b>Guide</b></footer></div></article>)}</div></section>}
               </div>
 
               <aside class="home-info-rail" aria-label="SAND guide information">
@@ -133,6 +127,13 @@ const structuredData = {
             <!-- 可核查的编辑和来源信息 -->
             <section class="home-editorial-section" aria-labelledby="editorial-title"><div><span>Player Trust</span><h2 id="editorial-title">Use this before a real run.</h2><p>This guide is organized around the decisions players make in SAND: Raiders of Sophie: what to bring, which resource is worth cargo space, where a Trampler route can break down, and when a tech unlock is worth its cost.</p><p>Official pages are used for the game premise and release context. Wiki entries keep item facts separate from tactical advice, while guides explain how those facts affect a live expedition. Patch-sensitive values are treated as planning references, not permanent rules.</p></div><div class="home-editorial-links">{sourceLinks.map(([label, href]) => <a href={href} target="_blank" rel="nofollow noopener">{label}<span aria-hidden="true">&#8599;</span></a>)}</div><small>Live-game information can change after patches. Last editorial review: {reviewDate}.</small></section>
           </div>
+
+          <!-- 资料站的主目录：DOM 放在主体后面，CSS 负责视觉左栏位置 -->
+          <aside class="home-sidebar" aria-label="SAND Guide navigation">
+            <div class="home-sidebar-head"><img src={sidebarHeadIcons.home} alt="SAND Trampler field icon" /><div><strong>SAND Guide</strong><span>Raid Manual</span></div></div>
+            {sidebarGroups.map((group) => <nav class="home-nav-group" aria-label={group.title}><h2>{group.title}</h2>{group.links.map(([label, href, count]) => <a href={href}><img src={getSidebarIcon(label, href)} alt="" /><span>{label}</span><b>{count}</b></a>)}</nav>)}
+            <div class="home-sidebar-status"><span>Reference status</span><b>Live Game</b><small>Reviewed {reviewDate}</small></div>
+          </aside>
         </div>
       </div>
     </section>

@@ -77,10 +77,10 @@ const searchItems = [
     .map((guide) => ({
       title: guide.title,
       description: guide.description,
-      href: guide.addressBar,
+      href: `/guides/${guide.addressBar}`,
       category: guide.category,
       imageUrl: guide.imageUrl,
-      tags: ['guide', guide.category, guide.difficulty, guide.readingTime].filter(Boolean)
+      tags: ['guide', guide.category].filter(Boolean)
     }))
 ];
 
@@ -118,7 +118,7 @@ const structuredData = {
           <div>
             <span>Site Search</span>
             <h1>SAND: Raiders of Sophie Search - Wiki, Database, Guides &amp; Map</h1>
-            <p>Search the player reference index for weapons, ammunition, resources, Trampler planning, route notes, and guide entries.</p>
+            <p>Search the SAND: Raiders of Sophie player reference index for weapons, ammunition, resources, Trampler planning, route notes, and guide entries.</p>
           </div>
           <form class="search-panel" action="/search" method="get" role="search">
             <label for="search-page-input">Search query</label>

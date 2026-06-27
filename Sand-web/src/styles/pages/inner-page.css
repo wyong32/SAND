@@ -10,6 +10,8 @@
 }
 
 .inner-sidebar {
+  grid-column: 1;
+  grid-row: 1;
   position: sticky;
   top: 86px;
   max-height: calc(100vh - 110px);
@@ -117,6 +119,8 @@
 }
 
 .inner-mainframe {
+  grid-column: 2;
+  grid-row: 1;
   min-width: 0;
   display: grid;
   gap: 18px;
@@ -136,8 +140,16 @@
   }
 
   .inner-sidebar {
+    grid-column: 1;
+    grid-row: auto;
+    order: -1;
     position: static;
     max-height: none;
+  }
+
+  .inner-mainframe {
+    grid-column: 1;
+    grid-row: auto;
   }
 }
 

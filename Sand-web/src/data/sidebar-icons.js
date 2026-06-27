@@ -30,7 +30,7 @@ export const sidebarHeadIcons = {
 
 const routeIcons = [
   ['/getting-started', resourceAltIcon],
-  ['/guides/guides-detail', pistolIcon],
+  ['/guides/first-stable-runs-survival-guide', pistolIcon],
   ['/guides', guideIcon],
   ['/map-locations', mapIcon],
   ['/wiki/weapons', weaponIcon],
