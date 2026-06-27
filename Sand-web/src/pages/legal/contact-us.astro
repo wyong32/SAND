@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { pageMetadata } from '../../seo/page-metadata.js';
+import '../../styles/pages/legal-page.css';
+
+const seo = pageMetadata.contactUs;
+const lastUpdated = '2026-06-27';
+const legalLinks = [
+  ['Privacy Policy', '/legal/privacy-policy'],
+  ['Terms of Service', '/legal/terms-of-service'],
+  ['Copyright', '/legal/copyright'],
+  ['About Us', '/legal/about-us'],
+  ['Contact Us', '/legal/contact-us']
+];
+---
+
+<BaseLayout title={seo.title} description={seo.description} keywords={seo.keywords} pageUrl="/legal/contact-us" pageType="article" lastUpdated={lastUpdated}>
+  <main id="main-content">
+    <section class="legal-section">
+      <div class="container">
+        <div class="legal-content">
+          <article class="legal-article">
+            <header class="legal-hero">
+              <span>Legal</span>
+              <h1>Contact Us</h1>
+              <p>Use this page to contact SAND Guide about corrections, sources, copyright questions, or general site feedback.</p>
+              <p><time datetime={lastUpdated}>Last updated: {lastUpdated}</time></p>
+            </header>
+            <div class="legal-body">
+              <section>
+                <h2>Email</h2>
+                <p>The contact email for SAND Guide is <a href="mailto:wyong@sandraidersofsophie.com">wyong@sandraidersofsophie.com</a>. We do not provide a contact form on this page, so please use email for all requests.</p>
+              </section>
+              <section>
+                <h2>Corrections</h2>
+                <p>If you are reporting outdated guide text, incorrect item data, broken links, or a missing source, please include the page URL, the section title, the item name if relevant, and a short explanation of the correction. Source links are helpful when available.</p>
+              </section>
+              <section>
+                <h2>Copyright Or Attribution Requests</h2>
+                <p>For copyright, takedown, or attribution requests, please identify the exact page and content at issue. Include your relationship to the work, the requested action, and a reliable way to verify the claim. We review reasonable requests and may remove, revise, replace, or add attribution where appropriate.</p>
+              </section>
+              <section>
+                <h2>General Feedback</h2>
+                <p>You can also contact us about navigation issues, unclear explanations, missing guide topics, design problems, or suggestions for improving the site. We cannot promise a response to every message, but clear and specific feedback is more likely to be useful.</p>
+              </section>
+              <section>
+                <h2>Not Official Support</h2>
+                <p>SAND Guide is an independent player reference. We cannot help with official account support, refunds, bans, server enforcement, bug reports to the developer, or platform-specific purchase issues. For those matters, use the official support channels connected to the game or the platform where you purchased it.</p>
+              </section>
+              <section>
+                <h2>Response Time</h2>
+                <p>Response time can vary depending on message volume and the type of request. Legal or copyright issues may take longer to review than simple corrections. Please do not send sensitive personal information unless it is necessary for your request.</p>
+              </section>
+            </div>
+          </article>
+          <aside class="legal-side" aria-label="Legal navigation">
+            <div class="legal-side-card">
+              <h2>Legal</h2>
+              <nav>{legalLinks.map(([label, href]) => <a href={href}>{label}</a>)}</nav>
+            </div>
+            <div class="legal-side-card">
+              <h2>Contact</h2>
+              <p>Email: <a href="mailto:wyong@sandraidersofsophie.com">wyong@sandraidersofsophie.com</a></p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

@@ -1,0 +1,364 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { pageMetadata } from '../seo/page-metadata.js';
+import { weapons } from '../data/wiki/weapons.js';
+import { resources } from '../data/wiki/resources.js';
+import {
+  techTreeMeta,
+  techBranches,
+  constructionMaterials,
+  techWorkflow,
+  priorityPaths,
+  techFaq,
+  techStats,
+  parseMaterialLinks
+} from '../data/database/tech-tree.js';
+import { getSidebarIcon, sidebarHeadIcons } from '../data/sidebar-icons.js';
+import '../styles/pages/inner-page.css';
+import '../styles/pages/database-page.css';
+
+const pageUrl = '/database';
+const lastUpdated = techTreeMeta.lastUpdated;
+const seo = pageMetadata.database;
+
+const tierLabels = ['Tier I', 'Tier II', 'Tier III', 'Tier IV'];
+const placeholderIcon = 'https://placehold.co/96x96/ffdac1/6B9B7B?text=';
+const weaponImageByHref = new Map(weapons.map((weapon) => [`/wiki/weapons/${weapon.addressBar}`, weapon.imageUrl]));
+const resourceImageByHash = new Map(resources.map((resource) => [`/wiki/resources#resource-${resource.id}`, resource.imageUrl]));
+const resourceImageByTitle = new Map(resources.map((resource) => [resource.title, resource.imageUrl]));
+const branchVisuals = {
+  godlewski: resourceImageByTitle.get('NZ Mk2 Energy Rod') || placeholderIcon,
+  kaiser: weaponImageByHref.get('/wiki/weapons/40mm-autocannon') || placeholderIcon,
+  landwehr: weaponImageByHref.get('/wiki/weapons/anti-reactor-rifle') || placeholderIcon
+};
+const tagImages = {
+  Utility: resourceImageByTitle.get('NZ Mk2 Energy Rod'),
+  Crew: resourceImageByTitle.get('Canned Food'),
+  Structure: resourceImageByTitle.get('Metal Scrap'),
+  Propulsion: resourceImageByTitle.get('Mechanical Parts'),
+  Mobility: resourceImageByTitle.get('Pneumatic Parts'),
+  Cannon: weaponImageByHref.get('/wiki/weapons/40mm-autocannon'),
+  Storage: resourceImageByTitle.get('Crate of 1889 Chardonnay'),
+  Personal: weaponImageByHref.get('/wiki/weapons/anti-reactor-rifle'),
+  Weapons: weaponImageByHref.get('/wiki/weapons/80mm-naval-cannon'),
+  Steering: resourceImageByTitle.get('Mechanical Parts'),
+  Crafting: resourceImageByTitle.get('Weapon Parts'),
+  Defense: resourceImageByTitle.get('Alloy Steel'),
+  Breaching: weaponImageByHref.get('/wiki/weapons/time-bomb')
+};
+const nodeImage = (node) => {
+  if ('href' in node && node.href) {
+    const cleanHref = node.href.split('?')[0];
+    if (weaponImageByHref.has(cleanHref)) return weaponImageByHref.get(cleanHref);
+    if (resourceImageByHash.has(cleanHref)) return resourceImageByHash.get(cleanHref);
+    if (cleanHref === '/wiki/weapons') return weaponImageByHref.get('/wiki/weapons/anti-reactor-rifle');
+    if (cleanHref === '/wiki/ammunition') return '/images/wiki/ammunition/40mm-shell.png';
+    if (cleanHref === '/wiki/resources') return resourceImageByTitle.get('Mechanical Parts');
+  }
+  return tagImages[node.tag] || placeholderIcon;
+};
+
+const tocLinks = [
+  ['#tech-board', 'Tech tree board'],
+  ['#workflow', 'Unlock workflow'],
+  ['#materials', 'Construction materials'],
+  ['#priorities', 'Build priorities'],
+  ['#faq', 'FAQ'],
+  ['#about-database', 'About this database']
+];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebPage',
+      '@id': `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: seo.title,
+      description: seo.description,
+      dateModified: lastUpdated,
+      inLanguage: 'en',
+      isPartOf: {
+        '@type': 'WebSite',
+        name: 'SAND Guide',
+        description: 'Independent field manual for SAND: Raiders of Sophie players.'
+      },
+      about: {
+        '@type': 'VideoGame',
+        name: 'SAND: Raiders of Sophie'
+      }
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: techFaq.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: { '@type': 'Answer', text: item.answer }
+      }))
+    }
+  ]
+};
+---
+
+<BaseLayout title={seo.title} description={seo.description} keywords={seo.keywords} pageUrl={pageUrl} structuredData={structuredData}>
+<main id="main-content">
+      <section class="inner-shell-section">
+        <div class="container">
+          <div class="inner-shell-content">
+            <aside class="inner-sidebar" aria-label="SAND database menu">
+              <div class="inner-sidebar-head">
+                <img src={sidebarHeadIcons.database} alt="Mechanical parts icon for database navigation" />
+                <div><strong>Database</strong><span>Tech Tree</span></div>
+              </div>
+              <nav class="inner-nav-group" aria-label="Database">
+                <h2>Database</h2>
+                <a class="is-active" href="/database"><img src={getSidebarIcon('Tech Tree', '/database')} alt="" /><span>Tech Tree</span><b>Board</b></a>
+                <a href="/wiki/weapons"><img src={getSidebarIcon('Weapons', '/wiki/weapons')} alt="" /><span>Weapons</span><b>{weapons.length}</b></a>
+                <a href="/wiki/resources"><img src={getSidebarIcon('Resources', '/wiki/resources')} alt="" /><span>Resources</span><b>{resources.length}</b></a>
+              </nav>
+              <nav class="inner-nav-group" aria-label="Branches">
+                <h2>Branches</h2>
+                {techBranches.map((branch) => (
+                  <a href={`#branch-${branch.id}`}>
+                    <img src={branchVisuals[branch.id]} alt="" />
+                    <span>{branch.shortLabel}</span>
+                    <b>T{techTreeMeta.tierCount}</b>
+                  </a>
+                ))}
+              </nav>
+              <nav class="inner-nav-group" aria-label="On this page">
+                <h2>On this page</h2>
+                {tocLinks.map(([href, label]) => (
+                  <a href={href}><img src={getSidebarIcon(label, href)} alt="" /><span>{label}</span><b>Jump</b></a>
+                ))}
+              </nav>
+              <nav class="inner-nav-group" aria-label="Routes">
+                <h2>Routes</h2>
+                <a href="/getting-started"><img src={getSidebarIcon('Getting Started', '/getting-started')} alt="" /><span>Getting Started</span><b>Start</b></a>
+                <a href="/wiki"><img src={getSidebarIcon('Wiki', '/wiki')} alt="" /><span>Wiki</span><b>Index</b></a>
+                <a href="/map-locations"><img src={getSidebarIcon('Map', '/map-locations')} alt="" /><span>Map</span><b>Routes</b></a>
+              </nav>
+            </aside>
+
+            <div class="inner-mainframe">
+              <article class="database-article">
+                <section class="db-hero-section" aria-labelledby="db-title">
+                  <div class="db-hero-frame">
+                    <div class="db-hero-titlebar">
+                      <span>Orbital Hangar · Tech Tree Terminal · Live Build</span>
+                    </div>
+                    <div class="db-hero-body">
+                      <div class="db-hero-copy">
+                        <h1 id="db-title">SAND: Raiders of Sophie Database - Trampler Tech Tree</h1>
+                        <p class="db-lead">
+                          Research board for walking-mech progression. Three engineering factions, four unlock tiers, and separate <strong>unlock</strong> vs <strong>build</strong> costs — {techTreeMeta.note}
+                        </p>
+                        <p class="db-meta">
+                          <time datetime={lastUpdated}>Last updated: {lastUpdated}</time>
+                          <span>SAND Guide Editorial · Live-game reference</span>
+                        </p>
+                      </div>
+                      <aside class="db-hero-stats" aria-label="Tech tree summary">
+                        <h2>Board summary</h2>
+                        <ul>
+                          <li><b>{techStats.branches}</b><span>Engineering branches</span></li>
+                          <li><b>{techStats.tiers}</b><span>Unlock tiers</span></li>
+                          <li><b>{techStats.trackedNodes}</b><span>Reference nodes</span></li>
+                        </ul>
+                      </aside>
+                    </div>
+                  </div>
+                </section>
+
+                <section id="tech-board" class="db-tree-section" aria-labelledby="tree-title">
+                  <div class="db-section-head">
+                    <h2 id="tree-title">Tech tree board</h2>
+                  </div>
+                  <p class="db-section-intro">
+                    Three engineering tracks mirror the orbital hangar layout: blue Godlewski (top), orange Kaiser&apos;s Friends (middle), green K.K. Landwehr (bottom). Each tier lists unlock nodes with Crown costs and required materials. Some tiers hide additional blueprint variants — pan the in-game tree to reveal them.
+                  </p>
+
+                  <div class="db-tree-stage">
+                    <div class="db-stage-toolbar">
+                      <span>Hangar Research Board</span>
+                      <p>Horizontal branch layout with unlock tiers, item icons, Crown costs, and linked material routes.</p>
+                    </div>
+                    <div class="db-tree-scroll" tabindex="0" aria-label="Scrollable SAND tech tree board">
+                      <div class="db-tree-board">
+                        <div class="db-tier-rail" aria-hidden="true">
+                          <span></span>
+                          {tierLabels.map((label) => (
+                            <span>{label}</span>
+                          ))}
+                        </div>
+
+                        {techBranches.map((branch) => (
+                          <section id={`branch-${branch.id}`} class:list={['db-branch', `db-branch--${branch.accent}`]}>
+                            <header class="db-branch-head">
+                              <img src={branchVisuals[branch.id]} alt={`${branch.name} tech path icon`} />
+                              <div>
+                                <span class="db-branch-kicker">{branch.colorPath} path · {branch.focus}</span>
+                                <h3>{branch.name}</h3>
+                                <p>{branch.summary}</p>
+                                <small>{branch.playstyle}</small>
+                              </div>
+                            </header>
+
+                            <div class="db-branch-tiers">
+                              {branch.tiers.map((tierRow) => (
+                                <div class="db-tier-row" data-tier={tierRow.tier}>
+                                  <div class="db-tier-label">
+                                    <span>{tierRow.label}</span>
+                                    <small>{tierRow.crownRange} Crowns</small>
+                                  </div>
+                                  <div class="db-tier-nodes">
+                                    {tierRow.nodes.map((node) => (
+                                      <article class="db-node">
+                                        <div class="db-node-image">
+                                          <img src={nodeImage(node)} alt={`${node.name} icon`} decoding="async" />
+                                        </div>
+                                        <div class="db-node-body">
+                                          <div class="db-node-top">
+                                            <span class="db-node-tag">{node.tag}</span>
+                                            {node.crowns != null ? (
+                                              <b class="db-node-cost">{node.crowns.toLocaleString('en-US')}</b>
+                                            ) : (
+                                              <b class="db-node-cost db-node-cost--tbd">Unconfirmed</b>
+                                            )}
+                                          </div>
+                                          <h4>
+                                            {'href' in node && node.href ? <a href={node.href}>{node.name}</a> : node.name}
+                                          </h4>
+                                          {node.materials && (
+                                            <p class="db-node-materials">
+                                              {parseMaterialLinks(node.materials).map((part, index) => (
+                                                <span class="db-material-part">
+                                                  {index > 0 ? ', ' : ''}
+                                                  {part.href ? (
+                                                    <>
+                                                      {part.prefix}<a href={part.href}>{part.name}</a>
+                                                    </>
+                                                  ) : (
+                                                    <>{part.prefix}{part.name}</>
+                                                  )}
+                                                </span>
+                                              ))}
+                                            </p>
+                                          )}
+                                          {'note' in node && node.note && <p class="db-node-note">{node.note}</p>}
+                                        </div>
+                                      </article>
+                                    ))}
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </section>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                <section id="workflow" class="db-workflow-section">
+                  <div class="db-section-head">
+                    <h2>Unlock → build → deploy workflow</h2>
+                  </div>
+                  <ol class="db-workflow-list">
+                    {techWorkflow.map((item) => (
+                      <li>
+                        <span class="db-workflow-step" aria-hidden="true">{item.step}</span>
+                        <article>
+                          <h3>{item.title}</h3>
+                          <p>{item.detail}</p>
+                          <a href={item.href}>Related guide</a>
+                        </article>
+                      </li>
+                    ))}
+                  </ol>
+                </section>
+
+                <section id="materials" class="db-materials-section">
+                  <div class="db-section-head">
+                    <h2>Construction material tiers</h2>
+                  </div>
+                  <div class="db-materials-grid">
+                    {constructionMaterials.map((item) => (
+                      <a href={item.href} class="db-material-card">
+                        <span>{item.rarity}</span>
+                        <h3>{item.name}</h3>
+                        <strong>{item.tier}</strong>
+                        <p>{item.note}</p>
+                      </a>
+                    ))}
+                  </div>
+                </section>
+
+                <section id="priorities" class="db-priority-section">
+                  <div class="db-section-head">
+                    <h2>Which branch first?</h2>
+                  </div>
+                  <div class="db-priority-grid">
+                    {priorityPaths.map((path) => (
+                      <article>
+                        <span>{path.branches.join(' + ')}</span>
+                        <h3>{path.label}</h3>
+                        <p>{path.detail}</p>
+                        <a href={path.href}>Read more</a>
+                      </article>
+                    ))}
+                  </div>
+                </section>
+
+                <section id="faq" class="db-faq-section" aria-labelledby="faq-title">
+                  <div class="db-section-head">
+                    <h2 id="faq-title">Frequently asked questions</h2>
+                  </div>
+                  <div class="db-faq-list">
+                    {techFaq.map((item) => (
+                      <details>
+                        <summary>{item.question}</summary>
+                        <p>{item.answer}</p>
+                      </details>
+                    ))}
+                  </div>
+                </section>
+
+                <section id="about-database" class="db-trust-section">
+                  <h2>About this database</h2>
+                  <div class="db-trust-grid">
+                    <article>
+                      <h3>Independent reference</h3>
+                      <p>
+                        SAND Guide is a player-maintained database hub, not an official game site. Tech tree entries are organized for Trampler planning, branch comparison, and internal cross-linking with weapons, ammo, and resources.
+                      </p>
+                    </article>
+                    <article>
+                      <h3>Patch accuracy</h3>
+                      <p>
+                        Unlock costs and material requirements change between patches. {techTreeMeta.uiLayout} Use this board for orientation and route planning; verify critical values in the hangar when a build or extraction depends on them.
+                      </p>
+                    </article>
+                    <article>
+                      <h3>Start here if you are new</h3>
+                      <p>
+                        <a href="/getting-started">Getting Started</a> explains the first expedition loop. Return here when you are ready to invest Crowns in Tier II–IV unlocks, and pair this page with the <a href="/wiki/weapons">Weapons</a>, <a href="/wiki/ammunition">Ammunition</a>, and <a href="/wiki/resources">Resources</a> wikis for loadout and loot targets.
+                      </p>
+                    </article>
+                  </div>
+                  <div class="db-inline-links">
+                    <a href="/getting-started">Getting Started</a>
+                    <a href="/wiki">Wiki</a>
+                    <a href="/wiki/weapons">Weapons</a>
+                    <a href="/wiki/ammunition">Ammunition</a>
+                    <a href="/wiki/resources">Resources</a>
+                    <a href="/guides">Guides</a>
+                  </div>
+                </section>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+</BaseLayout>

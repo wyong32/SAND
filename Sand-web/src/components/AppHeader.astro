@@ -1,0 +1,235 @@
+---
+const navItems = [
+  { label: 'Home', href: '/' },
+  { label: 'Getting Started', href: '/getting-started' },
+  { label: 'Wiki', href: '/wiki' },
+  { label: 'Database', href: '/database' },
+  { label: 'Guides', href: '/guides' },
+  { label: 'Map & Locations', href: '/map-locations' }
+];
+---
+
+<!-- 顶部组件：保留 logo 图标和文字，后期可直接替换图片地址 -->
+<header class="app-header">
+  <div class="app-header-shell">
+    <a class="app-header-brand" href="/">
+      <img src="/images/logo.svg" alt="SAND: Raiders of Sophie Guide logo" />
+      <span>
+        <strong>SAND: Raiders of Sophie</strong>
+      </span>
+    </a>
+    <button type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav id="primary-navigation" class="app-header-nav" aria-label="Primary navigation">
+      {navItems.map((item) => <a href={item.href}>{item.label}</a>)}
+    </nav>
+    <form class="app-header-search" role="search" action="/search" method="get">
+      <label for="site-search">Search</label>
+      <input id="site-search" name="q" type="search" placeholder="Search tramplers, weapons, extraction..." />
+    </form>
+  </div>
+</header>
+
+<script>
+  const header = document.querySelector('.app-header');
+  const button = header?.querySelector('.app-header-shell > button');
+
+  button?.addEventListener('click', () => {
+    const isOpen = header?.getAttribute('data-open') === 'true';
+    header?.setAttribute('data-open', String(!isOpen));
+    button.setAttribute('aria-expanded', String(!isOpen));
+    button.setAttribute('aria-label', isOpen ? 'Open navigation menu' : 'Close navigation menu');
+  });
+</script>
+
+<style>
+  .app-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    border-bottom: 1px solid rgba(229, 163, 58, 0.42);
+    background: linear-gradient(180deg, rgba(195, 116, 33, 0.32), rgba(10, 15, 22, 0.82));
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.42), inset 0 -1px rgba(255, 205, 113, 0.18);
+  }
+
+  .app-header-shell {
+    width: min(100% - 32px, 1400px);
+    min-height: 58px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(220px, 300px) 1fr minmax(230px, 360px);
+    align-items: center;
+    gap: 20px;
+  }
+
+  .app-header-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+  }
+
+  .app-header-brand img {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(229, 163, 58, 0.58);
+    background: rgba(18, 31, 44, 0.9);
+  }
+
+  .app-header-brand strong {
+    display: block;
+    color: var(--color-brass);
+    font-family: var(--font-ui);
+    font-size: 17px;
+    line-height: 1.1;
+  }
+
+  .app-header-brand small {
+    display: block;
+    margin-top: 3px;
+    color: var(--color-muted);
+    font-family: var(--font-ui);
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+
+  .app-header-shell > button {
+    display: none;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    border: 1px solid rgba(229, 163, 58, 0.46);
+    background: rgba(8, 13, 19, 0.8);
+    color: var(--color-paper);
+    cursor: pointer;
+  }
+
+  .app-header-shell > button span {
+    display: block;
+    height: 2px;
+    margin: 5px 0;
+    background: var(--color-brass);
+  }
+
+  .app-header-nav {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    min-width: 0;
+  }
+
+  .app-header-nav a {
+    padding: 10px 11px;
+    color: var(--color-muted);
+    border: 1px solid rgba(229, 163, 58, 0.12);
+    font-family: var(--font-ui);
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .app-header-nav a:hover {
+    color: var(--color-paper);
+    border-color: rgba(244, 187, 85, 0.5);
+    background: linear-gradient(180deg, rgba(229, 163, 58, 0.28), rgba(127, 77, 24, 0.34));
+  }
+
+  .app-header-search {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-width: 0;
+    padding: 9px 10px;
+    border: 1px solid rgba(93, 132, 163, 0.42);
+    background: rgba(8, 13, 19, 0.76);
+  }
+
+  .app-header-search label {
+    color: var(--color-brass);
+    font-family: var(--font-ui);
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+
+  .app-header-search input {
+    width: 100%;
+    min-width: 0;
+    color: var(--color-paper);
+    border: 0;
+    outline: 0;
+    background: transparent;
+    font-family: var(--font-ui);
+    font-size: 13px;
+  }
+
+  .app-header-search input::placeholder {
+    color: rgba(183, 170, 146, 0.68);
+  }
+
+  @media (max-width: 1024px) {
+    .app-header-shell {
+      min-height: 64px;
+      grid-template-columns: minmax(0, 1fr) 44px;
+      gap: 12px;
+      padding: 10px 0;
+    }
+
+    .app-header-shell > button {
+      display: block;
+      justify-self: end;
+    }
+
+    .app-header-nav {
+      display: none;
+      grid-column: 1 / -1;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      justify-content: stretch;
+      padding: 10px 0 0;
+      border-top: 1px solid rgba(93, 132, 163, 0.28);
+    }
+
+    .app-header[data-open="true"] .app-header-nav {
+      display: grid;
+    }
+
+    .app-header-nav a {
+      min-height: 44px;
+      display: grid;
+      place-items: center;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .app-header-search {
+      display: none;
+      grid-column: 1 / -1;
+    }
+
+    .app-header[data-open="true"] .app-header-search {
+      display: flex;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .app-header-shell {
+      width: min(100% - 24px, 1400px);
+    }
+
+    .app-header-brand small {
+      display: none;
+    }
+
+    .app-header-nav {
+      grid-template-columns: 1fr;
+    }
+
+    .app-header-search {
+      align-items: stretch;
+      flex-direction: column;
+      gap: 6px;
+    }
+  }
+</style>

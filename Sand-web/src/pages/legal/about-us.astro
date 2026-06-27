@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { pageMetadata } from '../../seo/page-metadata.js';
+import '../../styles/pages/legal-page.css';
+
+const seo = pageMetadata.aboutUs;
+const lastUpdated = '2026-06-27';
+const legalLinks = [
+  ['Privacy Policy', '/legal/privacy-policy'],
+  ['Terms of Service', '/legal/terms-of-service'],
+  ['Copyright', '/legal/copyright'],
+  ['About Us', '/legal/about-us'],
+  ['Contact Us', '/legal/contact-us']
+];
+---
+
+<BaseLayout title={seo.title} description={seo.description} keywords={seo.keywords} pageUrl="/legal/about-us" pageType="article" lastUpdated={lastUpdated}>
+  <main id="main-content">
+    <section class="legal-section">
+      <div class="container">
+        <div class="legal-content">
+          <article class="legal-article">
+            <header class="legal-hero">
+              <span>Legal</span>
+              <h1>About Us</h1>
+              <p>SAND Guide is an independent player reference built for SAND: Raiders of Sophie players who want practical, organized information.</p>
+              <p><time datetime={lastUpdated}>Last updated: {lastUpdated}</time></p>
+            </header>
+            <div class="legal-body">
+              <section>
+                <h2>Who We Are</h2>
+                <p>SAND Guide is a fan-made guide site focused on SAND: Raiders of Sophie. The site is built around practical player needs: starting a run, understanding Tramplers, checking weapons and ammunition, comparing resources, reading map context, and planning upgrades before committing time in game.</p>
+              </section>
+              <section>
+                <h2>What We Publish</h2>
+                <p>The site includes beginner guidance, wiki-style item references, database-style planning pages, map and location notes, and strategy guides. Our goal is to make information easier to scan and use during real player decision-making, not to replace the game, official announcements, or community discovery.</p>
+              </section>
+              <section>
+                <h2>Editorial Approach</h2>
+                <p>We try to separate item facts from tactical advice. Wiki and database pages focus on structured reference data, while guides explain how that information affects a raid. When information may change through patches, we try to avoid presenting it as permanent.</p>
+              </section>
+              <section>
+                <h2>Independence</h2>
+                <p>SAND Guide is not an official website. It is not operated by Hologryph, TowerHaus, tinyBuild, Steam, or any official partner. All game names, trademarks, and related materials belong to their respective owners.</p>
+              </section>
+              <section>
+                <h2>Corrections And Updates</h2>
+                <p>Game data can change, and community knowledge can improve. If you notice outdated values, unclear explanations, missing links, or source issues, we welcome concise corrections. Please include the page URL and the specific line, item, or section you are referring to.</p>
+              </section>
+              <section>
+                <h2>Contact</h2>
+                <p>You can reach us at <a href="mailto:wyong@sandraidersofsophie.com">wyong@sandraidersofsophie.com</a>.</p>
+              </section>
+            </div>
+          </article>
+          <aside class="legal-side" aria-label="Legal navigation">
+            <div class="legal-side-card">
+              <h2>Legal</h2>
+              <nav>{legalLinks.map(([label, href]) => <a href={href}>{label}</a>)}</nav>
+            </div>
+            <div class="legal-side-card">
+              <h2>Contact</h2>
+              <p>Email: <a href="mailto:wyong@sandraidersofsophie.com">wyong@sandraidersofsophie.com</a></p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

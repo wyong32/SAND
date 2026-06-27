@@ -1,0 +1,158 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { weapons } from '../../../data/wiki/weapons.js';
+import { ammunition } from '../../../data/wiki/ammunition.js';
+import { getSidebarIcon } from '../../../data/sidebar-icons.js';
+import '../../../styles/pages/inner-page.css';
+import '../../../styles/pages/wiki-detail-page.css';
+
+export function getStaticPaths() {
+  return weapons.map((weapon) => ({
+    params: { addressBar: weapon.addressBar },
+    props: { entry: weapon }
+  }));
+}
+
+const { entry } = Astro.props;
+const detailUrl = `/wiki/weapons/${entry.addressBar}`;
+const ammoSlugByTitle = new Map(ammunition.map((ammo) => [ammo.title, ammo.addressBar]));
+const ammoHref = (ammoName: string) =>
+  ammoSlugByTitle.has(ammoName) ? `/wiki/ammunition/${ammoSlugByTitle.get(ammoName)}` : '/wiki/ammunition';
+const recommendedWeapons = weapons
+  .filter((weapon) => weapon.addressBar !== entry.addressBar)
+  .sort((a, b) => {
+    const aScore = (a.family === entry.family ? 2 : 0) + (a.category === entry.category ? 1 : 0);
+    const bScore = (b.family === entry.family ? 2 : 0) + (b.category === entry.category ? 1 : 0);
+    return bScore - aScore;
+  })
+  .slice(0, 6);
+const statRows = [
+  ['Rarity', entry.rarity],
+  ['Type', entry.type],
+  ['Magazine', entry.magazine],
+  ['Damage', entry.damage],
+  ['Ammo', entry.ammo]
+].filter((row): row is [string, string] => row[1] != null && row[1] !== '');
+
+const noteRows = [
+  ['Category', entry.category],
+  ['Family', entry.family],
+  ['Type', entry.type],
+  ['Rarity', entry.rarity],
+  ['Damage', entry.damage],
+  ['Magazine', entry.magazine],
+  ['Ammo', entry.ammo],
+  ['Updated', entry.publishDate]
+].filter((row): row is [string, string] => row[1] != null && row[1] !== '');
+---
+
+<BaseLayout title={entry.seo.title} description={entry.seo.description} keywords={entry.seo.keywords} pageUrl={detailUrl} pageType="article" lastUpdated={entry.publishDate}>
+<main>
+      <section class="inner-shell-section">
+        <div class="container">
+          <div class="inner-shell-content">
+            <aside class="inner-sidebar" aria-label="SAND wiki menu">
+              <div class="inner-sidebar-head">
+                <img src={entry.imageUrl} alt={entry.imageAlt} />
+                <div><strong>Entry</strong><span>Weapon File</span></div>
+              </div>
+              <nav class="inner-nav-group" aria-label="Weapon Entry">
+                <h2>Entry</h2>
+                <a class="is-active" href={detailUrl}><img src={entry.imageUrl} alt="" /><span>{entry.title}</span><b>Open</b></a>
+                <a href="/wiki/weapons"><img src={getSidebarIcon('Weapons List', '/wiki/weapons')} alt="" /><span>Weapons List</span><b>Back</b></a>
+                <a href="/wiki/ammunition"><img src={getSidebarIcon('Ammunition', '/wiki/ammunition')} alt="" /><span>Ammunition</span><b>{ammunition.length}</b></a>
+              </nav>
+              <nav class="inner-nav-group" aria-label="Tools">
+                <h2>Tools</h2>
+                <a href="/database"><img src={getSidebarIcon('Database', '/database')} alt="" /><span>Database</span><b>Tree</b></a>
+                <a href="/guides"><img src={getSidebarIcon('Guides', '/guides')} alt="" /><span>Guides</span><b>List</b></a>
+              </nav>
+            </aside>
+            <div class="inner-mainframe">
+              <!-- Wiki三级详情：武器独立页面 -->
+              <section class="wiki-detail-hero-section">
+                <div class="container">
+                  <div class="wiki-detail-hero-content">
+                    <div>
+                      <a href="/wiki/weapons">Weapons</a>
+                      <span>{entry.category} / {entry.family}</span>
+                      <h1>SAND: Raiders of Sophie Wiki - {entry.title}</h1>
+                      <p>{entry.intro}</p>
+                    </div>
+                    <img src={entry.imageUrl} alt={entry.imageAlt} />
+                  </div>
+                </div>
+              </section>
+
+              <section class="wiki-detail-body-section">
+                <div class="container">
+                  <div class="wiki-detail-body-content">
+                    <article>
+                      <h2>{entry.title} Data</h2>
+                      <table class="weapon-stat-table">
+                        <tbody>
+                          {statRows.map(([label, value]) => (
+                            <tr>
+                              <th>{label}</th>
+                              <td>
+                                {label === 'Ammo' ? <a href={ammoHref(value)}>{value}</a> : value}
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+
+                      {entry.variants.length > 0 && (
+                        <>
+                          <h2>Variants and Notes</h2>
+                          <div class="weapon-variant-grid">
+                            {entry.variants.map((variant) => (
+                              <section>
+                                <h3>{variant.label}</h3>
+                                <table class="weapon-stat-table compact">
+                                  <tbody>
+                                    {variant.rarity && <tr><th>Rarity</th><td>{variant.rarity}</td></tr>}
+                                    {variant.type && <tr><th>Type</th><td>{variant.type}</td></tr>}
+                                    {variant.magazine && <tr><th>Magazine</th><td>{variant.magazine}</td></tr>}
+                                    {variant.damage && <tr><th>Damage</th><td>{variant.damage}</td></tr>}
+                                    {variant.ammo && <tr><th>Ammo</th><td><a href={ammoHref(variant.ammo)}>{variant.ammo}</a></td></tr>}
+                                  </tbody>
+                                </table>
+                                {variant.note && <p>{variant.note}</p>}
+                              </section>
+                            ))}
+                          </div>
+                        </>
+                      )}
+
+                      <h2>Recommended Weapons</h2>
+                      <div class="weapon-recommend-grid">
+                        {recommendedWeapons.map((weapon) => (
+                          <a href={`/wiki/weapons/${weapon.addressBar}`} aria-label={weapon.title}>
+                            <img src={weapon.imageUrl} alt={weapon.imageAlt} />
+                            <span>{weapon.title}</span>
+                            <b>{weapon.family}</b>
+                          </a>
+                        ))}
+                      </div>
+                    </article>
+                    <aside>
+                      <h2>Entry Notes</h2>
+                      <dl>
+                        {noteRows.map(([label, value]) => (
+                          <div>
+                            <dt>{label}</dt>
+                            <dd>{label === 'Ammo' ? <a href={ammoHref(value)}>{value}</a> : value}</dd>
+                          </div>
+                        ))}
+                      </dl>
+                    </aside>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+</BaseLayout>

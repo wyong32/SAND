@@ -1,0 +1,340 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { pageMetadata } from '../../seo/page-metadata.js';
+import { wikiList } from '../../data/wiki/wiki-list.js';
+import { weapons, weaponFilters } from '../../data/wiki/weapons.js';
+import { ammunition, ammunitionFilters } from '../../data/wiki/ammunition.js';
+import { resources, resourceGroups } from '../../data/wiki/resources.js';
+import { getSidebarIcon, sidebarHeadIcons } from '../../data/sidebar-icons.js';
+import '../../styles/pages/inner-page.css';
+import '../../styles/pages/wiki-list-page.css';
+
+const pageUrl = '/wiki';
+const lastUpdated = '2026-06-25';
+const seo = pageMetadata.wikiIndex;
+
+const playerWeapons = weapons.filter((w) => w.category === 'Player Weapons').length;
+const mountedWeapons = weapons.filter((w) => w.category === 'Mounted Weapons').length;
+const totalEntries = weapons.length + ammunition.length + resources.length;
+
+const coverageStats = [
+  ['Weapons', `${weapons.length}`, '/wiki/weapons', 'Player guns and Trampler cannons'],
+  ['Ammunition', `${ammunition.length}`, '/wiki/ammunition', 'Calibers, shells, and rockets'],
+  ['Resources', `${resources.length}`, '/wiki/resources', 'Loot and crafting materials']
+];
+
+const wikiCategories = wikiList.map((item) => {
+  if (item.addressBar === '/wiki/weapons') {
+    return {
+      ...item,
+      accent: 'combat',
+      countLabel: `${weapons.length} entries`,
+      countValue: String(weapons.length),
+      countSubLabel: 'entries',
+      detail: `${playerWeapons} player · ${mountedWeapons} mounted`
+    };
+  }
+  if (item.addressBar === '/wiki/ammunition') {
+    return {
+      ...item,
+      accent: 'ammo',
+      countLabel: `${ammunition.length} entries`,
+      countValue: String(ammunition.length),
+      countSubLabel: 'entries',
+      detail: `${ammunitionFilters.length - 1} ammo families`
+    };
+  }
+  return {
+    ...item,
+    accent: 'economy',
+    countLabel: `${resources.length} entries`,
+    countValue: String(resources.length),
+    countSubLabel: 'entries',
+    detail: `${resourceGroups.length} rarity groups`
+  };
+});
+
+const useCases = [
+  {
+    title: 'Plan a raid loadout',
+    detail: 'Compare personal weapons, check linked ammunition pages, and confirm mounted cannon shells before leaving the hangar.',
+    links: [
+      ['Weapons', '/wiki/weapons'],
+      ['Ammunition', '/wiki/ammunition']
+    ]
+  },
+  {
+    title: 'Decide what to extract',
+    detail: 'Review resource rarity groups, fuel rods, weapon parts, and trade items to prioritize cargo space on your Trampler.',
+    links: [['Resources', '/wiki/resources']]
+  },
+  {
+    title: 'Build your Trampler firepower',
+    detail: 'Review mounted cannons on the Weapons wiki and match shells from the Ammunition index before outfitting your Trampler.',
+    links: [
+      ['Mounted weapons', '/wiki/weapons#mounted-weapons'],
+      ['40mm Autocannon', '/wiki/weapons/40mm-autocannon'],
+      ['40mm Shell', '/wiki/ammunition/40mm-shell']
+    ]
+  }
+];
+
+const faqItems = [
+  {
+    question: 'What is covered in the SAND Guide wiki?',
+    answer:
+      'This wiki hub indexes weapons, player and mounted, plus ammunition and resources currently tracked for SAND: Raiders of Sophie. Each category links to list pages and individual detail entries with stats, variants, and related cross-links.'
+  },
+  {
+    question: 'How many weapons are in the wiki?',
+    answer: `The Weapons category lists ${weapons.length} entries: ${playerWeapons} player weapons across handguns, rifles, shotguns, throwables, and special gear, plus ${mountedWeapons} Trampler-mounted cannons.`
+  },
+  {
+    question: 'How do weapons and ammunition connect?',
+    answer:
+      'Weapon detail pages link to their ammo type when listed — for example 1874 Petros Rifle to 11x54mm Ammo, or 40mm Autocannon to 40mm Shell. Start from the Weapons or Ammunition category depending on whether you are planning a personal loadout or Trampler firepower.'
+  },
+  {
+    question: 'Is this an official SAND wiki?',
+    answer:
+      'No. SAND Guide is an independent player reference for the live game. Entries are organized for loadout planning and search readability. Confirm patch-sensitive values in-game when a run depends on them.'
+  },
+  {
+    question: 'New to SAND — where should I start?',
+    answer:
+      'Read Getting Started for the first expedition loop, then return here to browse Weapons, Ammunition, and Resources as your runs get more ambitious.'
+  }
+];
+
+const tocLinks = [
+  ['#categories', 'Wiki categories'],
+  ['#how-to-use', 'How to use this wiki'],
+  ['#faq', 'FAQ'],
+  ['#about-wiki', 'About this wiki']
+];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'CollectionPage',
+      '@id': `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: seo.title,
+      description: seo.description,
+      dateModified: lastUpdated,
+      inLanguage: 'en',
+      isPartOf: {
+        '@type': 'WebSite',
+        name: 'SAND Guide',
+        description: 'Independent field manual for SAND: Raiders of Sophie players.'
+      },
+      about: {
+        '@type': 'VideoGame',
+        name: 'SAND: Raiders of Sophie'
+      }
+    },
+    {
+      '@type': 'ItemList',
+      name: 'SAND: Raiders of Sophie Wiki Categories',
+      numberOfItems: wikiCategories.length,
+      itemListElement: wikiCategories.map((item, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: item.title,
+        url: item.addressBar,
+        description: item.description
+      }))
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqItems.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: { '@type': 'Answer', text: item.answer }
+      }))
+    }
+  ]
+};
+---
+
+<BaseLayout title={seo.title} description={seo.description} keywords={seo.keywords} pageUrl={pageUrl} structuredData={structuredData}>
+<main id="main-content">
+      <section class="inner-shell-section">
+        <div class="container">
+          <div class="inner-shell-content">
+            <aside class="inner-sidebar" aria-label="SAND wiki menu">
+              <div class="inner-sidebar-head">
+                <img src={sidebarHeadIcons.wiki} alt="SAND wiki navigation icon" />
+                <div><strong>Wiki</strong><span>Field Index</span></div>
+              </div>
+              <nav class="inner-nav-group" aria-label="Wiki Categories">
+                <h2>Categories</h2>
+                <a class="is-active" href="/wiki"><img src={getSidebarIcon('Wiki Home', '/wiki')} alt="" /><span>Wiki Home</span><b>All</b></a>
+                <a href="/wiki/weapons"><img src={getSidebarIcon('Weapons', '/wiki/weapons')} alt="" /><span>Weapons</span><b>{weapons.length}</b></a>
+                <a href="/wiki/ammunition"><img src={getSidebarIcon('Ammunition', '/wiki/ammunition')} alt="" /><span>Ammunition</span><b>{ammunition.length}</b></a>
+                <a href="/wiki/resources"><img src={getSidebarIcon('Resources', '/wiki/resources')} alt="" /><span>Resources</span><b>{resources.length}</b></a>
+              </nav>
+              <nav class="inner-nav-group" aria-label="On this page">
+                <h2>On this page</h2>
+                {tocLinks.map(([href, label]) => (
+                  <a href={href}><img src={getSidebarIcon(label, href)} alt="" /><span>{label}</span><b>Jump</b></a>
+                ))}
+              </nav>
+              <nav class="inner-nav-group" aria-label="Tools">
+                <h2>Tools</h2>
+                <a href="/getting-started"><img src={getSidebarIcon('Getting Started', '/getting-started')} alt="" /><span>Getting Started</span><b>Start</b></a>
+                <a href="/database"><img src={getSidebarIcon('Database', '/database')} alt="" /><span>Database</span><b>Tree</b></a>
+                <a href="/guides"><img src={getSidebarIcon('Guides', '/guides')} alt="" /><span>Guides</span><b>List</b></a>
+              </nav>
+            </aside>
+            <div class="inner-mainframe">
+              <article class="wiki-hub-article">
+                <section class="wiki-hero-section" aria-labelledby="wiki-hub-title">
+                  <div class="wiki-hero-frame">
+                    <div class="wiki-hero-titlebar">
+                      <span>Wiki Hub · Live Build Reference</span>
+                    </div>
+                    <div class="wiki-hero-body">
+                      <div class="wiki-hero-copy">
+                        <h1 id="wiki-hub-title">SAND: Raiders of Sophie Wiki - Weapons, Ammunition &amp; Resources</h1>
+                        <p class="wiki-lead">
+                          Field reference for raiders, builders, and extraction crews. Browse <strong>{totalEntries} indexed entries</strong> across weapons, ammunition, and resources — organized for loadout planning, Trampler combat, and loot decisions on planet Sophie.
+                        </p>
+                        <p class="wiki-meta">
+                          <time datetime={lastUpdated}>Last updated: {lastUpdated}</time>
+                          <span>Independent fan wiki — not official</span>
+                        </p>
+                      </div>
+                      <aside class="wiki-hero-stats" aria-label="Wiki index summary">
+                        <h2>Index summary</h2>
+                        <ul>
+                          {coverageStats.map(([label, value, href, note]) => (
+                            <li>
+                              <a href={href}>
+                                <b>{value}</b>
+                                <span>{label}</span>
+                                <small>{note}</small>
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </aside>
+                    </div>
+                  </div>
+                </section>
+
+                <section id="categories" class="wiki-catalog-section" aria-labelledby="categories-title">
+                  <div class="wiki-section-head">
+                    <h2 id="categories-title">Wiki categories</h2>
+                  </div>
+                  <div class="wiki-catalog" role="list">
+                    {wikiCategories.map((item, index) => (
+                      <a
+                        href={item.addressBar}
+                        class:list={['wiki-catalog-row', `wiki-catalog-row--${item.accent}`]}
+                        role="listitem"
+                      >
+                        <span class="wiki-catalog-index" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+                        <figure class="wiki-catalog-media">
+                          <img src={item.imageUrl} alt={item.imageAlt} loading="lazy" />
+                        </figure>
+                        <div class="wiki-catalog-body">
+                          <span class="wiki-catalog-tag">{item.category}</span>
+                          <h3>{item.title}</h3>
+                          <p>{item.description}</p>
+                          {item.detail && <span class="wiki-catalog-meta">{item.detail}</span>}
+                        </div>
+                        <div class="wiki-catalog-action">
+                          <span class="wiki-catalog-count">{item.countValue}</span>
+                          <span class="wiki-catalog-count-label">{item.countSubLabel}</span>
+                          <span class="wiki-catalog-arrow" aria-hidden="true">Open index</span>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                  <div class="wiki-filter-strip">
+                    <span>Weapon filters</span>
+                    <div class="wiki-filter-links">
+                      {weaponFilters.slice(1).map((filter) => (
+                        <a href={`/wiki/weapons#${filter.value === 'Mounted Weapons' ? 'mounted-weapons' : filter.value === 'Player Weapons' ? 'player-weapons' : 'all-weapons'}`}>{filter.label}</a>
+                      ))}
+                    </div>
+                  </div>
+                </section>
+
+                <section id="how-to-use" class="wiki-use-section">
+                  <div class="wiki-section-head">
+                    <h2>How to use this wiki</h2>
+                  </div>
+                  <ol class="wiki-path-list">
+                    {useCases.map((item, index) => (
+                      <li>
+                        <span class="wiki-path-step" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+                        <article>
+                          <h3>{item.title}</h3>
+                          <p>{item.detail}</p>
+                          <div class="wiki-path-links">
+                            {item.links.map(([label, href]) => (
+                              <a href={href}>{label}</a>
+                            ))}
+                          </div>
+                        </article>
+                      </li>
+                    ))}
+                  </ol>
+                </section>
+
+                <section id="faq" class="wiki-faq-section" aria-labelledby="faq-title">
+                  <div class="wiki-section-head">
+                    <h2 id="faq-title">Frequently asked questions</h2>
+                  </div>
+                  <div class="wiki-faq-list">
+                    {faqItems.map((item) => (
+                      <details>
+                        <summary>{item.question}</summary>
+                        <p>{item.answer}</p>
+                      </details>
+                    ))}
+                  </div>
+                </section>
+
+                <section id="about-wiki" class="wiki-trust-section">
+                  <h2>About this wiki</h2>
+                  <div class="wiki-trust-grid">
+                    <article>
+                      <h3>Independent reference</h3>
+                      <p>
+                        SAND Guide is a player-made wiki hub, not an official game site. Entries are maintained for live-game readability and internal cross-linking between weapons, ammo, and resources.
+                      </p>
+                    </article>
+                    <article>
+                      <h3>Patch accuracy</h3>
+                      <p>
+                        Balance and item pools change between patches. Use this wiki for planning and orientation; verify critical values in-game when extraction or PvP depends on them.
+                      </p>
+                    </article>
+                    <article>
+                      <h3>Start here if you are new</h3>
+                      <p>
+                        <a href="/getting-started">Getting Started</a> explains the first expedition loop. Return to this hub when you need item-level detail for loadouts and loot.
+                      </p>
+                    </article>
+                  </div>
+                  <div class="wiki-inline-links wiki-inline-links-wide">
+                    <a href="/getting-started">Getting Started</a>
+                    <a href="/wiki/weapons">Weapons</a>
+                    <a href="/wiki/ammunition">Ammunition</a>
+                    <a href="/wiki/resources">Resources</a>
+                    <a href="/database">Database</a>
+                    <a href="/guides">Guides</a>
+                    <a href="/map-locations">Map &amp; Locations</a>
+                  </div>
+                </section>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+</BaseLayout>

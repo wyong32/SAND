@@ -1,0 +1,204 @@
+---
+const guideLinks = [
+  { label: 'Getting Started', href: '/getting-started' },
+  { label: 'Wiki', href: '/wiki' },
+  { label: 'Database', href: '/database' },
+  { label: 'Guides', href: '/guides' },
+  { label: 'Map & Locations', href: '/map-locations' }
+];
+
+const legalLinks = [
+  { label: 'Privacy Policy', href: '/legal/privacy-policy' },
+  { label: 'Terms of Service', href: '/legal/terms-of-service' },
+  { label: 'Copyright', href: '/legal/copyright' },
+  { label: 'About Us', href: '/legal/about-us' },
+  { label: 'Contact Us', href: '/legal/contact-us' }
+];
+
+const referenceLinks = [
+  { label: 'Weapons', href: '/wiki/weapons' },
+  { label: 'Ammunition', href: '/wiki/ammunition' },
+  { label: 'Resources', href: '/wiki/resources' },
+  { label: 'Tech Tree', href: '/database' }
+];
+
+const year = new Date().getFullYear();
+---
+
+<!-- 底部组件：独立资料站声明与站内导航 -->
+<footer class="site-footer-v2">
+  <div class="site-footer-v2__shell">
+    <div class="site-footer-v2__main">
+      <section class="site-footer-v2__brand" aria-label="SAND Guide summary">
+        <a class="site-footer-v2__logo" href="/" aria-label="SAND Guide home">
+          <img src="/images/logo.svg" alt="SAND: Raiders of Sophie Guide logo" />
+        </a>
+        <div>
+          <strong>SAND: Raiders of Sophie</strong>
+          <p>Practical wiki data, Trampler planning, route notes, and guide content for players preparing runs across Sophie.</p>
+        </div>
+      </section>
+
+      <nav class="site-footer-v2__column" aria-label="Guide navigation">
+        <h2>Guide</h2>
+        {guideLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+      </nav>
+
+      <nav class="site-footer-v2__column" aria-label="Reference navigation">
+        <h2>Reference</h2>
+        {referenceLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+      </nav>
+
+      <nav class="site-footer-v2__column" aria-label="Legal navigation">
+        <h2>Legal</h2>
+        {legalLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+      </nav>
+    </div>
+
+    <div class="site-footer-v2__bottom">
+      <p>© {year} SAND Guide. Independent fan-made reference. Not affiliated with Hologryph, TowerHaus, tinyBuild, Steam, or the official SAND: Raiders of Sophie team.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer-v2 {
+    margin-top: 88px;
+    border-top: 1px solid rgba(244, 187, 85, 0.32);
+    background:
+      linear-gradient(90deg, rgba(93, 132, 163, 0.08) 1px, transparent 1px),
+      linear-gradient(180deg, rgba(93, 132, 163, 0.08) 1px, transparent 1px),
+      linear-gradient(180deg, rgba(12, 20, 28, 0.98), rgba(5, 9, 14, 0.98));
+    background-size: 32px 32px, 32px 32px, auto;
+  }
+
+  .site-footer-v2__shell {
+    width: min(100% - 40px, 1400px);
+    margin: 0 auto;
+    padding: 38px 0 24px;
+  }
+
+  .site-footer-v2__main {
+    display: grid;
+    grid-template-columns: minmax(320px, 1.7fr) repeat(3, minmax(150px, 0.7fr));
+    gap: 32px;
+    align-items: start;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(93, 132, 163, 0.3);
+  }
+
+  .site-footer-v2__brand {
+    display: grid;
+    grid-template-columns: 58px minmax(0, 1fr);
+    gap: 16px;
+    align-items: start;
+    padding-right: 20px;
+  }
+
+  .site-footer-v2__logo {
+    display: grid;
+    place-items: center;
+    width: 58px;
+    height: 58px;
+    border: 1px solid rgba(244, 187, 85, 0.45);
+    background: linear-gradient(180deg, rgba(127, 77, 24, 0.55), rgba(8, 13, 19, 0.82));
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.72);
+  }
+
+  .site-footer-v2__logo img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+  }
+
+  .site-footer-v2__brand span,
+  .site-footer-v2__column h2 {
+    display: block;
+    margin: 0 0 12px;
+    color: var(--ui-amber-light);
+    font-family: var(--font-ui);
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  .site-footer-v2__brand strong {
+    display: block;
+    max-width: 460px;
+    color: var(--color-brass);
+    font-family: var(--font-ui);
+    font-size: 24px;
+    line-height: 1.12;
+  }
+
+  .site-footer-v2__brand p,
+  .site-footer-v2__bottom p {
+    color: var(--color-muted);
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .site-footer-v2__brand p {
+    max-width: 520px;
+    margin-top: 12px;
+  }
+
+  .site-footer-v2__column {
+    display: grid;
+    gap: 9px;
+  }
+
+  .site-footer-v2__column a,
+  .site-footer-v2__bottom a {
+    color: var(--color-paper);
+    font-family: var(--font-ui);
+    font-size: 13px;
+    line-height: 1.35;
+  }
+
+  .site-footer-v2__column a {
+    color: var(--color-muted);
+  }
+
+  .site-footer-v2__column a:hover,
+  .site-footer-v2__bottom a:hover {
+    color: var(--color-brass);
+  }
+
+  .site-footer-v2__bottom {
+    display: grid;
+    place-items: center;
+    padding-top: 18px;
+  }
+
+  .site-footer-v2__bottom p {
+    max-width: 980px;
+    font-size: 12px;
+    text-align: center;
+  }
+
+  @media (max-width: 1024px) {
+    .site-footer-v2__main {
+      grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(150px, 1fr));
+    }
+
+    .site-footer-v2__brand {
+      grid-column: span 2;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .site-footer-v2__shell {
+      width: min(100% - 28px, 1400px);
+    }
+
+    .site-footer-v2__main,
+    .site-footer-v2__brand {
+      grid-template-columns: 1fr;
+    }
+
+    .site-footer-v2__brand {
+      grid-column: auto;
+    }
+  }
+</style>

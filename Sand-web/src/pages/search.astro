@@ -1,0 +1,213 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { guidesList } from '../data/guides.js';
+import { resources } from '../data/wiki/resources.js';
+import { ammunition } from '../data/wiki/ammunition.js';
+import { weapons } from '../data/wiki/weapons.js';
+import { wikiList } from '../data/wiki/wiki-list.js';
+import { pageMetadata } from '../seo/page-metadata.js';
+import '../styles/pages/search-page.css';
+
+const seo = pageMetadata.search;
+const pageUrl = '/search';
+
+const corePages = [
+  {
+    title: 'Getting Started',
+    description: 'Prepare a first stable run with Trampler basics, loadout checks, route discipline, and extraction planning.',
+    href: '/getting-started',
+    category: 'Guide Hub',
+    imageUrl: '/images/wiki/resources/repair-kit.jpg',
+    tags: ['beginner', 'trampler', 'extraction', 'first run']
+  },
+  {
+    title: 'Tech Tree Database',
+    description: 'Compare Trampler upgrade branches, materials, costs, and practical unlock planning for future runs.',
+    href: '/database',
+    category: 'Database',
+    imageUrl: '/images/wiki/resources/mechanical-parts.jpg',
+    tags: ['database', 'tech tree', 'upgrades', 'materials']
+  },
+  {
+    title: 'Map & Locations',
+    description: 'Review Sophie route planning, location types, extraction pressure, and terrain-aware movement notes.',
+    href: '/map-locations',
+    category: 'Map',
+    imageUrl: '/images/map-locations/sophie-regional-field-map.png',
+    tags: ['map', 'locations', 'routes', 'extraction']
+  }
+];
+
+const searchItems = [
+  ...corePages,
+  ...wikiList.map((item) => ({
+    title: item.title,
+    description: item.description,
+    href: item.addressBar,
+    category: item.category,
+    imageUrl: item.imageUrl,
+    tags: ['wiki', item.title, item.category]
+  })),
+  ...weapons.map((weapon) => ({
+    title: weapon.title,
+    description: weapon.intro || weapon.seo.description,
+    href: `/wiki/weapons/${weapon.addressBar}`,
+    category: weapon.category,
+    imageUrl: weapon.imageUrl,
+    tags: ['weapon', weapon.type, weapon.rarity, weapon.ammo, weapon.category].filter(Boolean)
+  })),
+  ...ammunition.map((ammo) => ({
+    title: ammo.title,
+    description: ammo.intro || ammo.seo.description,
+    href: `/wiki/ammunition/${ammo.addressBar}`,
+    category: ammo.family,
+    imageUrl: ammo.imageUrl,
+    tags: ['ammunition', ammo.type, ammo.rarity, ammo.family].filter(Boolean)
+  })),
+  ...resources.map((resource) => ({
+    title: resource.title,
+    description: `${resource.use} Source: ${resource.source}`,
+    href: `/wiki/resources#resource-${resource.id}`,
+    category: resource.group,
+    imageUrl: resource.imageUrl,
+    tags: ['resource', resource.type, resource.group, resource.source].filter(Boolean)
+  })),
+  ...guidesList
+    .filter((guide) => guide.isPublished !== false)
+    .map((guide) => ({
+      title: guide.title,
+      description: guide.description,
+      href: guide.addressBar,
+      category: guide.category,
+      imageUrl: guide.imageUrl,
+      tags: ['guide', guide.category, guide.difficulty, guide.readingTime].filter(Boolean)
+    }))
+];
+
+const searchStats = [
+  ['Indexed Pages', String(searchItems.length)],
+  ['Weapons', String(weapons.length)],
+  ['Ammunition', String(ammunition.length)],
+  ['Resources', String(resources.length)]
+];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'SearchResultsPage',
+  name: seo.title,
+  description: seo.description,
+  url: pageUrl,
+  inLanguage: 'en',
+  about: {
+    '@type': 'VideoGame',
+    name: 'SAND: Raiders of Sophie'
+  },
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: '/search?q={search_term_string}',
+    'query-input': 'required name=search_term_string'
+  }
+};
+---
+
+<BaseLayout title={seo.title} description={seo.description} keywords={seo.keywords} pageUrl={pageUrl} structuredData={structuredData}>
+  <main>
+    <section class="search-hero-section">
+      <div class="container">
+        <div class="search-hero-content">
+          <div>
+            <span>Site Search</span>
+            <h1>SAND: Raiders of Sophie Search - Wiki, Database, Guides &amp; Map</h1>
+            <p>Search the player reference index for weapons, ammunition, resources, Trampler planning, route notes, and guide entries.</p>
+          </div>
+          <form class="search-panel" action="/search" method="get" role="search">
+            <label for="search-page-input">Search query</label>
+            <div>
+              <input id="search-page-input" name="q" type="search" placeholder="Try weapons, energy rod, extraction, Trampler..." autocomplete="off" />
+              <button type="submit">Search</button>
+            </div>
+          </form>
+          <div class="search-stat-grid">
+            {searchStats.map(([label, value]) => (
+              <strong><span>{label}</span>{value}</strong>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="search-results-section">
+      <div class="container">
+        <div class="search-results-content">
+          <div class="search-results-head">
+            <div>
+              <span>Results</span>
+              <h2 id="search-results-title">Browse the indexed reference.</h2>
+            </div>
+            <p data-search-count>{searchItems.length} results indexed</p>
+          </div>
+
+          <div class="search-empty" data-search-empty hidden>
+            <h2>No matching entries found.</h2>
+            <p>Try a broader term such as weapon, ammo, resource, Trampler, extraction, map, or guide.</p>
+          </div>
+
+          <div class="search-results-grid" data-search-results>
+            {searchItems.map((item) => (
+              <article class="search-result-card" data-search-card data-search-text={`${item.title} ${item.description} ${item.category} ${item.tags.join(' ')}`.toLowerCase()}>
+                <a class="search-result-image" href={item.href} aria-label={`Open ${item.title}`}>
+                  <img src={item.imageUrl} alt="" />
+                </a>
+                <div class="search-result-copy">
+                  <small>{item.category}</small>
+                  <h2><a href={item.href}>{item.title}</a></h2>
+                  <p>{item.description}</p>
+                  <a href={item.href}>Open result <span aria-hidden="true">&#8594;</span></a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const query = (params.get('q') || '').trim();
+    const input = document.querySelector('#search-page-input');
+    const headerInput = document.querySelector('#site-search');
+    const cards = [...document.querySelectorAll('[data-search-card]')];
+    const count = document.querySelector('[data-search-count]');
+    const empty = document.querySelector('[data-search-empty]');
+    const title = document.querySelector('#search-results-title');
+
+    const applySearch = (value) => {
+      const terms = value.toLowerCase().split(/\s+/).filter(Boolean);
+      let visible = 0;
+
+      cards.forEach((card) => {
+        const text = card.getAttribute('data-search-text') || '';
+        const matches = terms.length === 0 || terms.every((term) => text.includes(term));
+        card.toggleAttribute('hidden', !matches);
+        if (matches) visible += 1;
+      });
+
+      if (count) {
+        count.textContent = terms.length === 0 ? `${visible} results indexed` : `${visible} results for "${value}"`;
+      }
+
+      if (empty) {
+        empty.hidden = visible !== 0;
+      }
+
+      if (title) {
+        title.textContent = terms.length === 0 ? 'Browse the indexed reference.' : `Search results for "${value}"`;
+      }
+    };
+
+    if (input instanceof HTMLInputElement) input.value = query;
+    if (headerInput instanceof HTMLInputElement) headerInput.value = query;
+    applySearch(query);
+  </script>
+</BaseLayout>

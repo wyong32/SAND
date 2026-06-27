@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { pageMetadata } from '../../seo/page-metadata.js';
+import '../../styles/pages/legal-page.css';
+
+const seo = pageMetadata.copyright;
+const lastUpdated = '2026-06-27';
+const legalLinks = [
+  ['Privacy Policy', '/legal/privacy-policy'],
+  ['Terms of Service', '/legal/terms-of-service'],
+  ['Copyright', '/legal/copyright'],
+  ['About Us', '/legal/about-us'],
+  ['Contact Us', '/legal/contact-us']
+];
+---
+
+<BaseLayout title={seo.title} description={seo.description} keywords={seo.keywords} pageUrl="/legal/copyright" pageType="article" lastUpdated={lastUpdated}>
+  <main id="main-content">
+    <section class="legal-section">
+      <div class="container">
+        <div class="legal-content">
+          <article class="legal-article">
+            <header class="legal-hero">
+              <span>Legal</span>
+              <h1>Copyright</h1>
+              <p>This page explains how SAND Guide treats its own writing, game references, screenshots, trademarks, and takedown requests.</p>
+              <p><time datetime={lastUpdated}>Last updated: {lastUpdated}</time></p>
+            </header>
+            <div class="legal-body">
+              <section>
+                <h2>Site Content</h2>
+                <p>Unless otherwise noted, the original written text, page organization, guide summaries, editorial formatting, and site-specific presentation on SAND Guide are owned or controlled by the site operator. You may link to our pages, quote short excerpts with attribution, and discuss the content in community spaces.</p>
+              </section>
+              <section>
+                <h2>Game Ownership</h2>
+                <p>SAND: Raiders of Sophie, related names, logos, characters, screenshots, game icons, item art, and other game materials are owned by their respective rights holders. SAND Guide does not claim ownership over the game or official game assets.</p>
+              </section>
+              <section>
+                <h2>Fan-Site Use</h2>
+                <p>This site uses game references for commentary, indexing, education, and player guidance. Any screenshots, icons, or game-related references are intended to help players identify in-game systems, items, maps, or mechanics. Use of those materials does not imply endorsement, sponsorship, or official status.</p>
+              </section>
+              <section>
+                <h2>Community And Source References</h2>
+                <p>Some pages may cite public sources such as official websites, Steam pages, community wiki pages, guides, or articles. We aim to summarize and organize information in our own format rather than copying full source pages. If a source should be credited differently, updated, or removed, please contact us.</p>
+              </section>
+              <section>
+                <h2>Restrictions</h2>
+                <p>Please do not copy the site in bulk, republish full pages without permission, remove attribution from excerpts, or present SAND Guide content as official game documentation. Automated extraction that harms site performance or republishes our work at scale is not allowed.</p>
+              </section>
+              <section>
+                <h2>Takedown And Correction Requests</h2>
+                <p>If you believe content on this site infringes your rights, send a clear request identifying the content, the page URL, your ownership or authority, and the action you are requesting. We will review reasonable requests and may remove, revise, replace, or add attribution where appropriate.</p>
+              </section>
+              <section>
+                <h2>Contact</h2>
+                <p>Copyright questions and takedown requests can be sent to <a href="mailto:wyong@sandraidersofsophie.com">wyong@sandraidersofsophie.com</a>.</p>
+              </section>
+            </div>
+          </article>
+          <aside class="legal-side" aria-label="Legal navigation">
+            <div class="legal-side-card">
+              <h2>Legal</h2>
+              <nav>{legalLinks.map(([label, href]) => <a href={href}>{label}</a>)}</nav>
+            </div>
+            <div class="legal-side-card">
+              <h2>Contact</h2>
+              <p>Email: <a href="mailto:wyong@sandraidersofsophie.com">wyong@sandraidersofsophie.com</a></p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

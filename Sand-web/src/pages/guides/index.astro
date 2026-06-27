@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { pageMetadata } from '../../seo/page-metadata.js';
+import { publishedGuides } from '../../data/guides.js';
+import { getSidebarIcon, sidebarHeadIcons } from '../../data/sidebar-icons.js';
+import '../../styles/pages/inner-page.css';
+import '../../styles/pages/guides-list-page.css';
+
+const guideGroups = [...new Set(publishedGuides.map((guide) => guide.category))].map((category) => ({
+  category,
+  id: publishedGuides.find((guide) => guide.category === category)?.categorySlug || category.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+  guides: publishedGuides.filter((guide) => guide.category === category)
+}));
+const featuredGuide = publishedGuides[0];
+const guideHeroStats = [
+  ['Published', String(publishedGuides.length)],
+  ['Collections', String(guideGroups.length)],
+  ['Updated', featuredGuide?.publishDate || 'No guides yet']
+];
+
+const seo = pageMetadata.guidesList;
+---
+
+<BaseLayout title={seo.title} description={seo.description} keywords={seo.keywords}>
+<main>
+      <section class="inner-shell-section">
+        <div class="container">
+          <div class="inner-shell-content">
+            <aside class="inner-sidebar" aria-label="SAND guides menu">
+              <div class="inner-sidebar-head">
+                <img src={sidebarHeadIcons.guides} alt="Orbital strike pointer icon for guides navigation" />
+                <div><strong>Guides</strong><span>Strategy Board</span></div>
+              </div>
+              <nav class="inner-nav-group" aria-label="Guide Categories">
+                <h2>Categories</h2>
+                <a class="is-active" href="/guides"><img src={getSidebarIcon('All Guides', '/guides')} alt="" /><span>All Guides</span><b>{publishedGuides.length}</b></a>
+                {guideGroups.map((group) => (
+                  <a href={`#${group.id}`}><img src={getSidebarIcon(group.category, `#${group.id}`)} alt="" /><span>{group.category}</span><b>{group.guides.length}</b></a>
+                ))}
+                <a href="/getting-started"><img src={getSidebarIcon('Getting Started', '/getting-started')} alt="" /><span>Getting Started</span><b>Start</b></a>
+              </nav>
+              <nav class="inner-nav-group" aria-label="Reference">
+                <h2>Reference</h2>
+                <a href="/wiki"><img src={getSidebarIcon('Wiki', '/wiki')} alt="" /><span>Wiki</span><b>All</b></a>
+                <a href="/database"><img src={getSidebarIcon('Database', '/database')} alt="" /><span>Database</span><b>Tree</b></a>
+              </nav>
+            </aside>
+            <div class="inner-mainframe">
+      <!-- 攻略列表首屏 -->
+      <section class="guides-list-hero-section">
+        <div class="container">
+          <div class="guides-list-hero-content">
+            <div class="guides-list-hero-copy">
+              <span>Guides</span>
+              <h1>SAND: Raiders of Sophie Guides - Survival, Extraction &amp; Strategy</h1>
+              <p>Clear, practical reads for making better decisions across Sophie.</p>
+              <div class="guides-list-hero-strip">
+                {guideHeroStats.map(([label, value]) => (
+                  <strong><span>{label}</span>{value}</strong>
+                ))}
+              </div>
+            </div>
+            {featuredGuide && <a class="guides-list-hero-feature" href={featuredGuide.addressBar}><img src={featuredGuide.imageUrl} alt={featuredGuide.imageAlt} /><div><small>{featuredGuide.category}</small><b>{featuredGuide.title}</b></div></a>}
+          </div>
+        </div>
+      </section>
+
+      <!-- 攻略文章列表 -->
+      <section class="guides-list-grid-section">
+        <div class="container">
+          <div class="guides-list-grid-content">
+            {guideGroups.map((group, groupIndex) => (
+              <section id={group.id} class="guides-category-section">
+                <div class="guides-category-head">
+                  <span>Collection {String(groupIndex + 1).padStart(2, '0')}</span>
+                  <h2>{group.category}</h2>
+                  <b>{group.guides.length} published</b>
+                </div>
+                <div class="guides-category-grid" style={`--guide-count:${group.guides.length};`}>
+                  {group.guides.map((guide, guideIndex) => (
+                    <article class:list={{ 'guides-featured-entry': guideIndex === 0 }}>
+                      <a class="guides-entry-image" href={guide.addressBar} aria-label={`Read ${guide.title}`}>
+                        <img src={guide.imageUrl} alt={guide.imageAlt} />
+                        <span>Read Field Guide</span>
+                      </a>
+                      <div class="guides-entry-copy">
+                        <div class="guides-entry-meta">
+                          <small>{guide.difficulty}</small>
+                          <b>{guide.readingTime}</b>
+                        </div>
+                        <h3><a href={guide.addressBar}>{guide.title}</a></h3>
+                        <p>{guide.description}</p>
+                        <div class="guides-entry-footer">
+                          <time datetime={guide.publishDate}>{guide.publishDate}</time>
+                          <a href={guide.addressBar}>Open dispatch <span aria-hidden="true">&#8594;</span></a>
+                        </div>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </section>
+            ))}
+          </div>
+        </div>
+      </section>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+</BaseLayout>

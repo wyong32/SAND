@@ -1,0 +1,180 @@
+---
+import AppHeader from '../components/AppHeader.astro';
+import AppFooter from '../components/AppFooter.astro';
+import { absoluteUrl, siteConfig } from '../seo/site-config.js';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  keywords?: string;
+  pageUrl?: string;
+  pageType?: 'website' | 'article';
+  lastUpdated?: string;
+  imageAlt?: string;
+  structuredData?: Record<string, unknown>;
+}
+
+const {
+  title,
+  description,
+  keywords = '',
+  pageUrl,
+  pageType = 'website',
+  lastUpdated,
+  imageAlt = siteConfig.defaultOgImageAlt,
+  structuredData
+} = Astro.props;
+
+const canonicalUrl = absoluteUrl(pageUrl || Astro.url.pathname);
+const shareImageUrl = absoluteUrl(siteConfig.defaultOgImage);
+const organizationId = `${siteConfig.fullDomain}/#organization`;
+const websiteId = `${siteConfig.fullDomain}/#website`;
+
+const urlLikeKeys = new Set(['@id', 'id', 'url', 'contentUrl', 'embedUrl', 'image', 'item', 'mainEntityOfPage', 'target']);
+
+const absolutizeStructuredData = (value: unknown, key = ''): unknown => {
+  if (Array.isArray(value)) {
+    return value.map((item) => absolutizeStructuredData(item, key));
+  }
+
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(
+      Object.entries(value as Record<string, unknown>)
+        .filter(([entryKey]) => entryKey !== '@context')
+        .map(([entryKey, entryValue]) => [entryKey, absolutizeStructuredData(entryValue, entryKey)])
+    );
+  }
+
+  if (typeof value === 'string' && value.startsWith('/') && urlLikeKeys.has(key)) {
+    return absoluteUrl(value);
+  }
+
+  return value;
+};
+
+const customGraph = structuredData
+  ? Array.isArray(structuredData['@graph'])
+    ? structuredData['@graph'].map((item) => absolutizeStructuredData(item))
+    : [absolutizeStructuredData(structuredData)]
+  : [];
+
+const hasCustomPageNode = customGraph.some((item) => {
+  if (!item || typeof item !== 'object') return false;
+  const type = (item as Record<string, unknown>)['@type'];
+  const types = Array.isArray(type) ? type : [type];
+  return types.includes('WebPage') || types.includes('Article');
+});
+
+const pageNode =
+  pageType === 'article'
+    ? {
+        '@type': 'Article',
+        '@id': `${canonicalUrl}#article`,
+        headline: title,
+        name: title,
+        description,
+        url: canonicalUrl,
+        image: shareImageUrl,
+        inLanguage: siteConfig.language,
+        datePublished: lastUpdated,
+        dateModified: lastUpdated,
+        author: { '@id': organizationId },
+        publisher: { '@id': organizationId },
+        mainEntityOfPage: { '@id': `${canonicalUrl}#webpage` }
+      }
+    : {
+        '@type': 'WebPage',
+        '@id': `${canonicalUrl}#webpage`,
+        name: title,
+        description,
+        url: canonicalUrl,
+        inLanguage: siteConfig.language,
+        isPartOf: { '@id': websiteId },
+        primaryImageOfPage: { '@id': `${canonicalUrl}#primaryimage` }
+      };
+
+const finalStructuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': organizationId,
+      name: siteConfig.siteName,
+      url: siteConfig.fullDomain,
+      email: siteConfig.contactEmail
+    },
+    {
+      '@type': 'WebSite',
+      '@id': websiteId,
+      name: siteConfig.siteName,
+      alternateName: siteConfig.shortName,
+      url: siteConfig.fullDomain,
+      inLanguage: siteConfig.language,
+      publisher: { '@id': organizationId }
+    },
+    {
+      '@type': 'ImageObject',
+      '@id': `${canonicalUrl}#primaryimage`,
+      url: shareImageUrl,
+      contentUrl: shareImageUrl,
+      caption: imageAlt
+    },
+    ...(!hasCustomPageNode ? [pageNode] : []),
+    ...customGraph
+  ]
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    {keywords && <meta name="keywords" content={keywords} />}
+    <meta name="author" content={siteConfig.author} />
+    <meta name="robots" content={siteConfig.robots} />
+    <link rel="canonical" href={canonicalUrl} />
+    <title>{title}</title>
+    <meta property="og:type" content={pageType} />
+    <meta property="og:site_name" content={siteConfig.siteName} />
+    <meta property="og:locale" content={siteConfig.locale} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={shareImageUrl} />
+    <meta property="og:image:alt" content={imageAlt} />
+    {lastUpdated && pageType === 'article' && <meta property="article:modified_time" content={lastUpdated} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:image" content={shareImageUrl} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(finalStructuredData)} />
+    <!-- Google Analytics：延迟 2 秒加载，减少对首屏渲染的影响 -->
+    <script is:inline>
+      window.setTimeout(function () {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){window.dataLayer.push(arguments);}
+        window.gtag = gtag;
+
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-5DJ18N3N1B';
+        document.head.appendChild(script);
+
+        gtag('js', new Date());
+        gtag('config', 'G-5DJ18N3N1B');
+      }, 2000);
+    </script>
+    <slot name="head" />
+  </head>
+  <body>
+    <AppHeader />
+    <slot />
+    <AppFooter />
+  </body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "sand-web",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "npm run sitemap && astro build",
+    "preview": "astro preview",
+    "sitemap": "node scripts/generate-sitemap.js",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^7.0.2"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "typescript": "^6.0.3"
+  }
+}

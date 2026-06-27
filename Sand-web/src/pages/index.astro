@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { pageMetadata } from '../seo/page-metadata.js';
+import { publishedGuides } from '../data/guides.js';
+import { weapons } from '../data/wiki/weapons.js';
+import { ammunition } from '../data/wiki/ammunition.js';
+import { resources } from '../data/wiki/resources.js';
+import { getSidebarIcon, sidebarHeadIcons } from '../data/sidebar-icons.js';
+import '../styles/pages/home-page.css';
+
+const seo = pageMetadata.home;
+const reviewDate = '2026-06-26';
+const totalEntries = weapons.length + ammunition.length + resources.length;
+
+const sidebarGroups = [
+  { title: 'Start Here', links: [['Getting Started', '/getting-started', '01'], ['First Stable Run', '/guides/guides-detail', 'Guide'], ['Map & Locations', '/map-locations', 'Field']] },
+  { title: 'Reference', links: [['Weapons', '/wiki/weapons', String(weapons.length)], ['Ammunition', '/wiki/ammunition', String(ammunition.length)], ['Resources', '/wiki/resources', String(resources.length)]] },
+  { title: 'Planning', links: [['Trampler Tech Tree', '/database', 'Tree'], ['All Wiki Categories', '/wiki', 'Index'], ['All Guides', '/guides', String(publishedGuides.length)]] }
+];
+
+const firstRunLinks = [
+  ['01', 'Prepare the Trampler', 'Fuel, cargo, and a basic loadout.', '/getting-started'],
+  ['02', 'Choose a short route', 'POI type, cover, and a known exit.', '/map-locations'],
+  ['03', 'Extract on purpose', 'Keep the run stable before getting greedy.', '/guides/guides-detail']
+];
+
+const referenceAreas = [
+  ['Weapons', weapons.length, 'Player weapons, mounted cannons, variants, and linked ammunition.', '/wiki/weapons', '/images/wiki/weapons/anti-reactor-rifle.png', 'Anti-Reactor Rifle icon from the SAND weapons wiki'],
+  ['Ammunition', ammunition.length, 'Rounds, shells, rockets, rarity, and compatible weapon families.', '/wiki/ammunition', '/images/wiki/ammunition/40mm-shell.png', '40mm Shell icon from the SAND ammunition wiki'],
+  ['Resources', resources.length, 'Loot, materials, and consumables for planning and crafting.', '/wiki/resources', '/images/wiki/resources/nz-mk2-energy-rod.jpg', 'NZ Mk2 Energy Rod icon from the SAND resources wiki']
+];
+
+const faqItems = [
+  ['What is SAND: Raiders of Sophie?', 'SAND: Raiders of Sophie is a PvPvE extraction game set on Sophie, a desert world where crews use customizable walking machines called Tramplers. A raid blends scavenging, Trampler operations, player pressure, AI threats, and the decision to extract before the risk becomes larger than the cargo.'],
+  ['Where should I start?', 'Start with the Trampler preparation loop rather than a high-risk destination. The Getting Started page covers power, cargo, personal loadout, route choice, and extraction in the order a first expedition asks for them. Follow that with one nearby objective and a clear exit condition.'],
+  ['How should I use this site?', 'Use the Wiki when you need a fact about an item, weapon, ammunition family, or resource. Use the Database when choosing a tech branch or checking materials. Use Map & Locations and Guides when the answer depends on terrain, a route, timing, crew roles, or the value already in your cargo.'],
+  ['How does extraction work?', 'Evacuation radio towers create a contested final phase rather than a guaranteed safe exit. Practical extraction guidance describes locating a tower, activating the radio, surviving the wait, and boarding before the final window closes. Review the map page before treating an extraction icon as a promise of safety.']
+];
+
+const modeNotes = [
+  ['Voyage', 'A slower, open-ended mode for learning the Trampler loop, route rhythm, and extraction approach without a shrinking boundary.'],
+  ['Storm Dive', 'A higher-pressure run where the storm changes how crews move through the field and makes early route planning more important.']
+];
+
+const sourceLinks = [
+  ['Official SAND site', 'https://sand-game.com/'],
+  ['Steam store page', 'https://store.steampowered.com/app/1431300/SAND_Raiders_of_Sophie/'],
+  ['Extraction guide', 'https://www.gamesradar.com/games/fps/sand-raiders-of-sophie-how-to-extract/'],
+  ['Resource guide', 'https://www.gamesradar.com/games/fps/sand-raiders-of-sophie-coral-chunks-weird-coral/']
+];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'CollectionPage', name: seo.title, description: seo.description, dateModified: reviewDate, inLanguage: 'en', about: { '@type': 'VideoGame', name: 'SAND: Raiders of Sophie' }, publisher: { '@type': 'Organization', name: 'SAND Guide Editorial' } },
+    { '@type': 'FAQPage', mainEntity: faqItems.map(([question, answer]) => ({ '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer } })) }
+  ]
+};
+---
+
+<BaseLayout title={seo.title} description={seo.description} keywords={seo.keywords} pageUrl="/" structuredData={structuredData}>
+  <main id="main-content">
+    <section class="home-shell-section">
+      <div class="container">
+        <div class="home-shell-content">
+          <!-- 资料站的主目录 -->
+          <aside class="home-sidebar" aria-label="SAND Guide navigation">
+            <div class="home-sidebar-head"><img src={sidebarHeadIcons.home} alt="SAND Trampler field icon" /><div><strong>SAND Guide</strong><span>Raid Manual</span></div></div>
+            {sidebarGroups.map((group) => <nav class="home-nav-group" aria-label={group.title}><h2>{group.title}</h2>{group.links.map(([label, href, count]) => <a href={href}><img src={getSidebarIcon(label, href)} alt="" /><span>{label}</span><b>{count}</b></a>)}</nav>)}
+            <div class="home-sidebar-status"><span>Reference status</span><b>Live Game</b><small>Reviewed {reviewDate}</small></div>
+          </aside>
+
+          <div class="home-mainframe">
+            <!-- 紧凑主控台：游戏概述和首局行动并列 -->
+            <section class="home-hero-section">
+              <div class="home-hero-copy">
+                <span>Independent Player Reference</span>
+                <h1>SAND: Raiders of Sophie Wiki, Database, Guides &amp; Map</h1>
+                <p>Raid planning, Trampler systems, loot reference, and field decisions for live-game players. Use it before you spend resources in the hangar, when you identify something in the desert, or when a route needs an exit plan.</p>
+                <div class="home-hero-actions"><a href="/getting-started">Start here <span aria-hidden="true">&#8594;</span></a><a href="/wiki">Open wiki</a></div>
+                <small>Reviewed {reviewDate} · {totalEntries} item entries · Community reference</small>
+              </div>
+              <figure class="home-hero-visual"><img src="/images/map-locations/sophie-desert-trampler.jpg" alt="Trampler in the Sophie desert in SAND: Raiders of Sophie" /><figcaption>Trampler field operations</figcaption></figure>
+              <div class="home-hero-brief">
+                <span>First Expedition</span>
+                <ol>{firstRunLinks.map(([number, title, detail, href]) => <li><a href={href}><b>{number}</b><div><strong>{title}</strong><small>{detail}</small></div><i aria-hidden="true">&#8594;</i></a></li>)}</ol>
+              </div>
+            </section>
+
+            <div class="home-workspace">
+              <div class="home-primary-column">
+                <!-- Wiki 的高价值入口 -->
+                <section class="home-library-section" aria-labelledby="library-title">
+                  <div class="home-section-head"><div><span>Reference Library</span><h2 id="library-title">Browse what you carry.</h2></div><a href="/wiki">View all wiki entries &#8594;</a></div>
+                  <div class="home-library-content">
+                    {referenceAreas.map(([title, count, description, href, imageUrl, imageAlt]) => <article><a class="home-library-image" href={href}><img src={imageUrl} alt={imageAlt} /></a><div><small>{count} entries</small><h3><a href={href}>{title}</a></h3><p>{description}</p></div><a class="home-library-open" href={href} aria-label={`Open ${title}`}>Open &#8594;</a></article>)}
+                  </div>
+                </section>
+
+                <!-- 玩家在一局中如何使用不同资料 -->
+                <section class="home-expedition-section" aria-labelledby="expedition-title">
+                  <div class="home-section-head"><div><span>Expedition Briefing</span><h2 id="expedition-title">One run, four connected decisions.</h2></div></div>
+                  <p class="home-expedition-lead">A good raid is usually decided before the best loot appears. This is the order in which the guide is designed to help: make the Trampler functional, limit the first objective, read the signals around you, and leave while the run is still recoverable.</p>
+                  <div class="home-expedition-content">
+                    <article><b>01 / Prepare</b><h3>Give the Trampler a job.</h3><p>Pack power, cargo space, a personal fallback, and any mounted gear that supports the specific route. A larger loadout is not automatically a better loadout if it delays departure or makes loss harder to accept.</p><a href="/getting-started">Preparation checklist &#8594;</a></article>
+                    <article><b>02 / Navigate</b><h3>Spend distance on purpose.</h3><p>Named POIs, wrecks, open dunes, and radio towers change the balance between value, cover, noise, and exit options. The map page uses location types and terrain context instead of invented static coordinates.</p><a href="/map-locations">Read the field map &#8594;</a></article>
+                    <article><b>03 / Commit</b><h3>Know what the cargo is worth.</h3><p>Weapon and resource reference becomes useful when it changes a decision: whether to continue, return to the Trampler, install an upgrade later, or call extraction now.</p><a href="/wiki/resources">Check resources &#8594;</a></article>
+                    <article><b>04 / Extract</b><h3>Treat the last minute as a fight.</h3><p>Extraction creates sound, timing, and an obvious objective. Arrive with a route out, enough mobility to reposition, and a reason to leave rather than simply one more container to open.</p><a href="/guides/guides-detail">Read extraction discipline &#8594;</a></article>
+                  </div>
+                </section>
+
+                <!-- 两个可执行工具 -->
+                <section class="home-tools-section" aria-labelledby="tools-title">
+                  <div class="home-section-head"><div><span>Planning Tools</span><h2 id="tools-title">Decide before the doors open.</h2></div></div>
+                  <div class="home-tools-content">
+                    <a class="home-tool-card" href="/map-locations"><img src="/images/map-locations/sophie-regional-field-map.png" alt="Illustrated regional field map of Sophie" /><div><small>Map & Locations</small><h3>Landmarks, terrain, and extraction pressure.</h3><p>See location types without invented fixed coordinates.</p><b>Open map &#8594;</b></div></a>
+                    <a class="home-tool-card" href="/database"><div class="home-tool-icon"><img src="/images/wiki/resources/mechanical-parts.jpg" alt="Mechanical Parts resource icon" /></div><div><small>Trampler Database</small><h3>Tech branches, materials, and build priorities.</h3><p>Compare upgrades before committing a run's resources.</p><b>Open database &#8594;</b></div></a>
+                  </div>
+                </section>
+
+                <!-- 首页直接复用指南列表数据 -->
+                {publishedGuides.length > 0 && <section class="home-guides-section" aria-labelledby="guides-title"><div class="home-section-head"><div><span>Latest Guides</span><h2 id="guides-title">Field notes for the next run.</h2></div><a href="/guides">All guides &#8594;</a></div><div class="home-guides-content">{publishedGuides.slice(0, 3).map((guide) => <article><a class="home-guide-image" href={guide.addressBar} aria-label={`Read ${guide.title}`}><img src={guide.imageUrl} alt={guide.imageAlt} /><span>Read guide</span></a><div><small>{guide.category} · {guide.difficulty}</small><h3><a href={guide.addressBar}>{guide.title}</a></h3><p>{guide.description}</p><footer><time datetime={guide.publishDate}>{guide.publishDate}</time><b>{guide.readingTime}</b></footer></div></article>)}</div></section>}
+              </div>
+
+              <aside class="home-info-rail" aria-label="SAND guide information">
+                <section class="home-info-section home-info-section--about"><span>About SAND</span><h2>A moving base in a hostile desert.</h2><p>SAND is a PvPvE extraction game on Sophie. A Trampler is mobility, storage, mounted firepower, and a visible commitment to a route.</p><p>Because Sophie is procedural, reliable play comes from a process instead of a memorized coordinate list: prepare a working machine, read the terrain in front of you, make a limited commitment, and keep an extraction option alive.</p><div class="home-role-list"><div><b>Move</b><span>Cross the desert and choose the next approach.</span></div><div><b>Carry</b><span>Store loot and the equipment that makes a raid possible.</span></div><div><b>Defend</b><span>Mount tools, coordinate a crew, and decide when contact is worth it.</span></div></div><a href="https://store.steampowered.com/app/1431300/SAND_Raiders_of_Sophie/" target="_blank" rel="nofollow noopener">Read official overview &#8599;</a></section>
+                <section class="home-info-section home-info-section--modes"><span>Mode Context</span><h2>Learn the pace before raising the stakes.</h2><div class="home-mode-list">{modeNotes.map(([mode, detail]) => <div><b>{mode}</b><p>{detail}</p></div>)}</div><a href="/getting-started">Compare mode basics &#8594;</a></section>
+                <section class="home-info-section"><span>Why This Guide</span><ul><li><b>Reference before recommendation:</b> item facts live in the Wiki, then guides explain how those facts matter in a run.</li><li><b>One connected workflow:</b> map context, cargo, weapons, upgrades, and extraction are linked because players experience them as one expedition.</li><li><b>Patch-aware editing:</b> patch-sensitive values are not written as permanent rules, and each main area points toward its underlying sources.</li><li><b>Player-first navigation:</b> the useful next page is based on the decision in front of you, not on a generic content category.</li></ul></section>
+                <section class="home-faq-section" aria-labelledby="faq-title"><span>Quick FAQ</span><h2 id="faq-title">Before you deploy.</h2>{faqItems.map(([question, answer]) => <article><h3>{question}</h3><p>{answer}</p></article>)}</section>
+              </aside>
+            </div>
+
+            <!-- 可核查的编辑和来源信息 -->
+            <section class="home-editorial-section" aria-labelledby="editorial-title"><div><span>Player Trust</span><h2 id="editorial-title">Use this before a real run.</h2><p>This guide is organized around the decisions players make in SAND: Raiders of Sophie: what to bring, which resource is worth cargo space, where a Trampler route can break down, and when a tech unlock is worth its cost.</p><p>Official pages are used for the game premise and release context. Wiki entries keep item facts separate from tactical advice, while guides explain how those facts affect a live expedition. Patch-sensitive values are treated as planning references, not permanent rules.</p></div><div class="home-editorial-links">{sourceLinks.map(([label, href]) => <a href={href} target="_blank" rel="nofollow noopener">{label}<span aria-hidden="true">&#8599;</span></a>)}</div><small>Live-game information can change after patches. Last editorial review: {reviewDate}.</small></section>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

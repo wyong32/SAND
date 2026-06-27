@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { pageMetadata } from '../../seo/page-metadata.js';
+import '../../styles/pages/legal-page.css';
+
+const seo = pageMetadata.privacyPolicy;
+const lastUpdated = '2026-06-27';
+const legalLinks = [
+  ['Privacy Policy', '/legal/privacy-policy'],
+  ['Terms of Service', '/legal/terms-of-service'],
+  ['Copyright', '/legal/copyright'],
+  ['About Us', '/legal/about-us'],
+  ['Contact Us', '/legal/contact-us']
+];
+---
+
+<BaseLayout title={seo.title} description={seo.description} keywords={seo.keywords} pageUrl="/legal/privacy-policy" pageType="article" lastUpdated={lastUpdated}>
+  <main id="main-content">
+    <section class="legal-section">
+      <div class="container">
+        <div class="legal-content">
+          <article class="legal-article">
+            <header class="legal-hero">
+              <span>Legal</span>
+              <h1>Privacy Policy</h1>
+              <p>This Privacy Policy explains how SAND Guide handles information related to visitors, reader emails, and basic site operations.</p>
+              <p><time datetime={lastUpdated}>Last updated: {lastUpdated}</time></p>
+            </header>
+            <div class="legal-body">
+              <section>
+                <h2>Overview</h2>
+                <p>SAND Guide is an independent player reference for SAND: Raiders of Sophie. The site is designed to provide wiki pages, database notes, map references, and gameplay guides without requiring visitors to create an account. We do not ask readers to submit personal information through forms, and we do not sell personal information.</p>
+              </section>
+              <section>
+                <h2>Information We May Receive</h2>
+                <p>Because this site is a public website, standard technical data may be processed by hosting, analytics, security, or browser systems. This can include the pages requested, browser type, approximate device information, referrer information, date and time of access, and IP address data used for security and traffic delivery.</p>
+                <p>If you email us, we may receive your email address, name if provided, message content, and any files or links you choose to include. We use that information only to read, respond to, verify, or act on your request.</p>
+              </section>
+              <section>
+                <h2>How Information Is Used</h2>
+                <ul>
+                  <li>To operate, maintain, secure, and improve the website.</li>
+                  <li>To understand which guide pages, wiki pages, or database references need updates.</li>
+                  <li>To respond to reader corrections, copyright notices, source suggestions, or contact requests.</li>
+                  <li>To protect the site from spam, abuse, automated scraping, or security incidents.</li>
+                </ul>
+              </section>
+              <section>
+                <h2>Cookies And Analytics</h2>
+                <p>The site may use basic cookies or similar technologies if required by hosting, performance tools, security layers, or analytics services. These tools help us understand site performance and detect issues. If analytics are used, we prefer aggregated reporting over personal profiling.</p>
+                <p>You can usually control cookies through your browser settings. Blocking cookies may affect some technical features, but the main guide content should remain readable.</p>
+              </section>
+              <section>
+                <h2>Third-Party Links</h2>
+                <p>SAND Guide links to external sources such as official game pages, Steam, community wiki pages, and reference articles. Those third-party sites have their own privacy practices. We are not responsible for how external websites collect, use, or store information after you leave this site.</p>
+              </section>
+              <section>
+                <h2>Data Retention</h2>
+                <p>Technical logs may be retained for a limited period by hosting or security providers. Email messages may be retained as long as needed to answer the request, document a correction, handle a legal issue, or preserve a useful editorial record.</p>
+              </section>
+              <section>
+                <h2>Your Choices</h2>
+                <p>You may contact us to ask about a message you sent, request deletion of an email conversation where practical, or ask us to correct information connected to your contact request. Some records may need to be kept when required for security, legal, or administrative reasons.</p>
+              </section>
+              <section>
+                <h2>Contact</h2>
+                <p>For privacy questions, contact us at <a href="mailto:wyong@sandraidersofsophie.com">wyong@sandraidersofsophie.com</a>.</p>
+              </section>
+            </div>
+          </article>
+          <aside class="legal-side" aria-label="Legal navigation">
+            <div class="legal-side-card">
+              <h2>Legal</h2>
+              <nav>{legalLinks.map(([label, href]) => <a href={href}>{label}</a>)}</nav>
+            </div>
+            <div class="legal-side-card">
+              <h2>Contact</h2>
+              <p>Email: <a href="mailto:wyong@sandraidersofsophie.com">wyong@sandraidersofsophie.com</a></p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

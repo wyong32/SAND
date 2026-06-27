@@ -1,0 +1,521 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { pageMetadata } from '../seo/page-metadata.js';
+import { weapons } from '../data/wiki/weapons.js';
+import { ammunition } from '../data/wiki/ammunition.js';
+import { resources } from '../data/wiki/resources.js';
+import { getSidebarIcon, sidebarHeadIcons } from '../data/sidebar-icons.js';
+import '../styles/pages/inner-page.css';
+import '../styles/pages/getting-started-page.css';
+
+const pageUrl = '/getting-started';
+const lastUpdated = '2026-06-25';
+const seo = pageMetadata.gettingStarted;
+
+const steps = [
+  {
+    number: '01',
+    title: 'Learn the Trampler loop',
+    description:
+      'Your Trampler is your mobile base, storage, respawn point, and primary weapon platform. Before Sophie, load energy rods, ammunition, and any cannon kits into cargo — mounted weapons do not spawn armed by default.',
+    href: '/database'
+  },
+  {
+    number: '02',
+    title: 'Start in Voyage mode',
+    description:
+      'Voyage is the slower, open expedition mode with no shrinking boundary. Use it to learn controls, map reading, and extraction timing before moving to Storm Dive.',
+    href: '/map-locations'
+  },
+  {
+    number: '03',
+    title: 'Pick one modest objective',
+    description:
+      'Choose a single POI — a wreck, small ruin, or nearby fort — and set a time limit. Early raids should teach rhythm, not maximize profit.',
+    href: '/wiki/resources'
+  },
+  {
+    number: '04',
+    title: 'Extract with discipline',
+    description:
+      'Stop the Trampler, climb the evacuation tower, and call extraction. The 90-second timer and green smoke alert nearby crews — leave when you already have useful value aboard.',
+    href: '/guides'
+  }
+];
+
+const prepChecklist = [
+  {
+    term: 'Reactor fuel',
+    detail: 'Pack NZ Mk2 Energy Rods in cargo before launch. Power is temporary and the reactor is a high-value PvP target.',
+    href: '/wiki/resources'
+  },
+  {
+    term: 'Mounted weapons',
+    detail: 'Load cannon kits and matching shells in the hangar, then install and load them on Sophie.',
+    href: '/wiki/weapons'
+  },
+  {
+    term: 'Personal loadout',
+    detail: 'Carry a sidearm, spare ammo, and at least one consumable such as canned food or a medkit when available.',
+    href: '/wiki/ammunition'
+  },
+  {
+    term: 'Route plan',
+    detail: 'Mark one extraction zone on the map before you move. In Voyage, all evacuation zones are visible from the start.',
+    href: '/map-locations'
+  },
+  {
+    term: 'Crew roles',
+    detail: 'Assign driver, gunner, and scavenger before departure. Solo players must handle all roles — consider solo-only servers.',
+    href: '/guides/guides-detail'
+  }
+];
+
+const modeComparison = [
+  {
+    mode: 'Voyage',
+    label: 'Open-ended expedition',
+    detail: 'No hard time limit; lower-tier loot; best for learning Trampler handling and extraction.',
+    href: '/map-locations'
+  },
+  {
+    mode: 'Storm Dive',
+    label: 'Shrinking sandstorm PvP',
+    detail: 'Higher-tier rewards; the storm pushes crews together; expect frequent player contact.',
+    href: '/guides'
+  }
+];
+
+const extractionSteps = [
+  ['Reach an Evacuation Zone', 'Look for the white door icon on your map. Your Trampler must be in the zone before you can call extraction.'],
+  ['Shut down the Trampler', 'Stop the walker and turn off main power so the chimney stops venting smoke.'],
+  ['Climb the tower', 'Use the central tower and interact with the radio to start a 90-second extraction timer.'],
+  ['Hold the position', 'Green smoke signals your attempt. Enemy fire or moving the Trampler can cancel extraction.']
+];
+
+const commonMistakes = [
+  ['Deploying an unarmed Trampler', 'Cannons and ammo must be packed in cargo and installed after landing — they are not pre-mounted.'],
+  ['Chasing every signal', 'Engine smoke, gunfire, and extraction green smoke draw attention. Noise is information for other raiders.'],
+  ['Greedy inventory', 'Loot only matters after extraction. A successful raid ends at the orbital pickup, not in the ruin.'],
+  ['Solo without a plan', 'The game supports solo play, but one player must pilot, fight, loot, and extract. Use solo servers and short routes early on.']
+];
+
+const faqItems = [
+  {
+    question: 'What is SAND: Raiders of Sophie?',
+    answer:
+      'SAND: Raiders of Sophie is a dieselpunk PvPvE extraction shooter developed by Hologryph and TowerHaus, published by tinyBuild. Players build customizable walking mechs called Tramplers, scavenge a desert planet, fight rival crews and AI threats, and extract loot to an orbital station.'
+  },
+  {
+    question: 'What should beginners do first in SAND?',
+    answer:
+      'Learn Trampler preparation in the hangar, run Voyage mode with a single loot target, practice shutting down the reactor and calling extraction at an Evacuation Zone, and review the Weapons Wiki, Resources Wiki, and Database before investing in expensive tech tree unlocks.'
+  },
+  {
+    question: 'What is the difference between Voyage and Storm Dive?',
+    answer:
+      'Voyage is a persistent, open expedition without a shrinking play area — suited to learning routes and Trampler builds. Storm Dive adds an encroaching sandstorm, higher-tier loot, and stronger pressure for PvP as crews are forced toward the center of the map.'
+  },
+  {
+    question: 'How does extraction work in SAND?',
+    answer:
+      'Travel to an Evacuation Zone, stop and power down your Trampler, climb the zone tower, and activate the radio to begin a 90-second countdown. Your Trampler emits green smoke during the timer. When the countdown finishes, an orbital ship recovers the Trampler and crew.'
+  },
+  {
+    question: 'Is SAND: Raiders of Sophie good for solo players?',
+    answer:
+      'Solo play is supported and solo-only servers exist, but the experience is demanding: one player must operate the Trampler, manage combat, and loot. Most reviewers recommend a regular squad for the live game. Treat solo as a learning mode, not the optimal profit path.'
+  },
+  {
+    question: 'Where should I read more on this site?',
+    answer:
+      'Use the Wiki for weapons, ammunition, and resources; the Database for Trampler module planning; Map and Locations for route selection; and the Guides section for raid and extraction strategy.'
+  }
+];
+
+const tocLinks = [
+  ['#what-is-sand', 'What is SAND?'],
+  ['#first-loop', 'First expedition loop'],
+  ['#trampler-prep', 'Trampler preparation'],
+  ['#game-modes', 'Voyage vs Storm Dive'],
+  ['#extraction', 'How extraction works'],
+  ['#solo-squad', 'Solo vs squad'],
+  ['#mistakes', 'Common mistakes'],
+  ['#faq', 'FAQ'],
+  ['#about-guide', 'About this guide']
+];
+
+const exploreLinks = [
+  ['Wiki', '/wiki', 'All wiki categories in one place.'],
+  ['Weapons Wiki', '/wiki/weapons', 'Player guns and mounted cannons.'],
+  ['Ammunition Wiki', '/wiki/ammunition', 'Rounds, shells, and rockets.'],
+  ['Resources Wiki', '/wiki/resources', 'Loot and crafting materials by rarity.'],
+  ['First Raid Guide', '/guides/guides-detail', 'Mindset and crew discipline for raid one.'],
+  ['All Guides', '/guides', 'Extraction and Trampler strategy notes.']
+];
+
+const relatedLinks = [
+  ['First Raid Guide', '/guides/guides-detail', 'Step-by-step raid mindset and crew discipline.'],
+  ['Weapons Wiki', '/wiki/weapons', `${weapons.length} player and mounted weapons with stats and ammo links.`],
+  ['Ammunition Wiki', '/wiki/ammunition', `${ammunition.length} ammo types linked to weapons and cannons.`],
+  ['Resources Wiki', '/wiki/resources', `${resources.length} resources grouped by rarity for loot planning.`],
+  ['Database / Tech Tree', '/database', 'Trampler module priorities and progression preview.'],
+  ['Map & Locations', '/map-locations', 'POI types, forts, cities, and route discipline notes.']
+];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebPage',
+      '@id': `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: seo.title,
+      description: seo.description,
+      dateModified: lastUpdated,
+      inLanguage: 'en',
+      isPartOf: {
+        '@type': 'WebSite',
+        name: 'SAND Guide',
+        description: 'Independent field manual for SAND: Raiders of Sophie players.'
+      },
+      about: {
+        '@type': 'VideoGame',
+        name: 'SAND: Raiders of Sophie',
+        gamePlatform: 'PC',
+        applicationCategory: 'Game',
+        operatingSystem: 'Windows',
+        genre: ['Action', 'Extraction Shooter', 'Multiplayer'],
+        publisher: { '@type': 'Organization', name: 'tinyBuild' },
+        developer: [
+          { '@type': 'Organization', name: 'Hologryph' },
+          { '@type': 'Organization', name: 'TowerHaus' }
+        ]
+      }
+    },
+    {
+      '@type': 'Article',
+      '@id': `${pageUrl}#article`,
+      headline: seo.title,
+      description: seo.description,
+      datePublished: lastUpdated,
+      dateModified: lastUpdated,
+      author: {
+        '@type': 'Organization',
+        name: 'SAND Guide Editorial',
+        description: 'Independent community guide team — not affiliated with Hologryph or tinyBuild.'
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'SAND Guide'
+      },
+      mainEntityOfPage: { '@id': `${pageUrl}#webpage` },
+      articleSection: 'Beginner Guide',
+      keywords: [
+        'SAND Raiders of Sophie getting started',
+        'SAND beginner guide',
+        'SAND Trampler guide',
+        'SAND extraction guide',
+        'SAND live game'
+      ]
+    },
+    {
+      '@type': 'HowTo',
+      name: 'How to complete your first SAND: Raiders of Sophie expedition',
+      description: 'A beginner loop for the live game: prepare the Trampler, raid in Voyage mode, and extract safely.',
+      step: steps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        name: step.title,
+        text: step.description,
+        url: `${pageUrl}#first-loop`
+      }))
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqItems.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: item.answer
+        }
+      }))
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  keywords={seo.keywords}
+  pageUrl={pageUrl}
+  pageType="article"
+  lastUpdated={lastUpdated}
+  structuredData={structuredData}
+>
+    <main id="main-content">
+      <section class="inner-shell-section">
+        <div class="container">
+          <div class="inner-shell-content">
+            <aside class="inner-sidebar" aria-label="SAND guide menu">
+              <div class="inner-sidebar-head">
+                <img src={sidebarHeadIcons.gettingStarted} alt="Repair kit icon for getting started navigation" />
+                <div><strong>Menu</strong><span>Raid Manual</span></div>
+              </div>
+              <nav class="inner-nav-group" aria-label="Start">
+                <h2>Start</h2>
+                <a class="is-active" href="/getting-started"><img src={getSidebarIcon('Getting Started', '/getting-started')} alt="" /><span>Getting Started</span><b>Open</b></a>
+                <a href="/guides/guides-detail"><img src={getSidebarIcon('First Raid Guide', '/guides/guides-detail')} alt="" /><span>First Raid Guide</span><b>Guide</b></a>
+                <a href="/guides"><img src={getSidebarIcon('All Guides', '/guides')} alt="" /><span>All Guides</span><b>List</b></a>
+              </nav>
+              <nav class="inner-nav-group" aria-label="On this page">
+                <h2>On this page</h2>
+                {tocLinks.map(([href, label]) => (
+                  <a href={href}><img src={getSidebarIcon(label, href)} alt="" /><span>{label}</span><b>Jump</b></a>
+                ))}
+              </nav>
+              <nav class="inner-nav-group" aria-label="Systems">
+                <h2>Systems</h2>
+                <a href="/wiki"><img src={getSidebarIcon('Wiki', '/wiki')} alt="" /><span>Wiki</span><b>Index</b></a>
+                <a href="/wiki/weapons"><img src={getSidebarIcon('Weapons', '/wiki/weapons')} alt="" /><span>Weapons</span><b>{weapons.length}</b></a>
+                <a href="/wiki/ammunition"><img src={getSidebarIcon('Ammunition', '/wiki/ammunition')} alt="" /><span>Ammunition</span><b>{ammunition.length}</b></a>
+                <a href="/wiki/resources"><img src={getSidebarIcon('Resources', '/wiki/resources')} alt="" /><span>Resources</span><b>{resources.length}</b></a>
+                <a href="/database"><img src={getSidebarIcon('Database', '/database')} alt="" /><span>Database</span><b>Tree</b></a>
+                <a href="/map-locations"><img src={getSidebarIcon('Map & Locations', '/map-locations')} alt="" /><span>Map & Locations</span><b>Map</b></a>
+              </nav>
+            </aside>
+            <div class="inner-mainframe">
+              <article class="getting-article" itemscope itemtype="https://schema.org/Article">
+                <meta itemprop="dateModified" content={lastUpdated} />
+                <meta itemprop="headline" content={seo.title} />
+
+                <section class="getting-hero-section" aria-labelledby="getting-started-title">
+                  <div class="getting-hero-content">
+                    <div>
+                      <span class="getting-kicker">Beginner Guide · Live Game</span>
+                      <h1 id="getting-started-title">SAND: Raiders of Sophie - Getting Started</h1>
+                      <p class="getting-lead">
+                        SAND is a dieselpunk PvPvE extraction shooter built around <strong>Tramplers</strong> — giant walking bases you customize, deploy, and extract back to orbit. This guide explains the first expedition loop using mechanics confirmed for the current live build.
+                      </p>
+                      <p class="getting-meta">
+                        <time datetime={lastUpdated}>Last updated: {lastUpdated}</time>
+                        <span>Independent fan guide — not official</span>
+                      </p>
+                      <div class="getting-hero-strip" aria-label="Guide summary">
+                        <strong><span>Focus</span>First Expedition</strong>
+                        <strong><span>Flow</span>4-Step Loop</strong>
+                        <strong><span>Priority</span>Extract Stable</strong>
+                      </div>
+                    </div>
+                    <figure class="getting-hero-media">
+                      <img src="/images/bg.webp" alt="Desert expedition atmosphere on planet Sophie in SAND: Raiders of Sophie" width="760" height="520" loading="eager" />
+                      <figcaption>Planet Sophie — a procedural desert world of ruins, wrecks, and rival scavenger crews.</figcaption>
+                    </figure>
+                  </div>
+                </section>
+
+                <section class="getting-summary-section" aria-label="Quick answer">
+                  <div class="getting-summary-panel">
+                    <h2>Quick answer: how to start SAND</h2>
+                    <ol>
+                      <li>Prepare your Trampler in the orbital hangar — fuel rods, ammo, and cannon kits in cargo.</li>
+                      <li>Launch a <strong>Voyage</strong> expedition with one nearby POI and a planned extraction zone.</li>
+                      <li>Loot, avoid unnecessary fights, and return before the run turns loud.</li>
+                      <li>Extract at an Evacuation Zone: stop the Trampler, climb the tower, and hold the 90-second radio timer.</li>
+                    </ol>
+                  </div>
+                </section>
+
+                <section id="what-is-sand" class="getting-prose-section">
+                  <h2>What is SAND: Raiders of Sophie?</h2>
+                  <p>
+                    In an alternate-history 1910, colonists from the Austro-Hungarian Empire settled planet <strong>Sophie</strong> before a catastrophic ecological disaster turned its oceans into desert. Survivors now raid the dunes in Tramplers — modular walking mechs that serve as transport, storage, crew respawn, and fire support.
+                  </p>
+                  <p>
+                    Each expedition is a risk chain: prepare in orbit, drop onto Sophie, fight or avoid other players and AI threats such as <strong>Upiors</strong> (ruin creatures) and <strong>Ironclads</strong> (patrol walkers), then extract before you lose the Trampler and its cargo. Use our <a href="/wiki">Wiki</a>, <a href="/database">Database</a>, and <a href="/guides">Guides</a> to plan your first runs in the current live build.
+                  </p>
+                  <div class="getting-inline-links">
+                    <a href="/wiki">Wiki</a>
+                    <a href="/wiki/weapons">Weapons</a>
+                    <a href="/wiki/ammunition">Ammunition</a>
+                    <a href="/wiki/resources">Resources</a>
+                    <a href="/database">Database</a>
+                  </div>
+                </section>
+
+                <section id="first-loop" class="getting-steps-section" aria-labelledby="first-loop-title">
+                  <div class="getting-section-head">
+                    <h2 id="first-loop-title">Your first expedition loop</h2>
+                    <p>Four decisions that define whether a beginner raid teaches you the game or ends in a total loss.</p>
+                  </div>
+                  <div class="getting-steps-content">
+                    {steps.map((step) => (
+                      <article>
+                        <b>{step.number}</b>
+                        <h3>{step.title}</h3>
+                        <p>{step.description}</p>
+                        <a href={step.href}>Related reference</a>
+                      </article>
+                    ))}
+                  </div>
+                </section>
+
+                <section id="trampler-prep" class="getting-prose-section">
+                  <h2>Trampler preparation checklist</h2>
+                  <p>
+                    The Trampler editor lets you place engines, reactors, steering rooms, storage, crew spawns, and weapon mounts. Heavier builds move slower but survive longer. Before your first drop, verify the items below — these are the most common beginner failures reported in current guides and community wiki notes.
+                  </p>
+                  <dl class="getting-checklist">
+                    {prepChecklist.map((item) => (
+                      <div>
+                        <dt><a href={item.href}>{item.term}</a></dt>
+                        <dd>{item.detail}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                  <p>
+                    For mounted cannons, see <a href="/wiki/weapons/40mm-autocannon">40mm Autocannon</a>, <a href="/wiki/weapons/70mm-shotgun-cannon">70mm Shotgun Cannon</a>, and <a href="/wiki/weapons/80mm-naval-cannon">80mm Naval Cannon</a>. Match shells on the <a href="/wiki/ammunition">Ammunition Wiki</a>.
+                  </p>
+                </section>
+
+                <section id="game-modes" class="getting-modes-section">
+                  <h2>Voyage vs Storm Dive — which mode first?</h2>
+                  <p>The current game ships two expedition modes. Beginners should treat them as different risk profiles, not difficulty sliders.</p>
+                  <div class="getting-modes-grid">
+                    {modeComparison.map((item) => (
+                      <article>
+                        <span>{item.label}</span>
+                        <h3>{item.mode}</h3>
+                        <p>{item.detail}</p>
+                        <a href={item.href}>Read more</a>
+                      </article>
+                    ))}
+                  </div>
+                </section>
+
+                <section id="extraction" class="getting-prose-section">
+                  <h2>How extraction works</h2>
+                  <p>
+                    Extraction is the highest-attention moment in SAND. Other crews watch for green smoke and orbital pickup windows. Follow the steps below, then read the <a href="/guides">Extraction strategy guides</a> and <a href="/map-locations">Map &amp; Locations</a> notes for route planning.
+                  </p>
+                  <ol class="getting-numbered-list">
+                    {extractionSteps.map(([title, detail]) => (
+                      <li>
+                        <strong>{title}</strong>
+                        <span>{detail}</span>
+                      </li>
+                    ))}
+                  </ol>
+                  <p>
+                    In <strong>Voyage</strong>, all possible Evacuation Zones are visible from the start, so you can loot and leave on your own schedule. In <strong>Storm Dive</strong>, shrinking map pressure makes late extraction more dangerous.
+                  </p>
+                </section>
+
+                <section id="solo-squad" class="getting-systems-section">
+                  <div class="getting-systems-content">
+                    <aside>
+                      <span>Solo vs squad</span>
+                      <h2>Play with a crew when you can</h2>
+                      <p>
+                        SAND supports solo expeditions and offers solo-only servers so you are not automatically outnumbered. That said, operating a Trampler alone means you must drive, shoot, repair, loot, and extract without backup. Reviewers and developers consistently describe the game as a <strong>crew-first</strong> experience in the live game.
+                      </p>
+                    </aside>
+                    <div>
+                      <article>
+                        <h3>Recommended for beginners</h3>
+                        <p>Two to four players with assigned roles: pilot, deck gunner, on-foot looter, and rear guard during extraction.</p>
+                      </article>
+                      <article>
+                        <h3>Solo learning path</h3>
+                        <p>Use solo servers, keep routes short in Voyage, turn off the engine when parked to reduce smoke signature, and extract after your first meaningful cargo — not your first firefight win.</p>
+                      </article>
+                      <article>
+                        <h3>What to read next</h3>
+                        <p><a href="/guides/guides-detail">Beginner First Raid Guide</a> · <a href="/guides">Extraction strategy notes</a> · <a href="/map-locations">Map &amp; Locations</a></p>
+                      </article>
+                    </div>
+                  </div>
+                </section>
+
+                <section id="mistakes" class="getting-prose-section">
+                  <h2>Common beginner mistakes</h2>
+                  <ul class="getting-mistakes-list">
+                    {commonMistakes.map(([title, detail]) => (
+                      <li>
+                        <strong>{title}</strong>
+                        <p>{detail}</p>
+                      </li>
+                    ))}
+                  </ul>
+                  <p>
+                    For weapon and ammo basics, start with the <a href="/wiki/weapons">Weapons Wiki</a> and <a href="/wiki/ammunition">Ammunition Wiki</a>. For loot priorities, see <a href="/wiki/resources">Resources</a>.
+                  </p>
+                </section>
+
+                <section id="faq" class="getting-faq-section" aria-labelledby="faq-title">
+                  <div class="getting-section-head">
+                    <h2 id="faq-title">Frequently asked questions</h2>
+                    <p>Short answers for search and onboarding. Mechanics may change across live patches.</p>
+                  </div>
+                  <div class="getting-faq-list">
+                    {faqItems.map((item) => (
+                      <details>
+                        <summary>{item.question}</summary>
+                        <p>{item.answer}</p>
+                      </details>
+                    ))}
+                  </div>
+                </section>
+
+                <section id="about-guide" class="getting-trust-section" aria-labelledby="trust-title">
+                  <h2 id="trust-title">About this guide</h2>
+                  <div class="getting-trust-grid">
+                    <article>
+                      <h3>Independent reference</h3>
+                      <p>
+                        SAND Guide is a <strong>player-made field manual</strong>, not an official site. Pages are updated as live-game mechanics change through in-game testing and wiki research on this hub.
+                      </p>
+                    </article>
+                    <article>
+                      <h3>Patch disclaimer</h3>
+                      <p>
+                        SAND is in active development. Balance, server stability, and tutorials may change between patches. Confirm critical values in-game when a run depends on them.
+                      </p>
+                    </article>
+                    <article>
+                      <h3>Keep exploring</h3>
+                      <p>
+                        Continue with the <a href="/wiki">Wiki</a>, <a href="/database">Database</a>, <a href="/map-locations">Map &amp; Locations</a>, and <a href="/guides">Guides</a> for deeper systems coverage.
+                      </p>
+                    </article>
+                  </div>
+                  <div class="getting-inline-links getting-inline-links-wide">
+                    {exploreLinks.map(([title, href]) => (
+                      <a href={href}>{title}</a>
+                    ))}
+                  </div>
+                </section>
+
+                <section class="getting-related-section" aria-labelledby="related-title">
+                  <div class="getting-section-head">
+                    <h2 id="related-title">Continue learning</h2>
+                    <p>Internal references aligned with this beginner path.</p>
+                  </div>
+                  <div class="getting-related-grid">
+                    {relatedLinks.map(([title, href, detail]) => (
+                      <a href={href}>
+                        <strong>{title}</strong>
+                        <span>{detail}</span>
+                      </a>
+                    ))}
+                  </div>
+                </section>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+</BaseLayout>

@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { pageMetadata } from '../../seo/page-metadata.js';
+import '../../styles/pages/legal-page.css';
+
+const seo = pageMetadata.termsOfService;
+const lastUpdated = '2026-06-27';
+const legalLinks = [
+  ['Privacy Policy', '/legal/privacy-policy'],
+  ['Terms of Service', '/legal/terms-of-service'],
+  ['Copyright', '/legal/copyright'],
+  ['About Us', '/legal/about-us'],
+  ['Contact Us', '/legal/contact-us']
+];
+---
+
+<BaseLayout title={seo.title} description={seo.description} keywords={seo.keywords} pageUrl="/legal/terms-of-service" pageType="article" lastUpdated={lastUpdated}>
+  <main id="main-content">
+    <section class="legal-section">
+      <div class="container">
+        <div class="legal-content">
+          <article class="legal-article">
+            <header class="legal-hero">
+              <span>Legal</span>
+              <h1>Terms of Service</h1>
+              <p>These Terms explain the basic rules for using SAND Guide and reading its independent reference content.</p>
+              <p><time datetime={lastUpdated}>Last updated: {lastUpdated}</time></p>
+            </header>
+            <div class="legal-body">
+              <section>
+                <h2>Acceptance Of Terms</h2>
+                <p>By using SAND Guide, you agree to these Terms of Service. If you do not agree, you should stop using the site. These Terms apply to all pages, including guides, wiki references, database pages, map notes, and legal pages.</p>
+              </section>
+              <section>
+                <h2>Independent Reference</h2>
+                <p>SAND Guide is an independent player-made resource. It is not an official website for SAND: Raiders of Sophie, Hologryph, TowerHaus, tinyBuild, Steam, or any related owner. Game names, trademarks, images, and references belong to their respective owners.</p>
+              </section>
+              <section>
+                <h2>Permitted Use</h2>
+                <p>You may read, link to, and use the site for personal gameplay research, route planning, item lookup, and discussion. You may not use the site to attack, disrupt, scrape at unreasonable scale, misrepresent ownership, or republish large parts of the site as your own work.</p>
+              </section>
+              <section>
+                <h2>Content Accuracy</h2>
+                <p>We work to keep information useful and source-aware, but SAND: Raiders of Sophie can change through patches, balance updates, community discoveries, and in-game adjustments. The site may contain outdated values, incomplete entries, or interpretation based on available sources. Always verify critical information in game when a run, build, or purchase depends on it.</p>
+              </section>
+              <section>
+                <h2>No Professional Advice</h2>
+                <p>All content is provided for entertainment, gameplay reference, and informational purposes. It is not legal, financial, technical security, or professional advice. Any decisions you make based on the site are your responsibility.</p>
+              </section>
+              <section>
+                <h2>External Links</h2>
+                <p>The site may link to official pages, Steam, community wikis, media articles, social posts, and other external resources. We provide these links for reference and citation context. We do not control external websites and are not responsible for their content, availability, privacy practices, or policies.</p>
+              </section>
+              <section>
+                <h2>Changes To The Site</h2>
+                <p>We may update, remove, reorganize, or revise content at any time. Pages may change as new information becomes available or as the site structure improves. We may also update these Terms when needed.</p>
+              </section>
+              <section>
+                <h2>Contact</h2>
+                <p>Questions about these Terms can be sent to <a href="mailto:wyong@sandraidersofsophie.com">wyong@sandraidersofsophie.com</a>.</p>
+              </section>
+            </div>
+          </article>
+          <aside class="legal-side" aria-label="Legal navigation">
+            <div class="legal-side-card">
+              <h2>Legal</h2>
+              <nav>{legalLinks.map(([label, href]) => <a href={href}>{label}</a>)}</nav>
+            </div>
+            <div class="legal-side-card">
+              <h2>Contact</h2>
+              <p>Email: <a href="mailto:wyong@sandraidersofsophie.com">wyong@sandraidersofsophie.com</a></p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

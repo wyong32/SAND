@@ -1,0 +1,363 @@
+.wiki-resources-hero-section,
+.wiki-resources-grid-section,
+.wiki-resources-list-section,
+.wiki-resources-extra-section {
+  padding: 40px 0;
+}
+
+.wiki-resources-hero-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 16px;
+  align-items: stretch;
+  padding: clamp(24px, 4vw, 40px);
+  border: 1px solid rgba(93, 132, 163, 0.42);
+  background:
+    linear-gradient(90deg, rgba(117, 149, 177, 0.14) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(117, 149, 177, 0.12) 1px, transparent 1px),
+    linear-gradient(135deg, rgba(83, 111, 153, 0.34), rgba(8, 13, 19, 0.9));
+  background-size: 32px 32px, 32px 32px, auto;
+}
+
+.wiki-resources-hero-copy > a,
+.wiki-resources-hero-copy > span {
+  color: var(--color-brass);
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.wiki-resources-hero-copy h1 {
+  margin-top: 12px;
+  font-size: clamp(26px, 3vw, 38px);
+  line-height: 1.02;
+}
+
+.wiki-resources-hero-copy p {
+  max-width: 800px;
+  margin-top: 12px;
+  font-size: 16px;
+  line-height: 1.62;
+}
+
+.wiki-resources-hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  align-content: start;
+}
+
+.wiki-resources-hero-stats strong {
+  padding: 14px 16px;
+  border: 1px solid rgba(156, 184, 210, 0.3);
+  background: rgba(5, 9, 14, 0.54);
+  color: var(--color-ash);
+  font-family: var(--font-ui);
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.wiki-resources-hero-stats strong span {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--color-brass);
+  font-size: 24px;
+}
+
+.wiki-resources-section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(93, 132, 163, 0.34);
+}
+
+.wiki-resources-section-heading span {
+  color: var(--color-brass);
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.wiki-resources-section-heading p {
+  max-width: 620px;
+  font-size: 14px;
+  text-align: right;
+}
+
+.wiki-resources-icon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
+  gap: 8px;
+  padding: 18px;
+  border: 1px solid rgba(93, 132, 163, 0.34);
+  background:
+    linear-gradient(90deg, rgba(117, 149, 177, 0.13) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(117, 149, 177, 0.12) 1px, transparent 1px),
+    rgba(6, 10, 16, 0.72);
+  background-size: 28px 28px;
+}
+
+.wiki-resources-icon-grid a {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  border: 1px solid rgba(156, 184, 210, 0.26);
+  background: linear-gradient(180deg, rgba(18, 31, 44, 0.92), rgba(8, 13, 19, 0.92));
+  overflow: hidden;
+}
+
+.wiki-resources-icon-grid img {
+  width: 54px;
+  height: 54px;
+  object-fit: cover;
+}
+
+.wiki-resources-icon-grid span {
+  position: absolute;
+  right: 6px;
+  bottom: 22px;
+  left: 6px;
+  padding: 5px 6px;
+  background: rgba(5, 9, 14, 0.82);
+  color: var(--color-ash);
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.1;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.wiki-resources-icon-grid b {
+  position: absolute;
+  right: 6px;
+  bottom: 5px;
+  color: var(--color-brass);
+  font-family: var(--font-ui);
+  font-size: 9px;
+  text-transform: uppercase;
+}
+
+.wiki-resources-icon-grid a:hover {
+  border-color: rgba(229, 163, 74, 0.72);
+}
+
+.wiki-resources-icon-grid a:hover span {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.wiki-resources-list-content {
+  display: grid;
+  gap: 34px;
+}
+
+.wiki-resources-list-content > section {
+  padding: 24px;
+  border: 1px solid rgba(93, 132, 163, 0.34);
+  background:
+    linear-gradient(90deg, rgba(117, 149, 177, 0.13) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(117, 149, 177, 0.12) 1px, transparent 1px),
+    rgba(6, 10, 16, 0.72);
+  background-size: 28px 28px;
+}
+
+.wiki-resources-table {
+  display: grid;
+  gap: 8px;
+}
+
+.wiki-resources-table article {
+  display: grid;
+  grid-template-columns: 64px minmax(180px, 0.6fr) minmax(0, 1fr);
+  gap: 14px;
+  align-items: stretch;
+  padding: 10px;
+  border: 1px solid rgba(156, 184, 210, 0.26);
+  background: linear-gradient(180deg, rgba(18, 31, 44, 0.9), rgba(8, 13, 19, 0.9));
+}
+
+.wiki-resources-table img {
+  width: 56px;
+  height: 56px;
+  border: 1px solid rgba(215, 224, 232, 0.36);
+  background: rgba(4, 8, 13, 0.74);
+  object-fit: cover;
+}
+
+.wiki-resources-table small {
+  color: var(--color-map);
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.wiki-resources-table h2 {
+  margin-top: 5px;
+  font-size: 20px;
+}
+
+.wiki-resources-table p {
+  margin-top: 7px;
+  font-size: 14px;
+}
+
+.wiki-resources-table dl {
+  display: grid;
+  gap: 5px;
+}
+
+.wiki-resources-table dl div {
+  display: grid;
+  grid-template-columns: 104px minmax(0, 1fr);
+  min-height: 30px;
+  border: 1px solid rgba(93, 132, 163, 0.24);
+  background: rgba(5, 9, 14, 0.54);
+}
+
+.wiki-resources-table dt,
+.wiki-resources-table dd {
+  padding: 7px 9px;
+  font-size: 13px;
+}
+
+.wiki-resources-table dt {
+  color: var(--color-brass);
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.wiki-resources-table dd {
+  border-left: 1px solid rgba(93, 132, 163, 0.24);
+}
+
+.wiki-resources-extra-content {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.75fr) minmax(0, 1.25fr);
+  gap: 14px;
+}
+
+.wiki-resources-extra-content > article,
+.wiki-resources-extra-content > div article {
+  border: 1px solid rgba(93, 132, 163, 0.38);
+  background: linear-gradient(180deg, rgba(18, 31, 44, 0.92), rgba(8, 13, 19, 0.9));
+}
+
+.wiki-resources-extra-content > article {
+  padding: 30px;
+}
+
+.wiki-resources-extra-content > article span {
+  color: var(--color-brass);
+  font-family: var(--font-ui);
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.wiki-resources-extra-content > article h2 {
+  margin-top: 14px;
+  font-size: 30px;
+}
+
+.wiki-resources-extra-content > article p {
+  margin-top: 14px;
+}
+
+.wiki-resources-extra-content > div {
+  display: grid;
+  gap: 10px;
+}
+
+.wiki-resources-extra-content > div article {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  gap: 12px;
+  padding: 14px;
+}
+
+.wiki-resources-extra-content img {
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(215, 224, 232, 0.36);
+  object-fit: cover;
+}
+
+.wiki-resources-extra-content h2 {
+  font-size: 20px;
+}
+
+.wiki-resources-extra-content > div p {
+  margin-top: 6px;
+  font-size: 14px;
+}
+
+@media (max-width: 1024px) {
+  .wiki-resources-hero-content,
+  .wiki-resources-hero-stats,
+  .wiki-resources-table article,
+  .wiki-resources-extra-content {
+    grid-template-columns: 1fr;
+  }
+
+  .wiki-resources-section-heading {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .wiki-resources-section-heading p {
+    text-align: left;
+  }
+}
+
+@media (max-width: 768px) {
+  .wiki-resources-hero-section,
+  .wiki-resources-grid-section,
+  .wiki-resources-list-section,
+  .wiki-resources-extra-section {
+    padding: 14px 0;
+  }
+
+  .wiki-resources-hero-content,
+  .wiki-resources-icon-grid,
+  .wiki-resources-list-content > section,
+  .wiki-resources-extra-content > article,
+  .wiki-resources-extra-content > div article {
+    padding: 14px;
+  }
+
+  .wiki-resources-hero-copy h1 {
+    font-size: 27px;
+    line-height: 1.12;
+  }
+
+  .wiki-resources-hero-copy p,
+  .wiki-resources-table p,
+  .wiki-resources-extra-content p {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .wiki-resources-icon-grid {
+    grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
+    gap: 6px;
+  }
+
+  .wiki-resources-table article {
+    gap: 10px;
+  }
+
+  .wiki-resources-table h2,
+  .wiki-resources-extra-content h2 {
+    font-size: 18px;
+  }
+}
