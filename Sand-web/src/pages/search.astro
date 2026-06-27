@@ -142,7 +142,7 @@ const structuredData = {
           <div class="search-results-head">
             <div>
               <span>Results</span>
-              <h2 id="search-results-title">Browse the indexed reference.</h2>
+              <h2 id="search-results-title">Browse SAND: Raiders of Sophie wiki and guide results.</h2>
             </div>
             <p data-search-count>{searchItems.length} results indexed</p>
           </div>
@@ -162,7 +162,7 @@ const structuredData = {
                   <small>{item.category}</small>
                   <h2><a href={item.href}>{item.title}</a></h2>
                   <p>{item.description}</p>
-                  <a href={item.href}>Open result <span aria-hidden="true">&#8594;</span></a>
+                  <a href={item.href}>Open {item.title} reference <span aria-hidden="true">&#8594;</span></a>
                 </div>
               </article>
             ))}
@@ -202,7 +202,7 @@ const structuredData = {
       }
 
       if (title) {
-        title.textContent = terms.length === 0 ? 'Browse the indexed reference.' : `Search results for "${value}"`;
+        title.textContent = terms.length === 0 ? 'Browse SAND: Raiders of Sophie wiki and guide results.' : `Search results for "${value}"`;
       }
     };
 

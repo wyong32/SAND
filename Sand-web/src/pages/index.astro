@@ -71,7 +71,7 @@ const structuredData = {
                 <span>Independent Player Reference</span>
                 <h1>SAND: Raiders of Sophie Wiki, Database, Guides &amp; Map</h1>
                 <p>SAND: Raiders of Sophie Guide brings raid planning, Trampler systems, loot reference, and field decisions into one player-focused hub. Use it before you spend resources in the hangar, when you identify something in the desert, or when a route needs an exit plan.</p>
-                <div class="home-hero-actions"><a href="/getting-started">Start here <span aria-hidden="true">&#8594;</span></a><a href="/wiki">Open wiki</a></div>
+                <div class="home-hero-actions"><a href="/getting-started">Read SAND Getting Started Guide <span aria-hidden="true">&#8594;</span></a><a href="/wiki">Browse SAND Wiki</a></div>
                 <small>Reviewed {reviewDate} · {totalEntries} item entries · Community reference</small>
               </div>
               <figure class="home-hero-visual"><img src="/images/map-locations/sophie-desert-trampler.webp" alt="Trampler in the Sophie desert in SAND: Raiders of Sophie" /><figcaption>Trampler field operations</figcaption></figure>
@@ -85,9 +85,9 @@ const structuredData = {
               <div class="home-primary-column">
                 <!-- Wiki 的高价值入口 -->
                 <section class="home-library-section" aria-labelledby="library-title">
-                  <div class="home-section-head"><div><span>Reference Library</span><h2 id="library-title">Browse what you carry.</h2></div><a href="/wiki">View all wiki entries &#8594;</a></div>
+                  <div class="home-section-head"><div><span>Reference Library</span><h2 id="library-title">Browse SAND weapons, ammo, and resources.</h2></div><a href="/wiki">Browse SAND: Raiders of Sophie Wiki entries &#8594;</a></div>
                   <div class="home-library-content">
-                    {referenceAreas.map(([title, count, description, href, imageUrl, imageAlt]) => <article><a class="home-library-image" href={href}><img src={imageUrl} alt={imageAlt} /></a><div><small>{count} entries</small><h3><a href={href}>{title}</a></h3><p>{description}</p></div><a class="home-library-open" href={href} aria-label={`Open ${title}`}>Open &#8594;</a></article>)}
+                    {referenceAreas.map(([title, count, description, href, imageUrl, imageAlt]) => <article><a class="home-library-image" href={href}><img src={imageUrl} alt={imageAlt} /></a><div><small>{count} entries</small><h3><a href={href}>SAND {title} Wiki</a></h3><p>{description}</p></div><a class="home-library-open" href={href} aria-label={`Browse SAND ${title} Wiki`}>Browse &#8594;</a></article>)}
                   </div>
                 </section>
 
@@ -96,10 +96,10 @@ const structuredData = {
                   <div class="home-section-head"><div><span>Expedition Briefing</span><h2 id="expedition-title">One run, four connected decisions.</h2></div></div>
                   <p class="home-expedition-lead">A good SAND: Raiders of Sophie raid is usually decided before the best loot appears. This is the order in which the guide is designed to help: make the Trampler functional, limit the first objective, read the signals around you, and leave while the run is still recoverable.</p>
                   <div class="home-expedition-content">
-                    <article><b>01 / Prepare</b><h3>Give the Trampler a job.</h3><p>Pack power, cargo space, a personal fallback, and any mounted gear that supports the specific route. A larger loadout is not automatically a better loadout if it delays departure or makes loss harder to accept.</p><a href="/getting-started">Preparation checklist &#8594;</a></article>
-                    <article><b>02 / Navigate</b><h3>Spend distance on purpose.</h3><p>Named POIs, wrecks, open dunes, and radio towers change the balance between value, cover, noise, and exit options. The map page uses location types and terrain context instead of invented static coordinates.</p><a href="/map-locations">Read the field map &#8594;</a></article>
-                    <article><b>03 / Commit</b><h3>Know what the cargo is worth.</h3><p>Weapon and resource reference becomes useful when it changes a decision: whether to continue, return to the Trampler, install an upgrade later, or call extraction now.</p><a href="/wiki/resources">Check resources &#8594;</a></article>
-                    <article><b>04 / Extract</b><h3>Treat the last minute as a fight.</h3><p>Extraction creates sound, timing, and an obvious objective. Arrive with a route out, enough mobility to reposition, and a reason to leave rather than simply one more container to open.</p><a href={firstGuidePath}>Read extraction discipline &#8594;</a></article>
+                    <article><b>01 / Prepare</b><h3>Give the Trampler a job.</h3><p>Pack power, cargo space, a personal fallback, and any mounted gear that supports the specific route. A larger loadout is not automatically a better loadout if it delays departure or makes loss harder to accept.</p><a href="/getting-started">Read Trampler preparation checklist &#8594;</a></article>
+                    <article><b>02 / Navigate</b><h3>Spend distance on purpose.</h3><p>Named POIs, wrecks, open dunes, and radio towers change the balance between value, cover, noise, and exit options. The map page uses location types and terrain context instead of invented static coordinates.</p><a href="/map-locations">Open SAND map and locations guide &#8594;</a></article>
+                    <article><b>03 / Commit</b><h3>Know what the cargo is worth.</h3><p>Weapon and resource reference becomes useful when it changes a decision: whether to continue, return to the Trampler, install an upgrade later, or call extraction now.</p><a href="/wiki/resources">Browse SAND resources wiki &#8594;</a></article>
+                    <article><b>04 / Extract</b><h3>Treat the last minute as a fight.</h3><p>Extraction creates sound, timing, and an obvious objective. Arrive with a route out, enough mobility to reposition, and a reason to leave rather than simply one more container to open.</p><a href={firstGuidePath}>Read SAND survival and extraction guide &#8594;</a></article>
                   </div>
                 </section>
 
@@ -107,13 +107,13 @@ const structuredData = {
                 <section class="home-tools-section" aria-labelledby="tools-title">
                   <div class="home-section-head"><div><span>Planning Tools</span><h2 id="tools-title">Decide before the doors open.</h2></div></div>
                   <div class="home-tools-content">
-                    <a class="home-tool-card" href="/map-locations"><img src="/images/map-locations/sophie-regional-field-map.webp" alt="Illustrated regional field map of Sophie" /><div><small>Map & Locations</small><h3>Landmarks, terrain, and extraction pressure.</h3><p>See location types without invented fixed coordinates.</p><b>Open map &#8594;</b></div></a>
-                    <a class="home-tool-card" href="/database"><div class="home-tool-icon"><img src="/images/wiki/resources/mechanical-parts.jpg" alt="Mechanical Parts resource icon" /></div><div><small>Trampler Database</small><h3>Tech branches, materials, and build priorities.</h3><p>Compare upgrades before committing a run's resources.</p><b>Open database &#8594;</b></div></a>
+                    <a class="home-tool-card" href="/map-locations"><img src="/images/map-locations/sophie-regional-field-map.webp" alt="SAND: Raiders of Sophie regional map and route planning reference" /><div><small>Map & Locations</small><h3>Landmarks, terrain, and extraction pressure.</h3><p>See location types without invented fixed coordinates.</p><b>Open SAND map guide &#8594;</b></div></a>
+                    <a class="home-tool-card" href="/database"><div class="home-tool-icon"><img src="/images/wiki/resources/mechanical-parts.jpg" alt="SAND: Raiders of Sophie Mechanical Parts resource icon" /></div><div><small>Trampler Database</small><h3>Tech branches, materials, and build priorities.</h3><p>Compare upgrades before committing a run's resources.</p><b>Open Trampler tech tree database &#8594;</b></div></a>
                   </div>
                 </section>
 
                 <!-- 首页直接复用指南列表数据 -->
-                {publishedGuides.length > 0 && <section class="home-guides-section" aria-labelledby="guides-title"><div class="home-section-head"><div><span>Latest Guides</span><h2 id="guides-title">Field notes for the next run.</h2></div><a href="/guides">All guides &#8594;</a></div><div class="home-guides-content">{publishedGuides.slice(0, 3).map((guide) => <article><a class="home-guide-image" href={`/guides/${guide.addressBar}`} aria-label={`Read ${guide.title}`}><img src={guide.imageUrl} alt={guide.imageAlt} /><span>Read guide</span></a><div><small>{guide.category}</small><h3><a href={`/guides/${guide.addressBar}`}>{guide.title}</a></h3><p>{guide.description}</p><footer><time datetime={guide.publishDate}>{guide.publishDate}</time><b>Guide</b></footer></div></article>)}</div></section>}
+                {publishedGuides.length > 0 && <section class="home-guides-section" aria-labelledby="guides-title"><div class="home-section-head"><div><span>Latest Guides</span><h2 id="guides-title">Field notes for the next run.</h2></div><a href="/guides">Browse SAND strategy guides &#8594;</a></div><div class="home-guides-content">{publishedGuides.slice(0, 3).map((guide) => <article><a class="home-guide-image" href={`/guides/${guide.addressBar}`} aria-label={`Read ${guide.title}`}><img src={guide.imageUrl} alt={guide.imageAlt} /><span>Read SAND guide</span></a><div><small>{guide.category}</small><h3><a href={`/guides/${guide.addressBar}`}>{guide.title}</a></h3><p>{guide.description}</p><footer><time datetime={guide.publishDate}>{guide.publishDate}</time><b>Guide</b></footer></div></article>)}</div></section>}
               </div>
 
               <aside class="home-info-rail" aria-label="SAND guide information">

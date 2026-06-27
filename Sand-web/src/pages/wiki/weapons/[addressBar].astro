@@ -71,7 +71,7 @@ const noteRows = [
                 <div class="container">
                   <div class="wiki-detail-body-content">
                     <article>
-                      <h2>{entry.title} Data</h2>
+                      <h2>{entry.title} Stats, Ammo, and Loadout Data</h2>
                       <table class="weapon-stat-table">
                         <tbody>
                           {statRows.map(([label, value]) => (
@@ -85,9 +85,14 @@ const noteRows = [
                         </tbody>
                       </table>
 
+                      <h2>How to Use This SAND Weapon Entry</h2>
+                      <p>
+                        Use this weapon entry to compare the role, rarity, magazine size, damage value, and linked ammunition before you commit a loadout. If the weapon lists an ammo type, follow the ammo link to check related rounds and other compatible weapons.
+                      </p>
+
                       {entry.variants.length > 0 && (
                         <>
-                          <h2>Variants and Notes</h2>
+                          <h2>{entry.title} Variants and Notes</h2>
                           <div class="weapon-variant-grid">
                             {entry.variants.map((variant) => (
                               <section>
@@ -108,7 +113,7 @@ const noteRows = [
                         </>
                       )}
 
-                      <h2>Recommended Weapons</h2>
+                      <h2>Related SAND Weapons to Compare</h2>
                       <div class="weapon-recommend-grid">
                         {recommendedWeapons.map((weapon) => (
                           <a href={`/wiki/weapons/${weapon.addressBar}`} aria-label={weapon.title}>
@@ -120,7 +125,7 @@ const noteRows = [
                       </div>
                     </article>
                     <aside>
-                      <h2>Entry Notes</h2>
+                      <h2>Weapon Reference Notes</h2>
                       <dl>
                         {noteRows.map(([label, value]) => (
                           <div>

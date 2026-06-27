@@ -647,7 +647,7 @@ export const ammunition = [
     "addressBar": "rockets",
     "seo": {
       "title": "Rockets Reference - SAND Ammunition Wiki Guide",
-      "description": "SAND: Raiders of Sophie ammunition guide for Rockets, covering Rockets family, variants, and linked weapon usage. for raid planning. for players.",
+      "description": "SAND: Raiders of Sophie ammunition guide for Rockets, covering rocket ammunition family, variants, and linked weapon usage.",
       "keywords": "SAND Rockets, Raiders of Sophie Rockets, Rockets ammo, SAND ammo wiki, SAND Raiders of Sophie ammunition"
     },
     "family": "Rockets",

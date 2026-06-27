@@ -74,7 +74,7 @@ export const weapons = [
     "addressBar": "866-9-rifle",
     "seo": {
       "title": "866/9 Rifle Reference - SAND Wiki Weapon Guide",
-      "description": "SAND: Raiders of Sophie wiki guide for the 866/9 Rifle, with ammo links, rarity, weapon stats, variants, and loadout planning for raids. for raid planning.",
+      "description": "SAND: Raiders of Sophie wiki guide for the 866/9 Rifle, with ammo links, rarity, weapon stats, variants, and loadout planning for raids.",
       "keywords": "SAND 866/9 Rifle, Raiders of Sophie 866/9 Rifle, SAND Rifle guide, 9x42mm Ammo, Player Weapons"
     },
     "category": "Player Weapons",
@@ -285,7 +285,7 @@ export const weapons = [
     "addressBar": "blitz-pistol",
     "seo": {
       "title": "Blitz Pistol Reference - SAND Wiki Weapon Guide",
-      "description": "SAND: Raiders of Sophie wiki guide for the Blitz Pistol, with ammo links, rarity, weapon stats, variants, and loadout planning for raids. for raid planning.",
+      "description": "SAND: Raiders of Sophie wiki guide for the Blitz Pistol, with ammo links, rarity, weapon stats, variants, and loadout planning for raids.",
       "keywords": "SAND Blitz Pistol, Raiders of Sophie Blitz Pistol, SAND Handgun guide, 8x21mm Ammo, Player Weapons"
     },
     "category": "Player Weapons",
@@ -589,7 +589,7 @@ export const weapons = [
     "addressBar": "eb-revolver",
     "seo": {
       "title": "EB Revolver Reference - SAND Wiki Weapon Guide",
-      "description": "SAND: Raiders of Sophie wiki guide for the EB Revolver, with ammo links, rarity, weapon stats, variants, and loadout planning for raids. for raid planning.",
+      "description": "SAND: Raiders of Sophie wiki guide for the EB Revolver, with ammo links, rarity, weapon stats, variants, and loadout planning for raids.",
       "keywords": "SAND EB Revolver, Raiders of Sophie EB Revolver, SAND Handgun guide, 8x21mm Ammo, Player Weapons"
     },
     "category": "Player Weapons",
@@ -801,7 +801,7 @@ export const weapons = [
     "addressBar": "m82-rifle",
     "seo": {
       "title": "M82 Rifle Reference - SAND Wiki Weapon Guide",
-      "description": "SAND: Raiders of Sophie wiki guide for the M82 Rifle, with ammo links, rarity, weapon stats, variants, and loadout planning for raids. for raid planning.",
+      "description": "SAND: Raiders of Sophie wiki guide for the M82 Rifle, with ammo links, rarity, weapon stats, variants, and loadout planning for raids.",
       "keywords": "SAND M82 Rifle, Raiders of Sophie M82 Rifle, SAND Rifle guide, 9x42mm Ammo, Player Weapons"
     },
     "category": "Player Weapons",
@@ -943,7 +943,7 @@ export const weapons = [
     "addressBar": "time-bomb",
     "seo": {
       "title": "Time Bomb Reference - SAND Wiki Weapon Guide",
-      "description": "SAND: Raiders of Sophie wiki guide for the Time Bomb, covering throwable role, weapon stats, variants, and loadout planning. for raid planning.",
+      "description": "SAND: Raiders of Sophie wiki guide for the Time Bomb, covering throwable role, weapon stats, variants, and loadout planning.",
       "keywords": "SAND Time Bomb, Raiders of Sophie Time Bomb, SAND Throwable guide, SAND weapon wiki, Player Weapons"
     },
     "category": "Player Weapons",

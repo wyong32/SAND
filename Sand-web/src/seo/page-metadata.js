@@ -11,13 +11,13 @@ export const pageMetadata = {
     "keywords": "SAND: Raiders of Sophie Getting Started, SAND Raiders of Sophie beginner guide, SAND Trampler guide, SAND extraction guide, SAND Voyage mode, SAND first raid"
   },
   "database": {
-    "title": "SAND: Raiders of Sophie Database - Tech Tree",
-    "description": "Plan SAND: Raiders of Sophie Trampler upgrades with a reviewed database for tech tree branches, unlock costs, materials, module roles, and current builds.",
+    "title": "SAND: Raiders of Sophie Trampler Tech Tree Database",
+    "description": "Plan SAND: Raiders of Sophie Trampler upgrades with a reviewed tech tree database for unlock costs, materials, branch roles, and current builds.",
     "keywords": "SAND: Raiders of Sophie Database, SAND tech tree, SAND Trampler upgrades, Godlewski Expedition, K.K. Landwehr, Kaiser Friends, SAND unlock costs, SAND database"
   },
   "mapLocations": {
-    "title": "SAND: Raiders of Sophie Map - Locations Guide",
-    "description": "Use the SAND: Raiders of Sophie map and locations guide to plan Raiders of Sophie routes, POIs, resource stops, extraction timing, and safer Trampler movement.",
+    "title": "SAND: Raiders of Sophie Map & Locations Guide",
+    "description": "Use the SAND: Raiders of Sophie map and locations guide to plan routes, POIs, resource stops, extraction timing, and safer Trampler movement.",
     "keywords": "SAND: Raiders of Sophie Map, SAND locations, SAND Raiders of Sophie map guide, SAND extraction zones, SAND POI guide, SAND evacuation tower, SAND route guide"
   },
   "guidesList": {
@@ -31,23 +31,23 @@ export const pageMetadata = {
     "keywords": "SAND: Raiders of Sophie Search, SAND Raiders of Sophie search, SAND wiki search, SAND weapons search, SAND resources search, SAND guides search"
   },
   "wikiIndex": {
-    "title": "SAND: Raiders of Sophie Wiki - Items Database",
-    "description": "Browse the SAND: Raiders of Sophie Wiki for Raiders of Sophie weapons, ammunition, resources, database links, and reviewed item references for players.",
+    "title": "SAND: Raiders of Sophie Wiki - Items & Stats",
+    "description": "Browse the SAND: Raiders of Sophie Wiki for weapons, ammunition, resources, database links, item stats, and reviewed player references for raids.",
     "keywords": "SAND: Raiders of Sophie Wiki, SAND Raiders of Sophie wiki, SAND weapons wiki, SAND ammunition, SAND resources, SAND item database"
   },
   "weapons": {
-    "title": "SAND: Raiders of Sophie Wiki - Weapons List",
-    "description": "Explore the SAND: Raiders of Sophie Wiki weapons list with player weapons, mounted weapons, ammo links, rarity, magazine, damage, and loadout planning notes.",
+    "title": "SAND: Raiders of Sophie Weapons Database & Stats",
+    "description": "Explore SAND: Raiders of Sophie weapons stats, player weapons, mounted weapons, ammo links, rarity, magazine, damage, and loadout planning notes.",
     "keywords": "SAND: Raiders of Sophie Wiki Weapons, SAND weapons, SAND Raiders of Sophie weapons list, SAND wiki weapons"
   },
   "ammunition": {
-    "title": "SAND: Raiders of Sophie Wiki - Ammunition",
-    "description": "Review SAND: Raiders of Sophie Wiki ammunition data with ammo families, shell and rocket entries, rarity, value, damage fields, and linked weapon usage.",
+    "title": "SAND: Raiders of Sophie Ammo Database & Stats",
+    "description": "Review SAND: Raiders of Sophie ammunition stats with ammo families, shell and rocket entries, rarity, value, damage fields, and weapon links.",
     "keywords": "SAND: Raiders of Sophie Wiki Ammunition, SAND ammunition, SAND Raiders of Sophie ammo, SAND wiki ammunition, SAND shells, SAND rockets"
   },
   "resources": {
-    "title": "SAND: Raiders of Sophie Wiki - Resources",
-    "description": "Check SAND: Raiders of Sophie Wiki resources for crafting materials, loot items, rarity groups, value references, and database planning for raids.",
+    "title": "SAND: Raiders of Sophie Resources & Materials Wiki",
+    "description": "Check SAND: Raiders of Sophie resources, crafting materials, loot items, rarity groups, value references, and database planning notes for raids.",
     "keywords": "SAND: Raiders of Sophie Wiki Resources, SAND resources, SAND Raiders of Sophie resources, SAND crafting materials, SAND resource wiki"
   },
   "privacyPolicy": {

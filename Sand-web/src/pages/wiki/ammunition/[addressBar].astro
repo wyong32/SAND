@@ -67,7 +67,7 @@ const noteRows = [
                 <div class="container">
                   <div class="wiki-detail-body-content">
                     <article>
-                      <h2>{entry.title} Data</h2>
+                      <h2>{entry.title} Stats and Compatible Weapon Data</h2>
                       <table class="weapon-stat-table">
                         <tbody>
                           {statRows.map(([label, value]) => (
@@ -76,9 +76,14 @@ const noteRows = [
                         </tbody>
                       </table>
 
+                      <h2>How to Use This SAND Ammo Entry</h2>
+                      <p>
+                        Use this ammunition entry to check its family, rarity, value, damage fields, and linked weapon usage. When a weapon page references this ammo type, follow the compatible weapon links below to compare the practical loadout options.
+                      </p>
+
                       {entry.variants.length > 0 && (
                         <>
-                          <h2>Variants and Notes</h2>
+                          <h2>{entry.title} Variants and Notes</h2>
                           <div class="weapon-variant-grid">
                             {entry.variants.map((variant) => (
                               <section>
@@ -101,7 +106,7 @@ const noteRows = [
 
                       {linkedWeapons.length > 0 && (
                         <>
-                          <h2>Weapons Using This Ammo</h2>
+                          <h2>SAND Weapons Using This Ammo</h2>
                           <div class="weapon-recommend-grid">
                             {linkedWeapons.map((weapon) => (
                               <a href={`/wiki/weapons/${weapon.addressBar}`} aria-label={weapon.title}>
@@ -114,7 +119,7 @@ const noteRows = [
                         </>
                       )}
 
-                      <h2>Recommended Ammunition</h2>
+                      <h2>Related SAND Ammunition to Compare</h2>
                       <div class="weapon-recommend-grid">
                         {recommendedAmmo.map((ammo) => (
                           <a href={`/wiki/ammunition/${ammo.addressBar}`} aria-label={ammo.title}>
@@ -126,7 +131,7 @@ const noteRows = [
                       </div>
                     </article>
                     <aside>
-                      <h2>Entry Notes</h2>
+                      <h2>Ammunition Reference Notes</h2>
                       <dl>
                         {noteRows.map(([label, value]) => (
                           <div><dt>{label}</dt><dd>{value}</dd></div>
