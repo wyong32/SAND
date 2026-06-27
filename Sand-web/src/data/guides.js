@@ -4,7 +4,7 @@ export const guidesList = [
     title: 'Survival Guide: First Stable Runs in SAND',
     description: 'A practical route-first guide for surviving SAND: Raiders of Sophie, with safer Trampler prep, solo decisions, PvP awareness, and extraction discipline.',
     publishDate: '2026-06-26',
-    imageUrl: '/images/guides/steam-guide-01.jpg',
+    imageUrl: '/images/guides/steam-guide-01.webp',
     imageAlt: 'Official Steam screenshot of a Trampler near a desert loot platform in SAND: Raiders of Sophie',
     addressBar: 'first-stable-runs-survival-guide',
     seo: {

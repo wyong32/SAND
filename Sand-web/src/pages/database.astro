@@ -52,7 +52,7 @@ const nodeImage = (node) => {
     if (weaponImageByHref.has(cleanHref)) return weaponImageByHref.get(cleanHref);
     if (resourceImageByHash.has(cleanHref)) return resourceImageByHash.get(cleanHref);
     if (cleanHref === '/wiki/weapons') return weaponImageByHref.get('/wiki/weapons/anti-reactor-rifle');
-    if (cleanHref === '/wiki/ammunition') return '/images/wiki/ammunition/40mm-shell.png';
+    if (cleanHref === '/wiki/ammunition') return '/images/wiki/ammunition/40mm-shell.webp';
     if (cleanHref === '/wiki/resources') return resourceImageByTitle.get('Mechanical Parts');
   }
   return tagImages[node.tag] || placeholderIcon;

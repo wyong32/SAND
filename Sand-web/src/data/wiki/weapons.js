@@ -132,7 +132,7 @@ export const weapons = [
     "damage": null,
     "ammo": null,
     "speed": null,
-    "imageUrl": "/images/wiki/weapons/anti-reactor-rifle.png",
+    "imageUrl": "/images/wiki/weapons/anti-reactor-rifle.webp",
     "imageAlt": "Anti-Reactor Rifle weapon icon in SAND: Raiders of Sophie",
     "publishDate": "2026-06-25",
     "sourceUrl": "https://sandgame.wiki/index.php/Anti-Reactor_Rifle",

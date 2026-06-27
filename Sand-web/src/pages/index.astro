@@ -26,8 +26,8 @@ const firstRunLinks = [
 ];
 
 const referenceAreas = [
-  ['Weapons', weapons.length, 'Player weapons, mounted cannons, variants, and linked ammunition.', '/wiki/weapons', '/images/wiki/weapons/anti-reactor-rifle.png', 'Anti-Reactor Rifle icon from the SAND weapons wiki'],
-  ['Ammunition', ammunition.length, 'Rounds, shells, rockets, rarity, and compatible weapon families.', '/wiki/ammunition', '/images/wiki/ammunition/40mm-shell.png', '40mm Shell icon from the SAND ammunition wiki'],
+  ['Weapons', weapons.length, 'Player weapons, mounted cannons, variants, and linked ammunition.', '/wiki/weapons', '/images/wiki/weapons/anti-reactor-rifle.webp', 'Anti-Reactor Rifle icon from the SAND weapons wiki'],
+  ['Ammunition', ammunition.length, 'Rounds, shells, rockets, rarity, and compatible weapon families.', '/wiki/ammunition', '/images/wiki/ammunition/40mm-shell.webp', '40mm Shell icon from the SAND ammunition wiki'],
   ['Resources', resources.length, 'Loot, materials, and consumables for planning and crafting.', '/wiki/resources', '/images/wiki/resources/nz-mk2-energy-rod.jpg', 'NZ Mk2 Energy Rod icon from the SAND resources wiki']
 ];
 
@@ -74,7 +74,7 @@ const structuredData = {
                 <div class="home-hero-actions"><a href="/getting-started">Start here <span aria-hidden="true">&#8594;</span></a><a href="/wiki">Open wiki</a></div>
                 <small>Reviewed {reviewDate} · {totalEntries} item entries · Community reference</small>
               </div>
-              <figure class="home-hero-visual"><img src="/images/map-locations/sophie-desert-trampler.jpg" alt="Trampler in the Sophie desert in SAND: Raiders of Sophie" /><figcaption>Trampler field operations</figcaption></figure>
+              <figure class="home-hero-visual"><img src="/images/map-locations/sophie-desert-trampler.webp" alt="Trampler in the Sophie desert in SAND: Raiders of Sophie" /><figcaption>Trampler field operations</figcaption></figure>
               <div class="home-hero-brief">
                 <span>First Expedition</span>
                 <ol>{firstRunLinks.map(([number, title, detail, href]) => <li><a href={href}><b>{number}</b><div><strong>{title}</strong><small>{detail}</small></div><i aria-hidden="true">&#8594;</i></a></li>)}</ol>
@@ -107,7 +107,7 @@ const structuredData = {
                 <section class="home-tools-section" aria-labelledby="tools-title">
                   <div class="home-section-head"><div><span>Planning Tools</span><h2 id="tools-title">Decide before the doors open.</h2></div></div>
                   <div class="home-tools-content">
-                    <a class="home-tool-card" href="/map-locations"><img src="/images/map-locations/sophie-regional-field-map.png" alt="Illustrated regional field map of Sophie" /><div><small>Map & Locations</small><h3>Landmarks, terrain, and extraction pressure.</h3><p>See location types without invented fixed coordinates.</p><b>Open map &#8594;</b></div></a>
+                    <a class="home-tool-card" href="/map-locations"><img src="/images/map-locations/sophie-regional-field-map.webp" alt="Illustrated regional field map of Sophie" /><div><small>Map & Locations</small><h3>Landmarks, terrain, and extraction pressure.</h3><p>See location types without invented fixed coordinates.</p><b>Open map &#8594;</b></div></a>
                     <a class="home-tool-card" href="/database"><div class="home-tool-icon"><img src="/images/wiki/resources/mechanical-parts.jpg" alt="Mechanical Parts resource icon" /></div><div><small>Trampler Database</small><h3>Tech branches, materials, and build priorities.</h3><p>Compare upgrades before committing a run's resources.</p><b>Open database &#8594;</b></div></a>
                   </div>
                 </section>

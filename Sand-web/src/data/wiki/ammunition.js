@@ -186,7 +186,7 @@ export const ammunition = [
     "value": "3",
     "tramplerDamage": "150",
     "structureDamage": "70",
-    "imageUrl": "/images/wiki/ammunition/40mm-shell.png",
+    "imageUrl": "/images/wiki/ammunition/40mm-shell.webp",
     "imageAlt": "40mm Shell ammunition icon in SAND: Raiders of Sophie",
     "publishDate": "2026-06-25",
     "sourceUrl": "https://sandgame.wiki/index.php/40mm_Shell",
