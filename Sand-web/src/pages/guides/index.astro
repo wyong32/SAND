@@ -12,8 +12,8 @@ const guideGroups = [...new Set(publishedGuides.map((guide) => guide.category))]
   guides: publishedGuides.filter((guide) => guide.category === category)
 }));
 const featuredGuide = publishedGuides[0];
-const guideHref = (guide) => `/guides/${guide.addressBar}`;
-const categoryHref = (group) => `/guides?category=${group.key}`;
+const guideHref = (guide: { addressBar: string }) => `/guides/${guide.addressBar}`;
+const categoryHref = (group: { key: string }) => `/guides?category=${group.key}`;
 const guideHeroStats = [
   ['Published', String(publishedGuides.length)],
   ['Collections', String(guideGroups.length)],

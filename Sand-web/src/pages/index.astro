@@ -26,9 +26,9 @@ const firstRunLinks = [
 ];
 
 const referenceAreas = [
-  ['Weapons', weapons.length, 'Player weapons, mounted cannons, variants, and linked ammunition.', '/wiki/weapons', '/images/wiki/weapons/anti-reactor-rifle.webp', 'Anti-Reactor Rifle icon from the SAND weapons wiki'],
-  ['Ammunition', ammunition.length, 'Rounds, shells, rockets, rarity, and compatible weapon families.', '/wiki/ammunition', '/images/wiki/ammunition/40mm-shell.webp', '40mm Shell icon from the SAND ammunition wiki'],
-  ['Resources', resources.length, 'Loot, materials, and consumables for planning and crafting.', '/wiki/resources', '/images/wiki/resources/nz-mk2-energy-rod.jpg', 'NZ Mk2 Energy Rod icon from the SAND resources wiki']
+  { title: 'Weapons', count: weapons.length, description: 'Player weapons, mounted cannons, variants, and linked ammunition.', href: '/wiki/weapons', imageUrl: '/images/wiki/weapons/anti-reactor-rifle.webp', imageAlt: 'Anti-Reactor Rifle icon from the SAND weapons wiki' },
+  { title: 'Ammunition', count: ammunition.length, description: 'Rounds, shells, rockets, rarity, and compatible weapon families.', href: '/wiki/ammunition', imageUrl: '/images/wiki/ammunition/40mm-shell.webp', imageAlt: '40mm Shell icon from the SAND ammunition wiki' },
+  { title: 'Resources', count: resources.length, description: 'Loot, materials, and consumables for planning and crafting.', href: '/wiki/resources', imageUrl: '/images/wiki/resources/nz-mk2-energy-rod.jpg', imageAlt: 'NZ Mk2 Energy Rod icon from the SAND resources wiki' }
 ];
 
 const faqItems = [
@@ -87,7 +87,7 @@ const structuredData = {
                 <section class="home-library-section" aria-labelledby="library-title">
                   <div class="home-section-head"><div><span>Reference Library</span><h2 id="library-title">Browse SAND weapons, ammo, and resources.</h2></div><a href="/wiki">Browse SAND: Raiders of Sophie Wiki entries &#8594;</a></div>
                   <div class="home-library-content">
-                    {referenceAreas.map(([title, count, description, href, imageUrl, imageAlt]) => <article><a class="home-library-image" href={href}><img src={imageUrl} alt={imageAlt} /></a><div><small>{count} entries</small><h3><a href={href}>SAND {title} Wiki</a></h3><p>{description}</p></div><a class="home-library-open" href={href} aria-label={`Browse SAND ${title} Wiki`}>Browse &#8594;</a></article>)}
+                    {referenceAreas.map((item) => <article><a class="home-library-image" href={item.href}><img src={item.imageUrl} alt={item.imageAlt} /></a><div><small>{item.count} entries</small><h3><a href={item.href}>SAND {item.title} Wiki</a></h3><p>{item.description}</p></div><a class="home-library-open" href={item.href} aria-label={`Browse SAND ${item.title} Wiki`}>Browse &#8594;</a></article>)}
                   </div>
                 </section>
 

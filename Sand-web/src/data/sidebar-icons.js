@@ -5,7 +5,6 @@ const ammoIcon = '/images/wiki/ammunition/40mm-shell.webp';
 const resourceIcon = '/images/wiki/resources/nz-mk2-energy-rod.jpg';
 const resourceAltIcon = '/images/wiki/resources/repair-kit.jpg';
 const guideIcon = '/images/wiki/weapons/orbital-strike-pointer.png';
-const explosiveIcon = '/images/wiki/weapons/time-bomb.png';
 const mapIcon = '/images/map-locations/sophie-regional-field-map.webp';
 const routeIcon = '/images/map-locations/sophie-ruins-route.jpg';
 const tramplerIcon = '/images/map-locations/sophie-desert-trampler.webp';
@@ -28,6 +27,7 @@ export const sidebarHeadIcons = {
   ammunitionEntry: ammoIcon
 };
 
+/** @type {[string, string][]} */
 const routeIcons = [
   ['/getting-started', resourceAltIcon],
   ['/guides/first-stable-runs-survival-guide', pistolIcon],
@@ -40,6 +40,7 @@ const routeIcons = [
   ['/database', defaultIcon]
 ];
 
+/** @type {[RegExp, string][]} */
 const keywordIcons = [
   [/weapon|rifle|pistol|shotgun|combat|mounted|cannon/i, weaponIcon],
   [/ammo|ammunition|shell|rocket|caliber/i, ammoIcon],
@@ -52,6 +53,7 @@ const keywordIcons = [
   [/all|home|index|entry|open|back/i, safeIcon]
 ];
 
+/** @param {string} label @param {string} href @returns {string} */
 export const getSidebarIcon = (label = '', href = '') => {
   if (href.startsWith('#branch-godlewski')) return resourceIcon;
   if (href.startsWith('#branch-kaiser')) return '/images/wiki/weapons/40mm-autocannon.png';

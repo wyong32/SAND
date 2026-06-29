@@ -182,13 +182,13 @@ const structuredData = {
     const empty = document.querySelector('[data-search-empty]');
     const title = document.querySelector('#search-results-title');
 
-    const applySearch = (value) => {
+    const applySearch = (value: string) => {
       const terms = value.toLowerCase().split(/\s+/).filter(Boolean);
       let visible = 0;
 
       cards.forEach((card) => {
         const text = card.getAttribute('data-search-text') || '';
-        const matches = terms.length === 0 || terms.every((term) => text.includes(term));
+        const matches = terms.length === 0 || terms.every((term: string) => text.includes(term));
         card.toggleAttribute('hidden', !matches);
         if (matches) visible += 1;
       });
@@ -197,7 +197,7 @@ const structuredData = {
         count.textContent = terms.length === 0 ? `${visible} results indexed` : `${visible} results for "${value}"`;
       }
 
-      if (empty) {
+      if (empty instanceof HTMLElement) {
         empty.hidden = visible !== 0;
       }
 

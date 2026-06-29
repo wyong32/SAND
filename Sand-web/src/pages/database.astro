@@ -26,12 +26,12 @@ const placeholderIcon = 'https://placehold.co/96x96/ffdac1/6B9B7B?text=';
 const weaponImageByHref = new Map(weapons.map((weapon) => [`/wiki/weapons/${weapon.addressBar}`, weapon.imageUrl]));
 const resourceImageByHash = new Map(resources.map((resource) => [`/wiki/resources#resource-${resource.id}`, resource.imageUrl]));
 const resourceImageByTitle = new Map(resources.map((resource) => [resource.title, resource.imageUrl]));
-const branchVisuals = {
+const branchVisuals: Record<string, string> = {
   godlewski: resourceImageByTitle.get('NZ Mk2 Energy Rod') || placeholderIcon,
   kaiser: weaponImageByHref.get('/wiki/weapons/40mm-autocannon') || placeholderIcon,
   landwehr: weaponImageByHref.get('/wiki/weapons/anti-reactor-rifle') || placeholderIcon
 };
-const tagImages = {
+const tagImages: Record<string, string | undefined> = {
   Utility: resourceImageByTitle.get('NZ Mk2 Energy Rod'),
   Crew: resourceImageByTitle.get('Canned Food'),
   Structure: resourceImageByTitle.get('Metal Scrap'),
@@ -46,7 +46,7 @@ const tagImages = {
   Defense: resourceImageByTitle.get('Alloy Steel'),
   Breaching: weaponImageByHref.get('/wiki/weapons/time-bomb')
 };
-const nodeImage = (node) => {
+const nodeImage = (node: { href?: string; tag?: string }) => {
   if ('href' in node && node.href) {
     const cleanHref = node.href.split('?')[0];
     if (weaponImageByHref.has(cleanHref)) return weaponImageByHref.get(cleanHref);
@@ -55,7 +55,7 @@ const nodeImage = (node) => {
     if (cleanHref === '/wiki/ammunition') return '/images/wiki/ammunition/40mm-shell.webp';
     if (cleanHref === '/wiki/resources') return resourceImageByTitle.get('Mechanical Parts');
   }
-  return tagImages[node.tag] || placeholderIcon;
+  return tagImages[node.tag || ''] || placeholderIcon;
 };
 
 const tocLinks = [
