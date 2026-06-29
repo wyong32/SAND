@@ -94,6 +94,152 @@ export const guidesList = [
       <h2>Final Advice</h2>
       <p>SAND is at its best when the Trampler feels like a moving plan instead of a moving backpack. Treat every upgrade, route, and fight as part of that plan. The strongest new players are not the ones who win every fight; they are the ones who learn which fights are worth reaching and which ones should be left behind in the dust.</p>
     `
+  },
+  {
+    id: 2,
+    title: 'How to Extract in SAND: Raiders of Sophie',
+    h1: 'How to Extract in SAND: Raiders of Sophie',
+    description: 'Call the radio tower, hold the evac timer, board the dropship cable, and leave SAND: Raiders of Sophie with loot instead of excuses.',
+    publishDate: '2026-06-29',
+    imageUrl: '/images/guides/steam-guide-03.jpg',
+    imageAlt: 'SAND Raiders of Sophie extraction radio tower route with desert cover',
+    addressBar: 'sand-raiders-of-sophie-how-to-extract',
+    focus: 'Extraction route',
+    seo: {
+      title: "SAND Extract Guide - Escape With Loot",
+      description: "Learn how to extract in SAND: Raiders of Sophie, call the radio tower, secure loot, board the dropship cable, and avoid failed extraction.",
+      keywords: "sand raiders of sophie how to extract, SAND extract guide, radio tower, dropship, loot"
+    },
+    category: 'Extraction',
+    isPublished: true,
+    detailsHtml: `
+      <p>To extract in SAND: Raiders of Sophie, drive your Trampler to an active extraction tower, climb to the radio, call the dropship, survive the exposed timer, then grab the hanging cable before the boarding window closes. Extraction is not a menu action. It is the final contested phase of the raid.</p>
+
+      <p><strong>Field status:</strong> current public Early Access behavior. Extraction timing, tower availability, and cargo banking can change between patches, so treat exact timers as patch-sensitive and verify after major updates.</p>
+
+      <h2>How extraction works in SAND: Raiders of Sophie</h2>
+      <p>The extraction loop is built around a radio tower and a dropship pickup. Once you call evac, the game gives nearby players enough visual and audio information to punish sloppy exits. If you are carrying rare loot, plan the extraction before the storm or another Trampler forces your route.</p>
+
+      <table>
+        <thead>
+          <tr><th>Phase</th><th>Action</th><th>Main risk</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Find exit</td><td>Route to a white-door extraction marker or radio tower.</td><td>Driving into exposed ground with no backup tower.</td></tr>
+          <tr><td>Call evac</td><td>Climb the tower and interact with the radio console.</td><td>Smoke, sound, and tower position reveal the attempt.</td></tr>
+          <tr><td>Hold timer</td><td>Defend the area while the dropship arrives.</td><td>PvP pushes, NPC pressure, bad parking, split crew.</td></tr>
+          <tr><td>Board cable</td><td>Grab the hanging cable before the boarding window closes.</td><td>Missing the rope, looting too late, or dying on the final climb.</td></tr>
+        </tbody>
+      </table>
+
+      <figure class="guide-inline-media">
+        <img src="/images/guides/steam-guide-03.jpg" alt="SAND Raiders of Sophie extraction radio tower location for dropship escape" title="SAND Raiders of Sophie extraction radio tower" loading="lazy" />
+        <figcaption>Extraction towers are route decisions. Approach with cover, a backup exit, and enough time to leave if the first tower turns bad.</figcaption>
+      </figure>
+
+      <h3>When extraction becomes available</h3>
+      <p>In Voyage, extraction is more forgiving and works as the cleaner mode for learning the tower sequence. In Storm Dive, the extraction layer is stricter: tower timing matters more, active exits can become contested, and a used or blocked tower can force a second route. Do not enter Storm Dive with a one-exit plan.</p>
+
+      <p>Practical rule: if your cargo would slow your next upgrade when lost, stop extending the route and start moving toward extraction.</p>
+
+      <h3>What you lose if you fail to extract</h3>
+      <p>You risk losing character-carried loot, unsecured cargo, progress items, and the time invested in the route. Trampler storage behavior is the part to verify after patches. Do not rely on loose floor cargo when the item matters. Put valuable items in your inventory, a proper container, or secured Trampler storage before the radio call.</p>
+
+      <h2>Step-by-step extraction guide</h2>
+      <h3>Prepare your walker before leaving</h3>
+      <p>Before you drive to the tower, run a short extraction check. This is not busywork. Most failed extractions start because the crew calls the radio before parking, storing loot, or assigning angles.</p>
+
+      <table>
+        <thead>
+          <tr><th>Check</th><th>Pass condition</th><th>Useful reference</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Mobility</td><td>The Trampler can still turn, climb, and leave cover.</td><td><a href="/database">Tech Tree Database</a></td></tr>
+          <tr><td>Power</td><td>You have enough energy margin to reposition after a bad tower call.</td><td><a href="/wiki/resources#resource-20">NZ Mk2 Energy Rod</a></td></tr>
+          <tr><td>Cargo</td><td>Rare loot is secured, not scattered on the floor.</td><td><a href="/wiki/resources">Resources Wiki</a></td></tr>
+          <tr><td>Defense</td><td>At least one player watches the approach while another calls radio.</td><td><a href="/wiki/weapons">Weapons Wiki</a></td></tr>
+          <tr><td>Route</td><td>You know the primary tower and one backup path.</td><td><a href="/map-locations">Map &amp; Locations</a></td></tr>
+        </tbody>
+      </table>
+
+      <h3>Secure loot before heading to extraction</h3>
+      <p>Sort cargo before you enter the extraction zone. Do not start inventory management after green smoke or tower activity has advertised your location.</p>
+
+      <ol>
+        <li>Move rare upgrade materials and quest items first.</li>
+        <li>Bank high-value trade loot before bulk resources.</li>
+        <li>Keep weapons, shells, and ammo accessible if the exit becomes a fight.</li>
+        <li>Drop low-value cargo if weight, clutter, or sorting time threatens the extraction.</li>
+      </ol>
+
+      <figure class="guide-inline-media">
+        <img src="/images/guides/steam-guide-01.webp" alt="SAND Raiders of Sophie Trampler extraction route with loot platform and desert cover" title="SAND Raiders of Sophie safe extraction route planning" loading="lazy" />
+        <figcaption>A clean Trampler route beats a full cargo hold that cannot reach the cable window.</figcaption>
+      </figure>
+
+      <h3>Avoid common extraction mistakes</h3>
+      <table>
+        <thead>
+          <tr><th>Mistake</th><th>Why it fails</th><th>Fix</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Calling radio before parking</td><td>You burn the timer while repositioning.</td><td>Park first, then call.</td></tr>
+          <tr><td>Everyone climbs the tower</td><td>No one watches the approach.</td><td>Send one caller, keep lookouts below.</td></tr>
+          <tr><td>Waiting inside the Trampler</td><td>You still need to board the cable.</td><td>Stage near cover, then move fast.</td></tr>
+          <tr><td>Looting during the final window</td><td>The cable window is short and punishes greed.</td><td>Stop looting when evac starts.</td></tr>
+          <tr><td>Using the closest tower blindly</td><td>Closest can also be most exposed.</td><td>Pick the tower with the cleanest approach.</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Best extraction tips for solo and team play</h2>
+      <p>Solo extraction is about reducing jobs. Team extraction is about assigning jobs. In both cases, the answer is not more noise; it is less wasted movement.</p>
+
+      <table>
+        <thead>
+          <tr><th>Role</th><th>Job</th><th>Failure sign</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Solo</td><td>Park with a retreat angle, call radio, hold one side, board early.</td><td>You are still sorting loot after the dropship is inbound.</td></tr>
+          <tr><td>Caller</td><td>Climb tower and start evac.</td><td>More than one player is idle at the radio.</td></tr>
+          <tr><td>Driver</td><td>Keep the Trampler positioned and ready to move.</td><td>The vehicle is blocked, tilted, or facing the wrong way.</td></tr>
+          <tr><td>Lookout</td><td>Watch dunes, rocks, buildings, and engine trails.</td><td>The first warning is enemy fire.</td></tr>
+          <tr><td>Cargo player</td><td>Confirm high-value storage before the call.</td><td>Rare items are still loose during the timer.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Safe extraction routes</h3>
+      <p>A safe extraction route is not the shortest line to the icon. It is the route with the fewest forced stops. Prefer terrain that breaks line of sight, flat parking, and a turn-out path if another crew appears. Avoid obvious open dune crossings after firing weapons or looting loud POIs.</p>
+
+      <p>If you are still learning the map, pair this guide with the <a href="/map-locations">SAND map and locations guide</a> and the <a href="/guides/first-stable-runs-survival-guide">first stable runs survival guide</a>. Those pages cover route discipline before the extraction timer starts.</p>
+
+      <h3>When to leave early</h3>
+      <p>Leave early when the run has already paid for itself. Rare upgrade materials, damaged mobility, low ammo, nearby Trampler fire, or a contested Storm Dive tower are all valid reasons to cut the route. The player who extracts medium loot progresses faster than the player who dies protecting perfect loot.</p>
+
+      <figure class="guide-inline-media">
+        <img src="/images/guides/steam-guide-02.jpg" alt="SAND Raiders of Sophie crew defending Trampler weapons before extraction" title="SAND Raiders of Sophie extraction defense setup" loading="lazy" />
+        <figcaption>Assign defense before calling evac. A mounted weapon is only useful if someone is watching the lane that matters.</figcaption>
+      </figure>
+
+      <h2>Why extraction fails</h2>
+      <h3>Can't trigger extraction</h3>
+      <table>
+        <thead>
+          <tr><th>Problem</th><th>Likely cause</th><th>Fix</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Radio does nothing</td><td>You are not at the correct console or the tower is not active.</td><td>Climb to the radio point and verify mode rules.</td></tr>
+          <tr><td>Tower unavailable</td><td>Storm Dive timing, a used tower, or a contested exit changed the route.</td><td>Move to backup extraction before the storm forces it.</td></tr>
+          <tr><td>Crew cannot board</td><td>Bad parking or missed cable timing.</td><td>Stage closer to the rope path before the window opens.</td></tr>
+          <tr><td>Loot not counting cleanly</td><td>Unsecured cargo or patch-sensitive storage behavior.</td><td>Secure valuable loot before the radio call.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Died before extraction completed</h3>
+      <p>Extraction does not protect you until the sequence finishes. If enemies push during the final window, stop repairing, stop looting, and stop debating. Fight only long enough to reach the cable. Once the cable is available, boarding is the objective.</p>
+
+      <h2>Final field rule</h2>
+      <p>Extraction is a routing decision, not a button press. In SAND: Raiders of Sophie, the crew that leaves with useful loot beats the crew that dies trying to protect perfect loot. Once your cargo is worth defending, start planning the exit before the map forces one on you.</p>
+    `
   }
 ];
 

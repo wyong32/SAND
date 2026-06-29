@@ -206,6 +206,32 @@
   text-underline-offset: 3px;
 }
 
+.guides-detail-body-content article figure {
+  margin: 22px 0 0;
+  overflow: hidden;
+  border: 1px solid rgba(93, 132, 163, 0.34);
+  background: rgba(8, 13, 19, 0.66);
+}
+
+.guides-detail-body-content article figure img {
+  display: block;
+  width: 100%;
+  max-height: 460px;
+  object-fit: cover;
+  filter: saturate(0.86) contrast(1.03);
+}
+
+.guides-detail-body-content article figure figcaption {
+  padding: 10px 12px;
+  border-top: 1px solid rgba(93, 132, 163, 0.24);
+  color: var(--color-muted);
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
 .guides-detail-body-content article table {
   width: 100%;
   margin-top: 18px;

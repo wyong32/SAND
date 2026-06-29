@@ -14,6 +14,7 @@ export function getStaticPaths() {
 
 const { guide } = Astro.props;
 const pageUrl = `/guides/${guide.addressBar}`;
+const displayTitle = guide.h1 || `SAND: Raiders of Sophie Guide - ${guide.title}`;
 const categoryKey = guide.category.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const structuredData = {
   '@context': 'https://schema.org',
@@ -43,7 +44,7 @@ const structuredData = {
 const guideMeta = [
   ['Category', guide.category],
   ['Updated', guide.publishDate],
-  ['Focus', 'First stable runs']
+  ['Focus', guide.focus || 'First stable runs']
 ];
 
 const guideReferenceLinks = [
@@ -54,7 +55,7 @@ const guideReferenceLinks = [
 ];
 ---
 
-<BaseLayout title={guide.seo.title} description={guide.seo.description} keywords={guide.seo.keywords} pageUrl={pageUrl} pageType="article" lastUpdated={guide.publishDate} structuredData={structuredData}>
+<BaseLayout title={guide.seo.title} description={guide.seo.description} keywords={guide.seo.keywords} pageUrl={pageUrl} pageType="article" lastUpdated={guide.publishDate} imageAlt={guide.imageAlt} structuredData={structuredData}>
 <main>
       <section class="inner-shell-section">
         <div class="container">
@@ -66,7 +67,7 @@ const guideReferenceLinks = [
           <div class="guides-detail-hero-content">
             <div class="guides-detail-hero-copy">
               <div class="guides-detail-breadcrumb"><a href="/guides">Guides</a><span>{guide.category}</span></div>
-              <h1>SAND: Raiders of Sophie Guide - {guide.title}</h1>
+              <h1>{displayTitle}</h1>
               <p>{guide.description} This SAND: Raiders of Sophie Guide focuses on decisions players can apply during a real run.</p>
               <div class="guides-detail-hero-strip">
                 {guideMeta.map(([label, value]) => (
