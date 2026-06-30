@@ -326,26 +326,17 @@ const structuredData = {
       const currentScript = document.currentScript;
       window.setTimeout(() => {
         const isMobileAd = window.matchMedia('(max-width: 768px)').matches;
-        window['atOptions'] = isMobileAd
-          ? {
-              key: 'da035ce315f9162bdb39be5b5dab7c6f',
-              format: 'iframe',
-              height: 250,
-              width: 300,
-              params: {}
-            }
-          : {
-              key: 'e9cbeb7d55584c1e4df8907d619b545c',
-              format: 'iframe',
-              height: 90,
-              width: 728,
-              params: {}
-            };
-        const script = document.createElement('script');
-        script.src = isMobileAd
-          ? 'https://www.highperformanceformat.com/da035ce315f9162bdb39be5b5dab7c6f/invoke.js'
-          : 'https://www.highperformanceformat.com/e9cbeb7d55584c1e4df8907d619b545c/invoke.js';
-        currentScript.after(script);
+        const iframe = document.createElement('iframe');
+        iframe.width = isMobileAd ? '300' : '728';
+        iframe.height = isMobileAd ? '250' : '90';
+        iframe.setAttribute('scrolling', 'no');
+        iframe.setAttribute('frameborder', '0');
+        iframe.style.border = '0';
+        iframe.style.overflow = 'hidden';
+        iframe.srcdoc = isMobileAd
+          ? `<!doctype html><html><body style="margin:0;overflow:hidden;"><script>atOptions={key:'da035ce315f9162bdb39be5b5dab7c6f',format:'iframe',height:250,width:300,params:{}};<\/script><script src="https://www.highperformanceformat.com/da035ce315f9162bdb39be5b5dab7c6f/invoke.js"><\/script></body></html>`
+          : `<!doctype html><html><body style="margin:0;overflow:hidden;"><script>atOptions={key:'e9cbeb7d55584c1e4df8907d619b545c',format:'iframe',height:90,width:728,params:{}};<\/script><script src="https://www.highperformanceformat.com/e9cbeb7d55584c1e4df8907d619b545c/invoke.js"><\/script></body></html>`;
+        currentScript.after(iframe);
       }, 2000);
     })();
   </script>
@@ -375,26 +366,17 @@ const structuredData = {
       const currentScript = document.currentScript;
       window.setTimeout(() => {
         const isMobileAd = window.matchMedia('(max-width: 768px)').matches;
-        window['atOptions'] = isMobileAd
-          ? {
-              key: 'da035ce315f9162bdb39be5b5dab7c6f',
-              format: 'iframe',
-              height: 250,
-              width: 300,
-              params: {}
-            }
-          : {
-              key: 'e9cbeb7d55584c1e4df8907d619b545c',
-              format: 'iframe',
-              height: 90,
-              width: 728,
-              params: {}
-            };
-        const script = document.createElement('script');
-        script.src = isMobileAd
-          ? 'https://www.highperformanceformat.com/da035ce315f9162bdb39be5b5dab7c6f/invoke.js'
-          : 'https://www.highperformanceformat.com/e9cbeb7d55584c1e4df8907d619b545c/invoke.js';
-        currentScript.after(script);
+        const iframe = document.createElement('iframe');
+        iframe.width = isMobileAd ? '300' : '728';
+        iframe.height = isMobileAd ? '250' : '90';
+        iframe.setAttribute('scrolling', 'no');
+        iframe.setAttribute('frameborder', '0');
+        iframe.style.border = '0';
+        iframe.style.overflow = 'hidden';
+        iframe.srcdoc = isMobileAd
+          ? `<!doctype html><html><body style="margin:0;overflow:hidden;"><script>atOptions={key:'da035ce315f9162bdb39be5b5dab7c6f',format:'iframe',height:250,width:300,params:{}};<\/script><script src="https://www.highperformanceformat.com/da035ce315f9162bdb39be5b5dab7c6f/invoke.js"><\/script></body></html>`
+          : `<!doctype html><html><body style="margin:0;overflow:hidden;"><script>atOptions={key:'e9cbeb7d55584c1e4df8907d619b545c',format:'iframe',height:90,width:728,params:{}};<\/script><script src="https://www.highperformanceformat.com/e9cbeb7d55584c1e4df8907d619b545c/invoke.js"><\/script></body></html>`;
+        currentScript.after(iframe);
       }, 2000);
     })();
   </script>
@@ -424,26 +406,17 @@ const structuredData = {
       const currentScript = document.currentScript;
       window.setTimeout(() => {
         const isMobileAd = window.matchMedia('(max-width: 768px)').matches;
-        window['atOptions'] = isMobileAd
-          ? {
-              key: 'da035ce315f9162bdb39be5b5dab7c6f',
-              format: 'iframe',
-              height: 250,
-              width: 300,
-              params: {}
-            }
-          : {
-              key: 'e9cbeb7d55584c1e4df8907d619b545c',
-              format: 'iframe',
-              height: 90,
-              width: 728,
-              params: {}
-            };
-        const script = document.createElement('script');
-        script.src = isMobileAd
-          ? 'https://www.highperformanceformat.com/da035ce315f9162bdb39be5b5dab7c6f/invoke.js'
-          : 'https://www.highperformanceformat.com/e9cbeb7d55584c1e4df8907d619b545c/invoke.js';
-        currentScript.after(script);
+        const iframe = document.createElement('iframe');
+        iframe.width = isMobileAd ? '300' : '728';
+        iframe.height = isMobileAd ? '250' : '90';
+        iframe.setAttribute('scrolling', 'no');
+        iframe.setAttribute('frameborder', '0');
+        iframe.style.border = '0';
+        iframe.style.overflow = 'hidden';
+        iframe.srcdoc = isMobileAd
+          ? `<!doctype html><html><body style="margin:0;overflow:hidden;"><script>atOptions={key:'da035ce315f9162bdb39be5b5dab7c6f',format:'iframe',height:250,width:300,params:{}};<\/script><script src="https://www.highperformanceformat.com/da035ce315f9162bdb39be5b5dab7c6f/invoke.js"><\/script></body></html>`
+          : `<!doctype html><html><body style="margin:0;overflow:hidden;"><script>atOptions={key:'e9cbeb7d55584c1e4df8907d619b545c',format:'iframe',height:90,width:728,params:{}};<\/script><script src="https://www.highperformanceformat.com/e9cbeb7d55584c1e4df8907d619b545c/invoke.js"><\/script></body></html>`;
+        currentScript.after(iframe);
       }, 2000);
     })();
   </script>
@@ -474,26 +447,17 @@ const structuredData = {
       const currentScript = document.currentScript;
       window.setTimeout(() => {
         const isMobileAd = window.matchMedia('(max-width: 768px)').matches;
-        window['atOptions'] = isMobileAd
-          ? {
-              key: 'da035ce315f9162bdb39be5b5dab7c6f',
-              format: 'iframe',
-              height: 250,
-              width: 300,
-              params: {}
-            }
-          : {
-              key: 'e9cbeb7d55584c1e4df8907d619b545c',
-              format: 'iframe',
-              height: 90,
-              width: 728,
-              params: {}
-            };
-        const script = document.createElement('script');
-        script.src = isMobileAd
-          ? 'https://www.highperformanceformat.com/da035ce315f9162bdb39be5b5dab7c6f/invoke.js'
-          : 'https://www.highperformanceformat.com/e9cbeb7d55584c1e4df8907d619b545c/invoke.js';
-        currentScript.after(script);
+        const iframe = document.createElement('iframe');
+        iframe.width = isMobileAd ? '300' : '728';
+        iframe.height = isMobileAd ? '250' : '90';
+        iframe.setAttribute('scrolling', 'no');
+        iframe.setAttribute('frameborder', '0');
+        iframe.style.border = '0';
+        iframe.style.overflow = 'hidden';
+        iframe.srcdoc = isMobileAd
+          ? `<!doctype html><html><body style="margin:0;overflow:hidden;"><script>atOptions={key:'da035ce315f9162bdb39be5b5dab7c6f',format:'iframe',height:250,width:300,params:{}};<\/script><script src="https://www.highperformanceformat.com/da035ce315f9162bdb39be5b5dab7c6f/invoke.js"><\/script></body></html>`
+          : `<!doctype html><html><body style="margin:0;overflow:hidden;"><script>atOptions={key:'e9cbeb7d55584c1e4df8907d619b545c',format:'iframe',height:90,width:728,params:{}};<\/script><script src="https://www.highperformanceformat.com/e9cbeb7d55584c1e4df8907d619b545c/invoke.js"><\/script></body></html>`;
+        currentScript.after(iframe);
       }, 2000);
     })();
   </script>
@@ -521,26 +485,17 @@ const structuredData = {
       const currentScript = document.currentScript;
       window.setTimeout(() => {
         const isMobileAd = window.matchMedia('(max-width: 768px)').matches;
-        window['atOptions'] = isMobileAd
-          ? {
-              key: 'da035ce315f9162bdb39be5b5dab7c6f',
-              format: 'iframe',
-              height: 250,
-              width: 300,
-              params: {}
-            }
-          : {
-              key: 'e9cbeb7d55584c1e4df8907d619b545c',
-              format: 'iframe',
-              height: 90,
-              width: 728,
-              params: {}
-            };
-        const script = document.createElement('script');
-        script.src = isMobileAd
-          ? 'https://www.highperformanceformat.com/da035ce315f9162bdb39be5b5dab7c6f/invoke.js'
-          : 'https://www.highperformanceformat.com/e9cbeb7d55584c1e4df8907d619b545c/invoke.js';
-        currentScript.after(script);
+        const iframe = document.createElement('iframe');
+        iframe.width = isMobileAd ? '300' : '728';
+        iframe.height = isMobileAd ? '250' : '90';
+        iframe.setAttribute('scrolling', 'no');
+        iframe.setAttribute('frameborder', '0');
+        iframe.style.border = '0';
+        iframe.style.overflow = 'hidden';
+        iframe.srcdoc = isMobileAd
+          ? `<!doctype html><html><body style="margin:0;overflow:hidden;"><script>atOptions={key:'da035ce315f9162bdb39be5b5dab7c6f',format:'iframe',height:250,width:300,params:{}};<\/script><script src="https://www.highperformanceformat.com/da035ce315f9162bdb39be5b5dab7c6f/invoke.js"><\/script></body></html>`
+          : `<!doctype html><html><body style="margin:0;overflow:hidden;"><script>atOptions={key:'e9cbeb7d55584c1e4df8907d619b545c',format:'iframe',height:90,width:728,params:{}};<\/script><script src="https://www.highperformanceformat.com/e9cbeb7d55584c1e4df8907d619b545c/invoke.js"><\/script></body></html>`;
+        currentScript.after(iframe);
       }, 2000);
     })();
   </script>
@@ -571,26 +526,17 @@ const structuredData = {
       const currentScript = document.currentScript;
       window.setTimeout(() => {
         const isMobileAd = window.matchMedia('(max-width: 768px)').matches;
-        window['atOptions'] = isMobileAd
-          ? {
-              key: 'da035ce315f9162bdb39be5b5dab7c6f',
-              format: 'iframe',
-              height: 250,
-              width: 300,
-              params: {}
-            }
-          : {
-              key: 'e9cbeb7d55584c1e4df8907d619b545c',
-              format: 'iframe',
-              height: 90,
-              width: 728,
-              params: {}
-            };
-        const script = document.createElement('script');
-        script.src = isMobileAd
-          ? 'https://www.highperformanceformat.com/da035ce315f9162bdb39be5b5dab7c6f/invoke.js'
-          : 'https://www.highperformanceformat.com/e9cbeb7d55584c1e4df8907d619b545c/invoke.js';
-        currentScript.after(script);
+        const iframe = document.createElement('iframe');
+        iframe.width = isMobileAd ? '300' : '728';
+        iframe.height = isMobileAd ? '250' : '90';
+        iframe.setAttribute('scrolling', 'no');
+        iframe.setAttribute('frameborder', '0');
+        iframe.style.border = '0';
+        iframe.style.overflow = 'hidden';
+        iframe.srcdoc = isMobileAd
+          ? `<!doctype html><html><body style="margin:0;overflow:hidden;"><script>atOptions={key:'da035ce315f9162bdb39be5b5dab7c6f',format:'iframe',height:250,width:300,params:{}};<\/script><script src="https://www.highperformanceformat.com/da035ce315f9162bdb39be5b5dab7c6f/invoke.js"><\/script></body></html>`
+          : `<!doctype html><html><body style="margin:0;overflow:hidden;"><script>atOptions={key:'e9cbeb7d55584c1e4df8907d619b545c',format:'iframe',height:90,width:728,params:{}};<\/script><script src="https://www.highperformanceformat.com/e9cbeb7d55584c1e4df8907d619b545c/invoke.js"><\/script></body></html>`;
+        currentScript.after(iframe);
       }, 2000);
     })();
   </script>
@@ -629,26 +575,17 @@ const structuredData = {
       const currentScript = document.currentScript;
       window.setTimeout(() => {
         const isMobileAd = window.matchMedia('(max-width: 768px)').matches;
-        window['atOptions'] = isMobileAd
-          ? {
-              key: 'da035ce315f9162bdb39be5b5dab7c6f',
-              format: 'iframe',
-              height: 250,
-              width: 300,
-              params: {}
-            }
-          : {
-              key: 'e9cbeb7d55584c1e4df8907d619b545c',
-              format: 'iframe',
-              height: 90,
-              width: 728,
-              params: {}
-            };
-        const script = document.createElement('script');
-        script.src = isMobileAd
-          ? 'https://www.highperformanceformat.com/da035ce315f9162bdb39be5b5dab7c6f/invoke.js'
-          : 'https://www.highperformanceformat.com/e9cbeb7d55584c1e4df8907d619b545c/invoke.js';
-        currentScript.after(script);
+        const iframe = document.createElement('iframe');
+        iframe.width = isMobileAd ? '300' : '728';
+        iframe.height = isMobileAd ? '250' : '90';
+        iframe.setAttribute('scrolling', 'no');
+        iframe.setAttribute('frameborder', '0');
+        iframe.style.border = '0';
+        iframe.style.overflow = 'hidden';
+        iframe.srcdoc = isMobileAd
+          ? `<!doctype html><html><body style="margin:0;overflow:hidden;"><script>atOptions={key:'da035ce315f9162bdb39be5b5dab7c6f',format:'iframe',height:250,width:300,params:{}};<\/script><script src="https://www.highperformanceformat.com/da035ce315f9162bdb39be5b5dab7c6f/invoke.js"><\/script></body></html>`
+          : `<!doctype html><html><body style="margin:0;overflow:hidden;"><script>atOptions={key:'e9cbeb7d55584c1e4df8907d619b545c',format:'iframe',height:90,width:728,params:{}};<\/script><script src="https://www.highperformanceformat.com/e9cbeb7d55584c1e4df8907d619b545c/invoke.js"><\/script></body></html>`;
+        currentScript.after(iframe);
       }, 2000);
     })();
   </script>
@@ -691,26 +628,17 @@ const structuredData = {
       const currentScript = document.currentScript;
       window.setTimeout(() => {
         const isMobileAd = window.matchMedia('(max-width: 768px)').matches;
-        window['atOptions'] = isMobileAd
-          ? {
-              key: 'da035ce315f9162bdb39be5b5dab7c6f',
-              format: 'iframe',
-              height: 250,
-              width: 300,
-              params: {}
-            }
-          : {
-              key: 'e9cbeb7d55584c1e4df8907d619b545c',
-              format: 'iframe',
-              height: 90,
-              width: 728,
-              params: {}
-            };
-        const script = document.createElement('script');
-        script.src = isMobileAd
-          ? 'https://www.highperformanceformat.com/da035ce315f9162bdb39be5b5dab7c6f/invoke.js'
-          : 'https://www.highperformanceformat.com/e9cbeb7d55584c1e4df8907d619b545c/invoke.js';
-        currentScript.after(script);
+        const iframe = document.createElement('iframe');
+        iframe.width = isMobileAd ? '300' : '728';
+        iframe.height = isMobileAd ? '250' : '90';
+        iframe.setAttribute('scrolling', 'no');
+        iframe.setAttribute('frameborder', '0');
+        iframe.style.border = '0';
+        iframe.style.overflow = 'hidden';
+        iframe.srcdoc = isMobileAd
+          ? `<!doctype html><html><body style="margin:0;overflow:hidden;"><script>atOptions={key:'da035ce315f9162bdb39be5b5dab7c6f',format:'iframe',height:250,width:300,params:{}};<\/script><script src="https://www.highperformanceformat.com/da035ce315f9162bdb39be5b5dab7c6f/invoke.js"><\/script></body></html>`
+          : `<!doctype html><html><body style="margin:0;overflow:hidden;"><script>atOptions={key:'e9cbeb7d55584c1e4df8907d619b545c',format:'iframe',height:90,width:728,params:{}};<\/script><script src="https://www.highperformanceformat.com/e9cbeb7d55584c1e4df8907d619b545c/invoke.js"><\/script></body></html>`;
+        currentScript.after(iframe);
       }, 2000);
     })();
   </script>
@@ -752,26 +680,17 @@ const structuredData = {
       const currentScript = document.currentScript;
       window.setTimeout(() => {
         const isMobileAd = window.matchMedia('(max-width: 768px)').matches;
-        window['atOptions'] = isMobileAd
-          ? {
-              key: 'da035ce315f9162bdb39be5b5dab7c6f',
-              format: 'iframe',
-              height: 250,
-              width: 300,
-              params: {}
-            }
-          : {
-              key: 'e9cbeb7d55584c1e4df8907d619b545c',
-              format: 'iframe',
-              height: 90,
-              width: 728,
-              params: {}
-            };
-        const script = document.createElement('script');
-        script.src = isMobileAd
-          ? 'https://www.highperformanceformat.com/da035ce315f9162bdb39be5b5dab7c6f/invoke.js'
-          : 'https://www.highperformanceformat.com/e9cbeb7d55584c1e4df8907d619b545c/invoke.js';
-        currentScript.after(script);
+        const iframe = document.createElement('iframe');
+        iframe.width = isMobileAd ? '300' : '728';
+        iframe.height = isMobileAd ? '250' : '90';
+        iframe.setAttribute('scrolling', 'no');
+        iframe.setAttribute('frameborder', '0');
+        iframe.style.border = '0';
+        iframe.style.overflow = 'hidden';
+        iframe.srcdoc = isMobileAd
+          ? `<!doctype html><html><body style="margin:0;overflow:hidden;"><script>atOptions={key:'da035ce315f9162bdb39be5b5dab7c6f',format:'iframe',height:250,width:300,params:{}};<\/script><script src="https://www.highperformanceformat.com/da035ce315f9162bdb39be5b5dab7c6f/invoke.js"><\/script></body></html>`
+          : `<!doctype html><html><body style="margin:0;overflow:hidden;"><script>atOptions={key:'e9cbeb7d55584c1e4df8907d619b545c',format:'iframe',height:90,width:728,params:{}};<\/script><script src="https://www.highperformanceformat.com/e9cbeb7d55584c1e4df8907d619b545c/invoke.js"><\/script></body></html>`;
+        currentScript.after(iframe);
       }, 2000);
     })();
   </script>
@@ -799,26 +718,17 @@ const structuredData = {
       const currentScript = document.currentScript;
       window.setTimeout(() => {
         const isMobileAd = window.matchMedia('(max-width: 768px)').matches;
-        window['atOptions'] = isMobileAd
-          ? {
-              key: 'da035ce315f9162bdb39be5b5dab7c6f',
-              format: 'iframe',
-              height: 250,
-              width: 300,
-              params: {}
-            }
-          : {
-              key: 'e9cbeb7d55584c1e4df8907d619b545c',
-              format: 'iframe',
-              height: 90,
-              width: 728,
-              params: {}
-            };
-        const script = document.createElement('script');
-        script.src = isMobileAd
-          ? 'https://www.highperformanceformat.com/da035ce315f9162bdb39be5b5dab7c6f/invoke.js'
-          : 'https://www.highperformanceformat.com/e9cbeb7d55584c1e4df8907d619b545c/invoke.js';
-        currentScript.after(script);
+        const iframe = document.createElement('iframe');
+        iframe.width = isMobileAd ? '300' : '728';
+        iframe.height = isMobileAd ? '250' : '90';
+        iframe.setAttribute('scrolling', 'no');
+        iframe.setAttribute('frameborder', '0');
+        iframe.style.border = '0';
+        iframe.style.overflow = 'hidden';
+        iframe.srcdoc = isMobileAd
+          ? `<!doctype html><html><body style="margin:0;overflow:hidden;"><script>atOptions={key:'da035ce315f9162bdb39be5b5dab7c6f',format:'iframe',height:250,width:300,params:{}};<\/script><script src="https://www.highperformanceformat.com/da035ce315f9162bdb39be5b5dab7c6f/invoke.js"><\/script></body></html>`
+          : `<!doctype html><html><body style="margin:0;overflow:hidden;"><script>atOptions={key:'e9cbeb7d55584c1e4df8907d619b545c',format:'iframe',height:90,width:728,params:{}};<\/script><script src="https://www.highperformanceformat.com/e9cbeb7d55584c1e4df8907d619b545c/invoke.js"><\/script></body></html>`;
+        currentScript.after(iframe);
       }, 2000);
     })();
   </script>
