@@ -465,6 +465,207 @@ export const guidesList = [
       <h2>Final field rule</h2>
       <p>Extraction is a routing decision, not a button press. In SAND: Raiders of Sophie, the crew that leaves with useful loot beats the crew that dies trying to protect perfect loot. Once your cargo is worth defending, start planning the exit before the map forces one on you.</p>
     `
+  },
+  {
+    id: 5,
+    title: 'SAND: Raiders of Sophie Key Guide: Military Crates, Black Box, Blue Key, and Green Key',
+    h1: 'SAND: Raiders of Sophie Keys, Military Crates, and Black Box Guide',
+    description: 'Open military crates, handle locked boxes, route box-key checks, and decide when Black Box, blue key, green key, or black key loot is worth the risk.',
+    publishDate: '2026-07-14',
+    imageUrl: '/images/guides/sand-keys-military-crates-black-box.jpg',
+    imageAlt: 'SAND Raiders of Sophie key guide for military crates locked boxes Black Box blue key and green key',
+    addressBar: 'sand-raiders-of-sophie-keys-military-crates-black-box-guide',
+    focus: 'Keys, crates, and Black Box routing',
+    seo: {
+      title: 'SAND Key Guide: Military Crates and Black Box',
+      description: 'Open military crates, handle locked boxes, track box-key checks, and decide when Black Box, blue, green, or black keys matter.',
+      keywords: 'SAND military crates, locked box, Black Box, blue key, green key'
+    },
+    category: 'Loot',
+    isPublished: true,
+    detailsHtml: `
+      <p><strong>Fast answer:</strong> military crates and locked boxes are route checks, not brute-force containers. Read the prompt, carry only the keys your route can actually use, and leave if the box requirement does not match your inventory. Black Box is different: it is a high-value trade and research item tied to enemy Trampler kills, so do not sell or spend it without checking your next tech-tree node.</p>
+
+      <p><strong>Field status:</strong> current public Early Access behavior. Key prompts, loot doors, and crate requirements can change between patches. If the live prompt disagrees with this guide, trust the prompt first and treat this page as the route discipline layer.</p>
+
+      <figure class="guide-inline-media">
+        <img src="/images/guides/sand-keys-military-crates-black-box.jpg" alt="SAND Raiders of Sophie locked loot doors military crate and key route guide" title="SAND Raiders of Sophie military crate and key guide" loading="lazy" />
+        <figcaption>Locked loot is only value after extraction. Confirm the prompt, secure the route, then decide whether the key is worth spending.</figcaption>
+      </figure>
+
+      <h2>Military crates and locked boxes</h2>
+      <h3>How to open military crates</h3>
+      <p>Approach the crate or box close enough to read the interaction prompt before moving cargo around. If it asks for a specific key, that is the requirement. If it does not show an interact prompt, do not waste time circling it under PvP pressure. Mark it as a missed route check and leave.</p>
+      <p>The mistake is carrying every possible key into every raid. Keys are dead cargo until they match a prompt, and dead cargo becomes expensive when another Trampler hears your stop. Use this basic check before opening a military crate or locked box:</p>
+
+      <table>
+        <thead>
+          <tr><th>Prompt or object</th><th>What it means</th><th>Field rule</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Military crate</td><td>High-risk loot container, usually worth checking if the area is controlled.</td><td>Clear angles first; do not open while the driver is blind.</td></tr>
+          <tr><td>Locked military box</td><td>Requires the matching key or current-build unlock condition.</td><td>If the prompt names a key you do not have, leave it.</td></tr>
+          <tr><td>Colored lock prompt</td><td>Blue, green, black, or another key color is being checked.</td><td>Spend the key only if the route can still extract.</td></tr>
+          <tr><td>No prompt</td><td>Wrong angle, decorative object, already looted state, or unsupported interaction.</td><td>Recheck once from a clean angle, then move.</td></tr>
+        </tbody>
+      </table>
+
+      <p>If your crew is still learning extraction timing, pair this with the <a href="/guides/sand-raiders-of-sophie-how-to-extract">SAND extraction guide</a>. A locked crate is not progress if the dropship window is already compromised.</p>
+
+      <h3>Where to find the box key</h3>
+      <p>Do not plan around one permanent box-key coordinate. In the current public route logic, treat the box key as a loot-door route item: check guarded loot areas, locked-door paths, military containers, and high-value interiors, then record which prompt consumed or requested the key. If the key does not appear before the route turns loud, extract and reset instead of widening the search until you die.</p>
+      <p><strong>Practical route:</strong> scout the POI, confirm the locked-box prompt, search nearby high-value containers, return to the Trampler with any key item, then reopen only after cargo and defense are staged. Solo players should avoid opening a box if the Trampler is parked badly or the engine smoke is visible across open dunes.</p>
+
+      <h2>Black box and colored keys</h2>
+      <h3>Black box locations and uses</h3>
+      <p>The site resource index tracks <a href="/wiki/resources#resource-34">Black Box</a> as a Noteworthy Resource used for trade or research tree progress. The current note places it near the destroyed reactor after defeating an enemy Trampler. That makes it a combat reward, not a casual crate pickup.</p>
+      <figure class="guide-inline-media">
+        <img src="/images/wiki/resources/black-box.jpg" alt="SAND Raiders of Sophie Black Box resource used for trade and research" title="SAND Raiders of Sophie Black Box resource" loading="lazy" />
+        <figcaption>Black Box is progression-sensitive. It appears repeatedly in Tier II to IV research costs, especially combat and Trampler upgrade paths.</figcaption>
+      </figure>
+      <p>Before selling or spending a Black Box, check the <a href="/database">Tech Tree Database</a>. Multiple Landwehr, weapon, armor, and advanced compartment nodes list Black Box requirements. If your next unlock needs it, store it. If your crew is already past that branch and needs currency, then it becomes a trade decision.</p>
+
+      <table>
+        <thead>
+          <tr><th>Black Box decision</th><th>Use it when</th><th>Do not use it when</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Keep</td><td>Your next combat, armor, or advanced module node lists Black Box.</td><td>You are already blocked by different materials.</td></tr>
+          <tr><td>Trade</td><td>The tech branch is not Black Box-gated and you need currency now.</td><td>You have not checked the database after the latest patch.</td></tr>
+          <tr><td>Carry in raid</td><td>You are moving it toward extraction or storage.</td><td>You are still exploring optional POIs.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Blue, green, and black keys</h3>
+      <p>Colored keys should be treated as prompt-specific access items. Blue key goes to blue-lock prompts, green key goes to green-lock prompts, and black key goes to black-lock prompts only when the live UI confirms it. Do not spend a colored key on curiosity if the box is in a bad extraction position.</p>
+      <p><strong>INFERRED:</strong> exact colored-key reward tables are build-sensitive. The durable rule is route order: confirm prompt, secure vehicle, open container, move reward to cargo, then decide whether the next locked object is worth another stop.</p>
+
+      <table>
+        <thead>
+          <tr><th>Key type</th><th>Likely use case</th><th>Carry rule</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Blue key</td><td>Blue-lock doors or boxes when the prompt asks for it.</td><td>Carry on blue-route checks; store otherwise.</td></tr>
+          <tr><td>Green key</td><td>Green-lock prompt, often searched as "where to use green key".</td><td>Use only after confirming the route can still extract.</td></tr>
+          <tr><td>Black key</td><td>Black-lock prompt or higher-risk locked loot check.</td><td>Do not gamble it on an exposed stop.</td></tr>
+          <tr><td>Box key</td><td>Generic locked-box requirement when the prompt names it.</td><td>Spend near the box; do not carry it across unrelated routes.</td></tr>
+        </tbody>
+      </table>
+
+      <h2>FAQ</h2>
+      <h3>How do you open military crates in SAND: Raiders of Sophie?</h3>
+      <p>Read the crate prompt and use the matching key or unlock condition shown by the current build. If no prompt appears after one clean recheck, move on.</p>
+      <h3>Where can you get Black Box?</h3>
+      <p>The current site resource note ties Black Box to the destroyed reactor area after defeating an enemy Trampler. Treat it as a combat reward and extract it quickly.</p>
+      <h3>Where do you use the green key?</h3>
+      <p>Use it only on a green-lock prompt. If the route is exposed or extraction is already risky, store the key and spend it on a cleaner run.</p>
+
+      <div class="pro-tip">
+        <strong>Field rule:</strong> A key in your inventory is potential value. A key spent in a bad position is just noise, smoke, and another reason for enemy crews to find you.
+      </div>
+    `
+  },
+  {
+    id: 6,
+    title: 'SAND: Raiders of Sophie Money Guide: Loot Distribution and What Is Safe to Sell',
+    h1: 'What to Sell and How Loot Works in SAND: Raiders of Sophie',
+    description: 'Decide what is safe to sell, what to keep for research or Trampler upgrades, how Valuable Papers work, and how solo or team loot distribution should stay clean.',
+    publishDate: '2026-07-14',
+    imageUrl: '/images/guides/sand-money-loot-safe-sell.jpg',
+    imageAlt: 'SAND Raiders of Sophie money guide for loot distribution safe to sell and Valuable Papers',
+    addressBar: 'sand-raiders-of-sophie-money-loot-safe-to-sell-guide',
+    focus: 'Money, selling, and loot distribution',
+    seo: {
+      title: 'SAND Money Guide: What to Sell and Keep',
+      description: 'Decide what is safe to sell in SAND, when to keep rare loot, how Valuable Papers trade, and how teams split loot.',
+      keywords: 'SAND money guide, safe to sell, Valuable Papers, loot distribution'
+    },
+    category: 'Loot',
+    isPublished: true,
+    detailsHtml: `
+      <p><strong>Fast answer:</strong> sell pure trade items when they are not blocking a known exchange, keep Trampler materials and research inputs until the <a href="/database">database</a> proves you do not need them, and never split loot after extraction by memory. Valuable Papers are a trade item, so they are usually money-positive, but they still deserve one database check before you dump your whole storage.</p>
+
+      <p><strong>Field status:</strong> current public Early Access behavior. Vendor value, exchange lists, and research costs can move between patches. Use the item tooltip and live trader UI as the final authority.</p>
+
+      <figure class="guide-inline-media">
+        <img src="/images/guides/sand-money-loot-safe-sell.jpg" alt="SAND Raiders of Sophie what to sell keep and use money guide" title="SAND Raiders of Sophie money and safe to sell guide" loading="lazy" />
+        <figcaption>Money decisions start before the vendor. The real question is whether the item is trade-only, research-gated, or route-critical.</figcaption>
+      </figure>
+
+      <h2>What is safe to sell</h2>
+      <h3>Safe-to-sell short list</h3>
+      <p>Use item type first, rarity second, and panic never. The <a href="/wiki/resources">Resources Wiki</a> separates trade items from crafting, research, Trampler materials, fuel, consumables, and combat utility. That split is the safest way to decide what can leave storage.</p>
+
+      <table>
+        <thead>
+          <tr><th>Item group</th><th>Sell priority</th><th>Reason</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Pure trade item</td><td>Usually safe after one tooltip check</td><td>Designed to convert into money or exchange value.</td></tr>
+          <tr><td>Currency items such as Crowns</td><td>Keep as money reserve</td><td>They already function as buying power.</td></tr>
+          <tr><td>Crafting / research material</td><td>Hold until next unlock is checked</td><td>Common items can become bottlenecks in bulk costs.</td></tr>
+          <tr><td>Trampler component</td><td>Keep by default</td><td>Mechanical Parts, Pneumatic Parts, and Computing Modules affect build progress.</td></tr>
+          <tr><td>Fuel, medicine, ammunition, utility</td><td>Keep enough for routes</td><td>Cash does not help if the next raid launches underprepared.</td></tr>
+        </tbody>
+      </table>
+
+      <p>If you are new, read the <a href="/guides/first-stable-runs-survival-guide">first stable runs survival guide</a> before selling deep into storage. Early money is useful, but selling the next Trampler upgrade material creates a slower loss.</p>
+
+      <h3>Selling valuable papers</h3>
+      <p><a href="/wiki/resources#resource-25">Valuable Papers</a> are listed as a Rare Resource and Trade Item. That makes them a good sale candidate when you need money, but do not confuse "trade item" with "sell blindly forever." Check whether a trader exchange, quest, or patch-specific route has started using them before liquidating a full stack.</p>
+      <figure class="guide-inline-media">
+        <img src="/images/wiki/resources/valuable-papers.jpg" alt="SAND Raiders of Sophie Valuable Papers rare trade item" title="SAND Raiders of Sophie Valuable Papers" loading="lazy" />
+        <figcaption>Valuable Papers are trade-focused. They are safer to sell than Trampler components, but still deserve a live UI check.</figcaption>
+      </figure>
+
+      <h2>Money and loot distribution</h2>
+      <h3>What to sell to make money</h3>
+      <p>Money comes from extracting value, not just finding value. A dead crew with a full backpack made zero money. Prioritize items that convert cleanly and do not block your next build plan: Valuables, Valuable Papers, Crystal when it is not needed elsewhere, District Officer's Portable Safe, and other trade-labeled goods. Keep Black Box, Computing Module, Pneumatic Parts, fuel, rare medicine, and weapon materials until your next unlock plan is clear.</p>
+
+      <table>
+        <thead>
+          <tr><th>Loot item</th><th>Default action</th><th>Why</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Valuables</td><td>Sell or trade after extraction</td><td>Uncommon trade item with less crafting pressure.</td></tr>
+          <tr><td>Valuable Papers</td><td>Usually sell after live UI check</td><td>Rare trade item and money-focused pickup.</td></tr>
+          <tr><td>District Officer's Portable Safe</td><td>Hold until route/exchange checked</td><td>Trade item, but tied to difficult urban routes.</td></tr>
+          <tr><td>Black Box</td><td>Keep by default</td><td>Used for trade and many research tree nodes.</td></tr>
+          <tr><td>Pneumatic Parts / Computing Module</td><td>Keep</td><td>Trampler progression bottleneck items.</td></tr>
+        </tbody>
+      </table>
+
+      <p>The clean money loop is simple: extract trade goods, sell only the goods that are not upgrade-gated, then put the money into route stability. Fuel, ammo, mounted weapons, and repairs create more successful extractions. That is better income than one greedy sale.</p>
+
+      <h3>How loot distribution works</h3>
+      <p>Loot distribution is a crew rule, not a magical fairness system. Decide before the raid how the crew handles trade items, research materials, keys, and route-critical supplies. If everyone grabs what they want during the final minute, the team will misplace the exact item needed for the next upgrade.</p>
+
+      <table>
+        <thead>
+          <tr><th>Crew setup</th><th>Distribution rule</th><th>Failure to avoid</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Solo</td><td>Sort into sell, keep, and route-supply stacks after extraction.</td><td>Selling from memory without checking the database.</td></tr>
+          <tr><td>Duo</td><td>One player calls trade goods, one calls upgrade materials.</td><td>Both players sell duplicates before checking the tech plan.</td></tr>
+          <tr><td>Three-plus crew</td><td>Assign cargo owner, vendor owner, and upgrade owner.</td><td>No one knows who carried the Black Box or keys.</td></tr>
+          <tr><td>Public or loose group</td><td>Agree on key, Black Box, and rare component ownership before opening locked loot.</td><td>Argument after extraction instead of route discipline before it.</td></tr>
+        </tbody>
+      </table>
+
+      <p>For extraction-phase handling, use the <a href="/guides/sand-raiders-of-sophie-how-to-extract">extraction guide</a>. Money only exists after the loot leaves Sophie.</p>
+
+      <h2>FAQ</h2>
+      <h3>What is safe to sell in SAND: Raiders of Sophie?</h3>
+      <p>Pure trade items are the safest sale candidates. Keep Trampler materials, research inputs, Black Box, fuel, medicine, weapons, and keys until you confirm your next route or tech need.</p>
+      <h3>How do you sell Valuable Papers?</h3>
+      <p>Bring them out of the raid, check the live vendor or trade UI, confirm they are not needed for your next route, then sell or exchange them as a rare trade item.</p>
+      <h3>How does loot distribution work?</h3>
+      <p>Set crew rules before the raid. Separate trade goods, upgrade materials, keys, and route supplies. The cargo owner should confirm rare items before anyone sells from storage.</p>
+
+      <div class="pro-tip">
+        <strong>Field rule:</strong> If an item can unlock movement, weapons, power, or extraction safety, it is not junk until the database and live UI prove it.
+      </div>
+    `
   }
 ];
 
