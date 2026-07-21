@@ -667,6 +667,208 @@ export const guidesList = [
       </div>
     `
   }
+  ,
+  {
+    id: 7,
+    title: 'SAND Server Status and Connection Fixes Guide',
+    h1: 'SAND: Raiders of Sophie Server Connection Troubleshooting Guide',
+    description: 'Check SAND server status, no-server lists, startup failures, and uptime questions without mixing outages with local connection problems.',
+    publishDate: '2026-07-21',
+    imageUrl: '/images/guides/sand-server-status-connection-troubleshooting.jpg',
+    imageAlt: 'SAND Raiders of Sophie server status connection troubleshooting guide with Trampler setup screen',
+    addressBar: 'sand-raiders-of-sophie-server-status-fixes',
+    focus: 'Server status, connection checks, and startup fixes',
+    seo: {
+      title: 'SAND Server Status and Connection Fixes',
+      description: 'Check SAND server status, no-server lists, startup failures, uptime questions, and local connection fixes before blaming your route.',
+      keywords: 'SAND server status, servers down, no servers, startup fix'
+    },
+    category: 'Troubleshooting',
+    isPublished: true,
+    detailsHtml: `
+      <p><strong>Fast answer:</strong> separate outage checks from local fixes. If SAND: Raiders of Sophie servers are broadly down, changing files, reinstalling, or resetting your router will not solve it. If no outage signal exists, troubleshoot in this order: Steam status, game update, server list filters, region/session refresh, firewall/VPN, then startup integrity checks.</p>
+
+      <p><strong>Field status:</strong> current public Early Access behavior as of July 21, 2026. Server rules, uptime windows, browser filters, and queue labels can change. Trust the live launcher, Steam announcements, and official channels first; use this page as the decision tree.</p>
+
+      <figure class="guide-inline-media">
+        <img src="/images/guides/sand-server-status-connection-troubleshooting.jpg" alt="SAND Raiders of Sophie server status connection troubleshooting and startup checks" title="SAND Raiders of Sophie server status troubleshooting" loading="lazy" />
+        <figcaption>Do not troubleshoot blind. Confirm whether the problem is global, regional, account/session based, or local before changing your setup.</figcaption>
+      </figure>
+
+      <h2>Current server status checks</h2>
+      <h3>Server status variants</h3>
+      <p>Most searches around "SAND servers down" really ask one of three things: are official services offline, is matchmaking/session listing broken, or is only your client failing to reach the list? Those are different problems. Start with public signals, then move inward.</p>
+
+      <table>
+        <thead>
+          <tr><th>Symptom</th><th>Likely layer</th><th>First check</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Everyone reports no servers</td><td>Outage or maintenance</td><td>Official announcement, Steam news, community status chatter</td></tr>
+          <tr><td>Only your list is empty</td><td>Client, region, filter, session, or firewall</td><td>Restart client and Steam, reset filters, disable VPN</td></tr>
+          <tr><td>You can see servers but cannot join</td><td>Version mismatch, full session, region, or auth</td><td>Update game, re-login, try a different region/session</td></tr>
+          <tr><td>Game does not launch</td><td>Startup/runtime layer</td><td>Verify files, drivers, antivirus quarantine, OS requirements</td></tr>
+        </tbody>
+      </table>
+
+      <p>If the whole community is reporting the same failure, stop changing your local configuration. Wait for official recovery. If reports are mixed, treat it as a local or regional issue and move to the next section.</p>
+
+      <h3>Official server check sources</h3>
+      <p>SAND is an online PvP extraction game with Steam integration and official update channels. Use sources in this order:</p>
+      <ul>
+        <li><strong>Steam game page and news:</strong> patch, maintenance, and launch-window announcements.</li>
+        <li><strong>Official SAND site or social channels:</strong> broad service messages and event windows.</li>
+        <li><strong>In-game UI:</strong> current mode labels, server list behavior, region choices, and maintenance cards.</li>
+        <li><strong>Community reports:</strong> useful only after you compare time, region, and build version.</li>
+      </ul>
+
+      <p>Do not use one old Discord screenshot as permanent status. Server visibility can change by region, patch, and live test window.</p>
+
+      <h2>Troubleshooting connection problems</h2>
+      <h3>Servers not visible</h3>
+      <p>"Non vedo i server" means "I cannot see the servers." Treat it as a server-list visibility problem first, not proof that the entire game is offline. Clear filters, switch region if the UI allows it, restart the game, restart Steam, and confirm that your build version matches the live branch.</p>
+
+      <figure class="guide-inline-media">
+        <img src="/images/guides/sand-no-servers-startup-checks.jpg" alt="SAND Raiders of Sophie no servers visible startup and session troubleshooting" title="SAND Raiders of Sophie no servers and startup checks" loading="lazy" />
+        <figcaption>A clean server check starts from the launcher state. Wrong build, stale session, or blocked network traffic can look like a full outage.</figcaption>
+      </figure>
+
+      <table>
+        <thead>
+          <tr><th>Check</th><th>What to do</th><th>Why it matters</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Build version</td><td>Restart Steam and install pending updates.</td><td>Old clients often fail matchmaking or session discovery.</td></tr>
+          <tr><td>Filters</td><td>Clear mode, region, ping, and full-server filters.</td><td>A strict filter can hide valid sessions.</td></tr>
+          <tr><td>VPN/proxy</td><td>Disable temporarily and test again.</td><td>Some routes break auth, region, or latency checks.</td></tr>
+          <tr><td>Firewall</td><td>Allow the game and Steam through Windows security.</td><td>Blocked traffic can produce an empty list.</td></tr>
+          <tr><td>Local network</td><td>Reboot router only after outage signs are absent.</td><td>Router resets do nothing during maintenance.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Game does not run typo variant</h3>
+      <p>The typo "doesnt tun" usually means "doesn't run." Keep launch failure separate from server failure. If the executable never reaches the menu, the server list is irrelevant.</p>
+      <p>Run a strict startup pass: verify Steam files, update GPU driver, close overlays, check antivirus quarantine, run without VPN, and confirm the minimum requirement for broadband internet and Windows 10 64-bit. If the game starts after file verification, do not change server settings yet; retest the server list from a clean launch.</p>
+
+      <h3>How long servers stay up</h3>
+      <p>There is no useful fixed uptime number to hard-code into a guide. SAND can have maintenance, patch deployments, launch stress, and mode windows. Ask a better question: is the current session browser live right now, and are official channels reporting a planned downtime?</p>
+      <p>For route planning, assume any online extraction game can interrupt your evening. If your crew has limited time, use the <a href="/guides/sand-raiders-of-sophie-how-to-extract">extraction guide</a> and keep runs short until server stability is confirmed.</p>
+
+      <h2>FAQ</h2>
+      <h3>Are SAND: Raiders of Sophie servers down?</h3>
+      <p>Check official announcements, Steam news, and broad community reports first. If many players in multiple regions report the same failure, wait. If only your client is affected, troubleshoot filters, updates, VPN, firewall, and startup state.</p>
+      <h3>Why can I not see servers?</h3>
+      <p>Empty server lists can come from outages, wrong build, strict filters, region/session issues, VPN/proxy routing, or firewall blocks. Do not assume outage until you compare with external reports.</p>
+      <h3>Why does SAND not launch?</h3>
+      <p>Verify files, update drivers, close overlays, check antivirus quarantine, and relaunch Steam. Launch failure is a local runtime problem until the game reaches the menu and fails at server discovery.</p>
+
+      <div class="pro-tip">
+        <strong>Field rule:</strong> Diagnose from outside in. Global outage, official maintenance, Steam/session state, local filters, local network, then PC runtime. Changing that order wastes time.
+      </div>
+    `
+  },
+  {
+    id: 8,
+    title: 'SAND Map and POI Route Planning Guide',
+    h1: 'SAND: Raiders of Sophie Map and POI Guide',
+    description: 'Plan SAND map routes around POIs, team pressure, loot spots, Black Box checks, green key use, and extraction timing.',
+    publishDate: '2026-07-21',
+    imageUrl: '/images/guides/sand-map-poi-route-planning.jpg',
+    imageAlt: 'SAND Raiders of Sophie map POI route planning with Trampler combat deck and loot risk',
+    addressBar: 'sand-raiders-of-sophie-map-poi-guide',
+    focus: 'POIs, team density, loot routes, and key checks',
+    seo: {
+      title: 'SAND Map and POI Route Planning Guide',
+      description: 'Plan SAND map routes around POIs, team pressure, loot spots, Black Box checks, green key use, and extraction timing.',
+      keywords: 'SAND map, POI guide, loot spots, teams on map, green key'
+    },
+    category: 'Maps',
+    isPublished: true,
+    detailsHtml: `
+      <p><strong>Fast answer:</strong> a good SAND map route is not "visit every POI." It is one primary POI, one fallback loot stop, one key or Black Box check if the prompt appears, and one extraction plan before other Tramplers hear your engine. POIs are value only when your crew can leave with the loot.</p>
+
+      <p><strong>Field status:</strong> current public Early Access route logic as of July 21, 2026. SAND uses a massive procedurally generated world, so exact layouts, team density, and loot tables can move. Treat this guide as a route framework, not a permanent coordinate sheet.</p>
+
+      <figure class="guide-inline-media">
+        <img src="/images/guides/sand-map-poi-route-planning.jpg" alt="SAND Raiders of Sophie map POI route planning for Trampler crews" title="SAND Raiders of Sophie map and POI route planning" loading="lazy" />
+        <figcaption>Route planning starts from what the crew can defend. A strong POI is worthless if the Trampler is parked badly or extraction is late.</figcaption>
+      </figure>
+
+      <h2>Map and POI basics</h2>
+      <h3>Map with POI demand</h3>
+      <p>Players ask for a "map with POI" because Sophie is not a clean corridor. Official store copy describes cities, ruins, shipwrecks, and remnants of a fallen world. In practice, treat every POI as one of four route types: loot, combat, key check, or extraction support.</p>
+
+      <table>
+        <thead>
+          <tr><th>POI type</th><th>Why you go there</th><th>Leave when</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>City or ruin</td><td>Dense loot, interiors, hostile contact, route information.</td><td>Inventory value beats remaining search time.</td></tr>
+          <tr><td>Shipwreck or industrial site</td><td>Materials, containers, line-of-sight risk, Trampler ambush angles.</td><td>Engine noise or enemy smoke appears.</td></tr>
+          <tr><td>Locked/key POI</td><td>Military crates, colored locks, Black Box-adjacent routing.</td><td>The prompt does not match your key or extraction is compromised.</td></tr>
+          <tr><td>Extraction-adjacent area</td><td>Staging, defense, cargo sorting, final tower path.</td><td>The dropship window is ready or PvP pressure is closing.</td></tr>
+        </tbody>
+      </table>
+
+      <p>If you need a baseline exit routine, pair this page with the <a href="/guides/sand-raiders-of-sophie-how-to-extract">extraction guide</a>. POI routing without extraction discipline is just delayed loot loss.</p>
+
+      <h3>Teams on the map</h3>
+      <p>Do not build routes around a fixed team count unless the live server UI states it. SAND is multiplayer/PvP and supports crews, solo runs, and contested extraction. The practical answer is simpler: assume another team can arrive before you finish looting, especially near smoke, cannon fire, high-value containers, and extraction points.</p>
+
+      <table>
+        <thead>
+          <tr><th>Signal</th><th>What it means</th><th>Route response</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Smoke on horizon</td><td>Trampler movement or combat nearby.</td><td>Shorten the POI and prep exit.</td></tr>
+          <tr><td>Cannon fire</td><td>Active PvP or PvE fight.</td><td>Flank only if cargo is low; extract if cargo is high.</td></tr>
+          <tr><td>Freshly looted area</td><td>Another crew passed recently.</td><td>Check one more container, then leave.</td></tr>
+          <tr><td>Silent high-value POI</td><td>Could be empty, could be bait.</td><td>Park for retreat, not for convenience.</td></tr>
+        </tbody>
+      </table>
+
+      <p>For crew-size planning, use the <a href="/guides/sand-raiders-of-sophie-pvp-pve-team-size-guide">PvP, PvE, solo, and team-size guide</a>. Team density is a risk-planning input, not trivia.</p>
+
+      <figure class="guide-inline-media">
+        <img src="/images/guides/sand-map-loot-key-routes.jpg" alt="SAND Raiders of Sophie loot route key checks and POI extraction planning" title="SAND Raiders of Sophie loot and key route planning" loading="lazy" />
+        <figcaption>Key and loot routes should be short. Every extra stop gives other crews more time to locate your Trampler.</figcaption>
+      </figure>
+
+      <h2>Routes for loot and keys</h2>
+      <h3>Loot route planning</h3>
+      <p>"Good loot spots" are good only when they match your crew size, cargo space, and exit path. Solo players should choose one compact objective. Duo crews can split driver/scout jobs. Larger crews can clear wider, but only if one player owns cargo and another owns extraction timing.</p>
+
+      <table>
+        <thead>
+          <tr><th>Route style</th><th>Best use</th><th>Main mistake</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Solo short loop</td><td>One low-to-mid POI, quick cargo, early extraction.</td><td>Chasing a second POI after first good loot.</td></tr>
+          <tr><td>Duo key loop</td><td>One player holds vehicle/extract plan, one checks prompt and loot.</td><td>Both leave the Trampler unattended.</td></tr>
+          <tr><td>Combat loot loop</td><td>High-value site after crew roles and guns are assigned.</td><td>Starting the fight before cargo route is clear.</td></tr>
+          <tr><td>Storm Dive push</td><td>Higher risk, higher reward when the crew can extract under pressure.</td><td>Waiting until storm or PvP forces the exit.</td></tr>
+        </tbody>
+      </table>
+
+      <p>Money routes should be checked against the <a href="/guides/sand-raiders-of-sophie-money-loot-safe-to-sell-guide">money and safe-to-sell guide</a>. Do not fill cargo with items your next research branch needs.</p>
+
+      <h3>Key and black box routes</h3>
+      <p>Key routing starts at the prompt. If a green key, blue key, black key, or box key is required, confirm the interaction, secure the Trampler, then open only if extraction still makes sense. Do not spend a colored key just because the POI looks quiet.</p>
+      <p>For Black Box, use the <a href="/guides/sand-raiders-of-sophie-keys-military-crates-black-box-guide">keys and Black Box guide</a> before selling or gambling it. The <a href="/database">Tech Tree Database</a> can show whether it blocks your next upgrade. A Black Box that dies in cargo because the crew overextended is not progression.</p>
+
+      <h2>FAQ</h2>
+      <h3>Does SAND: Raiders of Sophie have a map with POIs?</h3>
+      <p>Use POIs as route categories: loot, combat, key checks, extraction support, and danger signals. Exact layouts can shift because Sophie is procedural, so route logic matters more than static coordinates.</p>
+      <h3>How many teams are on a map?</h3>
+      <p>Read exact limits from the live server or mode UI when available. For field planning, assume another crew can reach your POI or extraction before you finish.</p>
+      <h3>Where can I get Black Box or use green key?</h3>
+      <p>Confirm the live prompt and route state first. Black Box and colored keys are high-value route decisions; use the keys guide and database before spending or selling them.</p>
+
+      <div class="pro-tip">
+        <strong>Field rule:</strong> A POI is not a destination. It is a timed decision between value, noise, cargo, enemy teams, and extraction distance.
+      </div>
+    `
+  }
 ];
 
 export const publishedGuides = guidesList.filter((guide) => guide.isPublished);
