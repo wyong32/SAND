@@ -1,5 +1,205 @@
 export const guidesList = [
   {
+    id: 10,
+    title: 'SAND: Raiders of Sophie Contracts Guide: Fort Contracts, Progression, and Rewards',
+    h1: 'SAND: Raiders of Sophie Contracts Guide',
+    description: 'Plan SAND contracts, fort contracts, progression checks, route setup, extraction timing, rewards, and the common failure points.',
+    publishDate: '2026-08-05',
+    imageUrl: '/images/guides/sand-contracts-fort-progression-guide.jpg',
+    imageAlt: 'SAND Raiders of Sophie contracts guide for fort contracts, progression routes, and rewards',
+    addressBar: 'sand-raiders-of-sophie-contracts-guide',
+    focus: 'Contracts, fort contracts, progression, and rewards',
+    seo: {
+      title: 'SAND Contracts and Fort Progression Guide',
+      description: 'Plan SAND contracts and fort contracts with acceptance checks, route setup, extraction timing, progression rewards, and failure fixes.',
+      keywords: 'SAND contracts, fort contracts, progression, rewards'
+    },
+    category: 'Progression',
+    isPublished: true,
+    detailsHtml: `
+      <p><strong>Fast answer:</strong> Contracts in SAND: Raiders of Sophie are progression tasks, not background flavor. Accept the contract, confirm the objective state, route it through one clean POI or fort target, secure the required loot or action, then leave while the reward is still bankable. A contract that dies with your Trampler is not progression. It is just noise you carried too long.</p>
+
+      <p><strong>Version note:</strong> As of August 5, 2026, contract labels, reward tuning, fort routing, and objective wording can still move between builds. If the live objective tracker disagrees with this guide, trust the current UI and use this page as the route discipline checklist.</p>
+
+      <figure class="guide-inline-media">
+        <img src="/images/guides/sand-contracts-fort-progression-guide.jpg" alt="SAND Raiders of Sophie fort contracts progression route with loot and extraction planning" title="SAND Raiders of Sophie contracts and fort progression" loading="lazy" />
+        <figcaption>Fort contracts are route decisions first. If the objective sends you into a contested area, stage extraction before you start looting.</figcaption>
+      </figure>
+
+      <h2>Direct answer for contracts</h2>
+      <h3>Fast answer and page scope</h3>
+      <p>Use contracts as your raid objective filter. Before you launch, decide whether the contract requires a location visit, combat clear, delivery, loot recovery, or fort interaction. Then build the run around that single condition. Do not mix a contract run with a greedy money route unless your crew can still extract under pressure.</p>
+
+      <table>
+        <thead>
+          <tr><th>Contract question</th><th>Practical answer</th><th>Field rule</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>What are contracts?</td><td>Directed progression tasks that give you a reason to enter a route.</td><td>Accept only what you can finish and extract.</td></tr>
+          <tr><td>What are fort contracts?</td><td>Contracts tied to higher-risk fort or fortified POI objectives.</td><td>Expect contact, longer dwell time, and tighter exit timing.</td></tr>
+          <tr><td>Do contracts replace looting?</td><td>No. They tell you which loot or action matters this run.</td><td>Loot around the objective, not instead of it.</td></tr>
+          <tr><td>When should I leave?</td><td>As soon as the contract state and cargo are secured.</td><td>Extraction beats one extra room.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Related variants to merge</h3>
+      <p>Searches for <strong>SAND contracts</strong>, <strong>contracts SAND Raiders of Sophie</strong>, <strong>fort contracts</strong>, and <strong>SAND progression</strong> all belong on this page. The intent is the same: the player wants to know what task to take, how to complete it, and how not to lose the payout before extraction.</p>
+
+      <h2>How to handle the contracts task</h2>
+      <h3>Prerequisites and state checks</h3>
+      <p>Before you accept or chase a contract, check four things. First, confirm the objective text. Second, confirm whether the run needs a key, crate access, or specific cargo space. Third, confirm whether the target route overlaps a dangerous POI. Fourth, confirm your extraction plan before the Trampler is already full.</p>
+
+      <table>
+        <thead>
+          <tr><th>Check</th><th>Why it matters</th><th>Related guide</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Objective wording</td><td>Prevents running the wrong POI or bringing the wrong kit.</td><td>Use the live tracker as the authority.</td></tr>
+          <tr><td>Keys or containers</td><td>Some routes become dead time if your crew cannot open the target.</td><td><a href="/guides/sand-raiders-of-sophie-keys-military-crates-black-box-guide">Keys and crates</a></td></tr>
+          <tr><td>Cargo space</td><td>Contract loot is worthless if you cannot carry it out cleanly.</td><td><a href="/guides/sand-raiders-of-sophie-money-loot-safe-to-sell-guide">Money and loot</a></td></tr>
+          <tr><td>Exit timing</td><td>Progress only counts if you survive the run state that matters.</td><td><a href="/guides/sand-raiders-of-sophie-how-to-extract">Extraction</a></td></tr>
+        </tbody>
+      </table>
+
+      <h3>Step-by-step action path</h3>
+      <ol>
+        <li><strong>Accept one contract you can actually finish.</strong> If two objectives pull you into opposite map pressure, choose one and leave the other.</li>
+        <li><strong>Mark the target route.</strong> Use the <a href="/guides/sand-raiders-of-sophie-map-poi-guide">map and POI route guide</a> to avoid wandering through extra combat.</li>
+        <li><strong>Stage the Trampler outside the first danger pocket.</strong> Park for departure, not for screenshots.</li>
+        <li><strong>Complete the contract condition before optional loot.</strong> Progression comes first; filler loot comes second.</li>
+        <li><strong>Return to the Trampler and sort cargo.</strong> Put contract items where they cannot be confused with junk sale piles.</li>
+        <li><strong>Extract early after completion.</strong> If you still want money, run a second clean raid instead of turning one completed contract into a wipe.</li>
+      </ol>
+
+      <h3>Confirmation and payoff</h3>
+      <p>You know the contract is safe to leave when the objective tracker updates, the required item or completion state is secured, and the crew can still move. If the UI requires turn-in after extraction, treat the reward as unclaimed until you complete that final handoff. <strong>INFERRED:</strong> reward type and exact progression value may vary by contract tier and current build, so do not plan upgrades around an unverified reward number.</p>
+
+      <h2>Mistakes and edge cases</h2>
+      <h3>Why players get stuck</h3>
+      <table>
+        <thead>
+          <tr><th>Failure</th><th>Likely cause</th><th>Fix</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Contract does not advance</td><td>Wrong POI, wrong object, or objective state not triggered.</td><td>Re-read the tracker and finish the exact condition.</td></tr>
+          <tr><td>Fort contract turns into a wipe</td><td>Crew stayed inside the danger zone after the condition was done.</td><td>Set a leave call before the first loot room.</td></tr>
+          <tr><td>Reward feels missing</td><td>Turn-in, extraction, or claim step was skipped.</td><td>Check the contract board and inventory state after leaving.</td></tr>
+          <tr><td>Progression stalls</td><td>Contracts are being mixed with unfocused money runs.</td><td>Run contract-first, sell-second.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>When to link or merge with another guide</h3>
+      <p>Keep this page for contract flow and progression decisions. If your problem is cargo value, use the <a href="/guides/sand-raiders-of-sophie-money-loot-safe-to-sell-guide">money guide</a>. If your problem is locked containers, use the <a href="/guides/sand-raiders-of-sophie-keys-military-crates-black-box-guide">key guide</a>. If your problem is leaving alive, use the <a href="/guides/sand-raiders-of-sophie-how-to-extract">extract guide</a>. That split keeps each guide useful instead of turning every SAND page into the same general checklist.</p>
+
+      <h2>FAQ</h2>
+      <h3>Is a Contracts Guide worth a separate SAND page?</h3>
+      <p>Yes. Contracts are a distinct progression intent: players want the acceptance, route, completion, reward, and failure logic in one place. That is different from a generic loot or extraction guide.</p>
+
+      <h3>Which related keywords should this page cover?</h3>
+      <p>Cover <strong>sand raiders of sophie contracts</strong>, <strong>contracts sand raiders of sophie</strong>, <strong>sand raiders of sophie progression</strong>, and <strong>fort contracts</strong> together. Do not split them unless the live game adds a separate contract tier with unique mechanics.</p>
+    `
+  },
+  {
+    id: 9,
+    title: 'SAND: Raiders of Sophie Dreadnought Guide: Dreadnaught, Ship Role, and Setup',
+    h1: 'SAND: Raiders of Sophie Dreadnought Guide',
+    description: 'Build a SAND dreadnought-style raiding ship with crew roles, guns, cargo discipline, repairs, extraction timing, and spelling checks.',
+    publishDate: '2026-08-05',
+    imageUrl: '/images/guides/sand-dreadnought-raiding-ship-guide.jpg',
+    imageAlt: 'SAND Raiders of Sophie dreadnought raiding ship guide for heavy Trampler setup',
+    addressBar: 'sand-raiders-of-sophie-dreadnought-guide',
+    focus: 'Dreadnought, raiding ship, and heavy Trampler setup',
+    seo: {
+      title: 'SAND Dreadnought and Raiding Ship Guide',
+      description: 'Build a SAND dreadnought-style raiding ship with crew roles, guns, cargo, repairs, extraction timing, and Dreadnaught spelling checks.',
+      keywords: 'SAND dreadnought, Dreadnaught, raiding ship, Trampler setup'
+    },
+    category: 'Builds',
+    isPublished: true,
+    detailsHtml: `
+      <p><strong>Fast answer:</strong> In SAND: Raiders of Sophie, use <strong>Dreadnought</strong> as a heavy raiding-ship setup term: a combat-first Trampler build that anchors crew movement, carries guns and cargo, and survives enough return fire to finish the objective. <strong>Dreadnaught</strong> is usually the same search intent unless the live UI labels a separate item with that spelling. Do not chase a hidden unlock just because a search result uses the alternate spelling.</p>
+
+      <p><strong>Version note:</strong> As of August 5, 2026, ship parts, module names, and balance values can change between builds. Treat exact damage, armor, speed, and cargo numbers as live-UI checks, not fixed guide constants.</p>
+
+      <figure class="guide-inline-media">
+        <img src="/images/guides/sand-dreadnought-raiding-ship-guide.jpg" alt="SAND Raiders of Sophie dreadnought raiding ship Trampler setup with crew roles and cannons" title="SAND Raiders of Sophie dreadnought raiding ship setup" loading="lazy" />
+        <figcaption>A dreadnought-style Trampler is not just bigger. It is a crew plan: driver, guns, cargo, repairs, and a clean extraction call.</figcaption>
+      </figure>
+
+      <h2>Direct answer for dreadnought</h2>
+      <h3>Fast answer and page scope</h3>
+      <p>This page covers the practical meaning behind searches for <strong>sand raiders of sophie dreadnought</strong>, <strong>sands of sophie dread</strong>, <strong>dreadnaught</strong>, and <strong>raiding ship</strong>. The player intent is not lore. It is build role: how to turn a Trampler into a heavier raid platform without making it too slow, too loud, or too hard to extract.</p>
+
+      <table>
+        <thead>
+          <tr><th>Search term</th><th>What it usually means</th><th>What to check in-game</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Dreadnought</td><td>Heavy raiding ship role or build concept.</td><td>Hull, weapon mounts, armor, cargo, and crew jobs.</td></tr>
+          <tr><td>Dreadnaught</td><td>Alternate spelling of the same player query.</td><td>Do not assume a separate unlock unless the UI says so.</td></tr>
+          <tr><td>Sands of Sophie dread</td><td>Short, typo-heavy search for the same topic.</td><td>Map it to heavy Trampler setup.</td></tr>
+          <tr><td>Raiding ship</td><td>Combat and loot platform for contested runs.</td><td>Guns, repairs, extraction timing, and cargo risk.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Related variants to merge</h3>
+      <p>Keep the variants on one guide. Splitting Dreadnought, Dreadnaught, and raiding ship into separate pages would create thin duplicates. If the live build later adds a named Dreadnought chassis, this page should become the parent guide and link to a specific chassis table.</p>
+
+      <h2>How to handle the dreadnought task</h2>
+      <h3>Prerequisites and state checks</h3>
+      <p>Before building a heavy raiding ship, solve the boring checks first. A large Trampler that cannot turn, cannot reload, or cannot leave after a fight is a loot donation.</p>
+
+      <table>
+        <thead>
+          <tr><th>Check</th><th>Minimum standard</th><th>Why it matters</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Crew roles</td><td>Driver, gunner, repair/cargo flex assigned before launch.</td><td>Heavy ships fail when everyone does the same job.</td></tr>
+          <tr><td>Weapon plan</td><td>Enough ammo and clear firing arcs for the intended fight.</td><td>Unloaded guns only add weight and confidence problems.</td></tr>
+          <tr><td>Mobility</td><td>Route chosen around your slowest turn and worst escape angle.</td><td>A raiding ship still has to leave the raid.</td></tr>
+          <tr><td>Cargo discipline</td><td>Priority loot and contract items separated from junk.</td><td>Extraction panic gets worse when cargo is messy.</td></tr>
+          <tr><td>Repair plan</td><td>Materials and access paths kept clear.</td><td>Mid-fight repair only works if the crew can reach the part.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Step-by-step action path</h3>
+      <ol>
+        <li><strong>Start from the ship role, not the biggest shape.</strong> If the run is contract-heavy, reserve cargo and exit speed. If the run is PvP-heavy, prioritize firing angles and repair access.</li>
+        <li><strong>Assign crew jobs before the first POI.</strong> Use the <a href="/guides/sand-raiders-of-sophie-pvp-pve-team-size-guide">team size guide</a> if your group keeps duplicating tasks.</li>
+        <li><strong>Mount weapons around real firing lanes.</strong> Check whether each gun can cover approach, chase, or disengage. A blind heavy ship is just a larger target.</li>
+        <li><strong>Keep cargo paths clean.</strong> Heavy builds attract greed. Use the <a href="/guides/sand-raiders-of-sophie-money-loot-safe-to-sell-guide">money and loot guide</a> to decide what is worth carrying.</li>
+        <li><strong>Plan the exit before committing to a fort or POI.</strong> Cross-check the <a href="/guides/sand-raiders-of-sophie-map-poi-guide">map and POI guide</a> before parking deep in a bad angle.</li>
+        <li><strong>Extract after the ship has done its job.</strong> A dreadnought-style run is successful when loot, crew, and objective survive. Use the <a href="/guides/sand-raiders-of-sophie-how-to-extract">extract guide</a> if your crew keeps overstaying.</li>
+      </ol>
+
+      <h3>Confirmation and payoff</h3>
+      <p>The setup is working when the driver can keep the ship angled, the gunner can fire without blocking movement, the flex player can repair or move cargo without crossing dangerous lines, and the crew leaves with the objective complete. If one player has to handle driving, guns, repairs, and cargo at once, the build is too ambitious for the crew size.</p>
+
+      <h2>Mistakes and edge cases</h2>
+      <h3>Why players get stuck</h3>
+      <table>
+        <thead>
+          <tr><th>Problem</th><th>Likely cause</th><th>Fix</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>No Dreadnought option appears</td><td>The term may be a role phrase or spelling variant, not a visible unlock.</td><td>Search the current builder UI for parts, not only the word.</td></tr>
+          <tr><td>Ship wins fights but loses loot</td><td>Cargo and extraction were planned after combat.</td><td>Route the ship around leaving, not around chasing.</td></tr>
+          <tr><td>Guns feel weak</td><td>Bad angles, reload gaps, or wrong engagement range.</td><td>Test firing lanes before entering contested POIs.</td></tr>
+          <tr><td>Solo build feels impossible</td><td>Too many simultaneous jobs for one player.</td><td>Shrink the build or move to a duo/team setup.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>When to link or merge with another guide</h3>
+      <p>Use this page for the heavy raiding-ship concept. For specific shape and module tradeoffs, read the <a href="/guides/sand-raiders-of-sophie-best-ship-build-guide">best ship build guide</a>. For weapon behavior, use the <a href="/wiki/weapons">weapons wiki</a>. For route pressure, use the <a href="/guides/sand-raiders-of-sophie-map-poi-guide">map guide</a>. If the question is only "how do I leave with the loot," skip ship theory and go straight to <a href="/guides/sand-raiders-of-sophie-how-to-extract">extraction</a>.</p>
+
+      <h2>FAQ</h2>
+      <h3>Is a Dreadnought Guide worth a separate SAND page?</h3>
+      <p>Yes, because the search intent is different from a generic ship page. Players looking for Dreadnought or Dreadnaught usually want the heavy raiding role, crew setup, and failure points in one answer.</p>
+
+      <h3>Which related keywords should this page cover?</h3>
+      <p>Cover <strong>sand raiders of sophie dreadnought</strong>, <strong>sand raiders of sophie dreadnaught</strong>, <strong>sands of sophie dread</strong>, and <strong>sand raiders of sophie raiding ship</strong> together. They describe one parent intent unless the live UI splits them later.</p>
+    `
+  },  {
     id: 4,
     title: 'SAND: Raiders of Sophie Multiplayer Guide: PvP, PvE, Solo, and Team Size',
     h1: 'SAND: Raiders of Sophie PvP, PvE, Solo, and Team Size Guide',
@@ -872,3 +1072,4 @@ export const guidesList = [
 ];
 
 export const publishedGuides = guidesList.filter((guide) => guide.isPublished);
+
