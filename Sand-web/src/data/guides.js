@@ -4,7 +4,7 @@ export const guidesList = [
     title: 'SAND: Raiders of Sophie Contracts Guide: Fort Contracts, Progression, and Rewards',
     h1: 'SAND: Raiders of Sophie Contracts Guide',
     description: 'Plan SAND contracts, fort contracts, progression checks, route setup, extraction timing, rewards, and the common failure points.',
-    publishDate: '2026-08-05',
+    publishDate: '2026-08-06',
     imageUrl: '/images/guides/sand-contracts-fort-progression-guide.jpg',
     imageAlt: 'SAND Raiders of Sophie contracts guide for fort contracts, progression routes, and rewards',
     addressBar: 'sand-raiders-of-sophie-contracts-guide',
@@ -19,7 +19,7 @@ export const guidesList = [
     detailsHtml: `
       <p><strong>Fast answer:</strong> Contracts in SAND: Raiders of Sophie are progression tasks, not background flavor. Accept the contract, confirm the objective state, route it through one clean POI or fort target, secure the required loot or action, then leave while the reward is still bankable. A contract that dies with your Trampler is not progression. It is just noise you carried too long.</p>
 
-      <p><strong>Version note:</strong> As of August 5, 2026, contract labels, reward tuning, fort routing, and objective wording can still move between builds. If the live objective tracker disagrees with this guide, trust the current UI and use this page as the route discipline checklist.</p>
+      <p><strong>Version note:</strong> As of August 6, 2026, contract labels, reward tuning, fort routing, and objective wording can still move between builds. If the live objective tracker disagrees with this guide, trust the current UI and use this page as the route discipline checklist.</p>
 
       <figure class="guide-inline-media">
         <img src="/images/guides/sand-contracts-fort-progression-guide.jpg" alt="SAND Raiders of Sophie fort contracts progression route with loot and extraction planning" title="SAND Raiders of Sophie contracts and fort progression" loading="lazy" />
@@ -104,7 +104,7 @@ export const guidesList = [
     title: 'SAND: Raiders of Sophie Dreadnought Guide: Dreadnaught, Ship Role, and Setup',
     h1: 'SAND: Raiders of Sophie Dreadnought Guide',
     description: 'Build a SAND dreadnought-style raiding ship with crew roles, guns, cargo discipline, repairs, extraction timing, and spelling checks.',
-    publishDate: '2026-08-05',
+    publishDate: '2026-08-06',
     imageUrl: '/images/guides/sand-dreadnought-raiding-ship-guide.jpg',
     imageAlt: 'SAND Raiders of Sophie dreadnought raiding ship guide for heavy Trampler setup',
     addressBar: 'sand-raiders-of-sophie-dreadnought-guide',
@@ -119,7 +119,7 @@ export const guidesList = [
     detailsHtml: `
       <p><strong>Fast answer:</strong> In SAND: Raiders of Sophie, use <strong>Dreadnought</strong> as a heavy raiding-ship setup term: a combat-first Trampler build that anchors crew movement, carries guns and cargo, and survives enough return fire to finish the objective. <strong>Dreadnaught</strong> is usually the same search intent unless the live UI labels a separate item with that spelling. Do not chase a hidden unlock just because a search result uses the alternate spelling.</p>
 
-      <p><strong>Version note:</strong> As of August 5, 2026, ship parts, module names, and balance values can change between builds. Treat exact damage, armor, speed, and cargo numbers as live-UI checks, not fixed guide constants.</p>
+      <p><strong>Version note:</strong> As of August 6, 2026, ship parts, module names, and balance values can change between builds. Treat exact damage, armor, speed, and cargo numbers as live-UI checks, not fixed guide constants.</p>
 
       <figure class="guide-inline-media">
         <img src="/images/guides/sand-dreadnought-raiding-ship-guide.jpg" alt="SAND Raiders of Sophie dreadnought raiding ship Trampler setup with crew roles and cannons" title="SAND Raiders of Sophie dreadnought raiding ship setup" loading="lazy" />
